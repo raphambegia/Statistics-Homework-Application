@@ -1,1 +1,2 @@
-# L01_08
+Team Name: Sweet & Spicy Sixteen
+1st Deliverable
