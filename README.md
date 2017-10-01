@@ -2,4 +2,4 @@
 
 ## DELIVERABLES
 
-[Deliverable 1](Deliverable 01/Del01 Report.pdf)
+![Deliverable 1](Deliverable%2001/Del01%20Report.pdf)
