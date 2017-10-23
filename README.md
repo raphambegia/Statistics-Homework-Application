@@ -10,3 +10,6 @@ Personas & User Stories v0(in Deliverable 02 Folder):
 
 Product Backlog v1(in Deliverable 03 Folder):
 ![Product Backlog v1 Deliverable 3](Deliverable%2003/Personas%20%26%20User%20Stories%20v1.pdf)
+
+Sprint Backlog 1(in Deliverable 03 Folder):
+![Sprint Backlog Deliverable 3](Deliverable%2003/Sprint%20Backlog%201.pdf)
