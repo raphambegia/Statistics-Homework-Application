@@ -6,12 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
+    Stage stage;
+    Scene scene1, sccene2;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        this.stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
-        primaryStage.setTitle("User Login");
+        primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 650, 400));
         primaryStage.show();
     }

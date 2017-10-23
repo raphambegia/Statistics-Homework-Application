@@ -21,7 +21,7 @@
                   <Font name="Arial" size="36.0" />
                </font>
             </Label>
-            <Button layoutX="266.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginHandler" text="Login" />
+            <Button fx:id="loginButton" layoutX="266.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginHandler" text="Login" />
             <Button layoutX="365.0" layoutY="249.0" mnemonicParsing="false" text="Cancel" />
             <Label fx:id="label1" layoutX="210.0" layoutY="223.0" prefHeight="17.0" prefWidth="234.0" textFill="RED" />
       </children>
