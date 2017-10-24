@@ -7,10 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main extends Application {
     Stage stage;
     Scene scene1, sccene2;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -23,6 +26,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Data AllData;
+        Admin admin1 = new Admin("admin","pass");
         launch(args);
     }
 }
