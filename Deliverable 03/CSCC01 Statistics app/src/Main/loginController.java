@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 
 
 import java.io.IOException;
@@ -33,11 +34,16 @@ public class loginController {
     Button backButton;
     @FXML
     Button backStudent;
+    @FXML
+    TableView studentTable;
+    @FXML
+    Button cancel;
 
     public void loginButton(ActionEvent event){
         System.out.println("Hello World");
 
     }
+
     public void loginHandler(ActionEvent event) throws IOException {
         if(userName.getText().equals("admin") && password.getText().equals("pass")) {
             Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
@@ -67,16 +73,26 @@ public class loginController {
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
+
     public void backMain(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
         Stage stage  = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
+
     public void backStudent(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
         Stage stage  = (Stage) backStudent.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
+    }
+
+    public void close(ActionEvent event) throws IOException{
+        System.exit(0);
+    }
+
+    public void studentTable(ActionEvent event) throws IOException{
+
     }
 }

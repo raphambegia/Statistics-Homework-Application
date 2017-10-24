@@ -1,14 +1,18 @@
 package Main;
 
-public class Student {
-    String fName;
-    String lName;
-    int studentId;
+public class Student extends User {
+    private String fName;
+    private String lName;
+    private int studentId;
 
-    public Student(String fname, String lname, int stid){
+    public Student (String id, String pw, String fname, String lname, int stid){
         this.fName = fname;
         this.lName = lname;
         this.studentId = stid;
+        this.setLoginID(id);
+        this.setLoginPW(pw);
+        this.setType('s');
+        Data.AddUser(id,pw);
     }
 
     String getName(){
@@ -17,4 +21,5 @@ public class Student {
     int getID(){
         return this.studentId;
     }
+
 }

@@ -3,13 +3,19 @@ package Main;
 import java.util.*;
 
 public class Data {
-    Map Users = new HashMap();
+    static Map Users = new HashMap();
+    static ArrayList <Student> studentList;
 
     public Data (){
-        Users.put("admin","pw");
     }
 
-    public void AddUser(String id, String pw){
+    public static void AddUser (String id, String pw){
         Users.put(id,pw);
+    }
+
+    public static void RemoveUser (String id){
+        for (Student theStudent : studentList){
+            if (id == theStudent.getLoginID()) Users.remove(id);
+        }
     }
 }
