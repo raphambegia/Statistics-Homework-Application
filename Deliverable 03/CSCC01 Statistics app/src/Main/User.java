@@ -6,7 +6,7 @@ public class User {
     private char Type;
 
     public User (){
-
+        //default constructor
     }
 
     public User (String id, String pw, char type){
@@ -25,6 +25,18 @@ public class User {
 
     public char getType(){
         return Type;
+    }
+
+    public void setLoginID(String id){
+        LoginID = id;
+    }
+
+    public void setLoginPW(String pw){
+        LoginPW = pw;
+    }
+
+    public void setType(char type){
+        Type = type;
     }
 
 }

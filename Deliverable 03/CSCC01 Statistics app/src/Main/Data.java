@@ -22,4 +22,10 @@ public class Data {
         if ( pw.equals(Users.get(id))) return true;
         return false;
     }
+
+    public static void RemoveUser (String id){
+        for (Student theStudent : studentList){
+            if (id == theStudent.getLoginID()) Users.remove(id);
+        }
+    }
 }
