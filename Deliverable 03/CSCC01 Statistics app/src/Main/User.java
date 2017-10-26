@@ -5,6 +5,10 @@ public class User {
     private String LoginPW;
     private char Type;
 
+    public User (){
+
+    }
+
     public User (String id, String pw, char type){
         LoginID = id;
         LoginPW = pw;

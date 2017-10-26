@@ -1,6 +1,6 @@
 package Main;
 
-public class Student {
+public class Student extends User{
     String fName;
     String lName;
     int studentId;
@@ -14,7 +14,9 @@ public class Student {
     String getName(){
         return this.fName+" "+this.lName;
     }
+
     int getID(){
         return this.studentId;
     }
+
 }
