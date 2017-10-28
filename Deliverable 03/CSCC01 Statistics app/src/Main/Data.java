@@ -11,6 +11,16 @@ public class Data {
 
     public static void AddUser (String id, String pw){
         Users.put(id,pw);
+        System.out.println(id+" added");
+    }
+
+    public static void RemoveUser (String id){
+        Users.remove(id);
+    }
+
+    public static boolean CheckUser (String id, String pw){
+        if ( pw.equals(Users.get(id))) return true;
+        return false;
     }
 
     public static void RemoveUser (String id){
