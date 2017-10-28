@@ -45,7 +45,7 @@ public class loginController {
     }
 
     public void loginHandler(ActionEvent event) throws IOException {
-        if(userName.getText().equals("admin") && password.getText().equals("pass")) {
+        if(Data.CheckUser(userName.getText(),password.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
