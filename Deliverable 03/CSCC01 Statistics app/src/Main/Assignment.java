@@ -2,6 +2,8 @@ package Main;
 
 public class Assignment {
     /*
+    Author: Juan
+
     Background:
         Assignments serve the purpose of housing assigned questions for the student users. Through the application's
         GUI, they are:
@@ -17,45 +19,44 @@ public class Assignment {
             Objects:
                 - this Assignment ID
                 - this Assignment Name
+                - this Assignment Delete Status
 
             Functions:
                 - retrieving this Assignment ID
                 - retrieving this Assignment Name
-                - creating this Assignment object in Database
-                - removing this Assignment object from Database
+                - retrieving this Assignment Deletion Status
+                - change this Assignment Deletion Status
      */
 
     private int AssignmentID;
     private String AssignmentName;
+    private Boolean DeleteStatus;
 
     public Assignment(int id, String Name){
         this.AssignmentID = id;
         this.AssignmentName = Name;
 
+        //Instead of removing from ArrayList, Assignment will have DeleteStatus = True if it's been deleted by user.
+        //The idea is, If DeleteStatus = True, then we ignore the assignment; though it will still remain in the List.
+        this.DeleteStatus = Boolean.FALSE;
+
     }
 
-    public int getAssignmentID(int id){
+    public int getAssignmentID(){
         return AssignmentID;
     }
 
-    public String getAssignmentID(String Name){
+    public String getAssignmentName(){
         return AssignmentName;
     }
 
-    public void createAssignment(int id, String Name){
-        Assignment newAssignment = new Assignment(id, Name);
-        //Data.studentList.add(newStudent);
-        /*
-        Add newAssignment to "database"
-        See Data.java for guide
-         */
+    public Boolean getAssignmentStatus(){
+        return DeleteStatus;
     }
 
-    /*
-        RemoveAssignment{}
-
-        Remove Assignment from "database"
-        See Student.java for guide
-    */
+    //Removes Assignment by changing a Status. Does not remove from Array List in Data.java
+    public void ChangeDeleteStatus(Boolean Status){
+        this.DeleteStatus = Status;
+    }
 
 }
