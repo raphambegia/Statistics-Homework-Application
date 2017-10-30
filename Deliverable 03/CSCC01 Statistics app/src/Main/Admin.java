@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Admin extends User {
 
     Admin(String id, String pw){
-        SetLoginID(id);
-        SetLoginPW(pw);
-        SetType('a');
+        setLoginID(id);
+        setLoginPW(pw);
+        setType('a');
         System.out.println();
         Data.AddUser(id,pw);
     }

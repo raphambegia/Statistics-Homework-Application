@@ -1,42 +1,43 @@
 package Main;
 
-public class User {
-    private String LoginID;
-    private String LoginPW;
-    private char Type;
 
+public class User {
+    private String loginID;
+    private String loginPW;
+    private char type;
+
+    //default constructor
     public User (){
-        //default constructor
     }
 
-    public User (String id, String pw, char type){
-        LoginID = id;
-        LoginPW = pw;
-        Type = type;
+    public User (String id, String pw, char mytype){
+        loginID = id;
+        loginPW = pw;
+        type = mytype;
     }
 
     public String getLoginID(){
-        return LoginID;
+        return loginID;
     }
 
     public String getLoginPW(){
-        return LoginPW;
+        return loginPW;
     }
 
     public char getType(){
-        return Type;
+        return type;
     }
 
     public void setLoginID(String id){
-        LoginID = id;
+        loginID = id;
     }
 
-    public void setLoginPW(String pw){
-        LoginPW = pw;
+    public void setLoginPW (String pw){
+        loginPW = pw;
     }
 
-    public void setType(char type){
-        Type = type;
+    public void setType (char t){
+        type = t;
     }
 
 }
