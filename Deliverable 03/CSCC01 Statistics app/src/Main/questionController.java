@@ -4,22 +4,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class questionController {
 
     @FXML
     private TextField questionField;
     @FXML
-    private TextField mc1field;
+    private TextField mcfield1;
     @FXML
-    private TextField mc2field;
+    private TextField mcfield2;
     @FXML
-    private TextField mc3field;
+    private TextField mcfield3;
     @FXML
-    private TextField mc4field;
+    private TextField mcfield4;
     @FXML
-    private TextField mc5field;
+    private TextField mcfield5;
     @FXML
     private Label warningLabel;
     @FXML
@@ -37,38 +36,96 @@ public class questionController {
     @FXML
     private Button addQuestionButton;
 
+    private String NOANSWERS = "NOANSWERS";
+    private ArrayList<String> answerList = new ArrayList<String>();
+    ArrayList<String> idList = new ArrayList<String>();
+
     public void addQuestionHandler() {
-        int solnInd = findSolution();
-        if (solnInd == -1) {
+        // Check if question field is empty
+        if (questionField.getText().replaceAll("\\s","").length() == 0) {
+            warningLabel.setText("Please include a question.");
             return;
         }
-        ArrayList<String> answerList = new ArrayList<String>();
-        answerList.add(mc1field.getText());
-        answerList.add(mc2field.getText());
-        answerList.add(mc3field.getText());
-        answerList.add(mc4field.getText());
-        answerList.add(mc5field.getText());
+
+        // Check if at least one answer option has been added
+        if (createAnsList().get(0).equals(NOANSWERS)) {
+            answerList = createAnsList();
+        } else {
+            return;
+        }
+
+        // Check if a solution has been chosen, and it's position if so
+        RadioButton solnSelected = (RadioButton) answerToggle.getSelectedToggle();
+        if (solnSelected == null) {
+            warningLabel.setText("Please select the correct answer");
+            return;
+        }
+        int solnInd = findSolutionInd(solnSelected.getId());
+
+        // Check if the solution index and answer index match
+        if (!solnMatch(solnInd)) {
+            return;
+        }
 
         Admin.addQuestion(questionField.getText(), answerList, solnInd, solnInd);
     }
 
     /*
-    Returns 0 if no answer is chosen.
+    Returns the array position of the solution
      */
-    public int findSolution() {
-        if (answerToggle.getSelectedToggle() == null) {
-            warningLabel.setText("Please select the correct answer");
-        } else if (answerToggle.getSelectedToggle() == buttonMC1) {
-            return 1;
-        } else if (answerToggle.getSelectedToggle() == buttonMC2) {
-            return 2;
-        } else if (answerToggle.getSelectedToggle() == buttonMC3) {
-            return 3;
-        } else if (answerToggle.getSelectedToggle() == buttonMC4) {
-            return 4;
-        } else if (answerToggle.getSelectedToggle() == buttonMC5) {
-            return 5;
+    private int findSolutionInd(String solnSelected) {
+        String soln = solnSelected.substring(solnSelected.length() - 1);
+        return Integer.parseInt(soln) - 1;
+    }
+
+    /*
+    Returns a list where the first element is "NOANSWERS" if no valid answers were entered.
+     */
+    private ArrayList<String> createAnsList() {
+        int count = 0;
+
+        if (mcfield1.getText().replaceAll("\\s","").length() != 0) {
+            answerList.add(mcfield1.getText());
+            idList.add(mcfield1.getId());
+            count++;
+        } else if (mcfield2.getText().replaceAll("\\s","").length() != 0) {
+            answerList.add(mcfield2.getText());
+            idList.add(mcfield2.getId());
+            count++;
+        } else if (mcfield3.getText().replaceAll("\\s","").length() != 0) {
+            answerList.add(mcfield3.getText());
+            idList.add(mcfield3.getId());
+            count++;
+        } else if (mcfield4.getText().replaceAll("\\s","").length() != 0) {
+            answerList.add(mcfield4.getText());
+            idList.add(mcfield4.getId());
+            count++;
+        } else if (mcfield5.getText().replaceAll("\\s","").length() != 0) {
+            answerList.add(mcfield5.getText());
+            idList.add(mcfield5.getId());
+            count++;
         }
-        return -1;
+
+        if (count == 0) {
+            answerList.add(NOANSWERS);
+            warningLabel.setText("Please include at least one answer.");
+        }
+
+        return answerList;
+    }
+
+    /*
+    Returns true if there is a solution at the index chosen.
+     */
+    private Boolean solnMatch(int solnInd) {
+        for (int i = 0; i < idList.size() - 1; i++) {
+            String idName = idList.get(i);
+            int idNum = Integer.parseInt(idName.substring(idName.length() - 1)) - 1;
+            if (idNum == solnInd) {
+               return true;
+            }
+        }
+        warningLabel.setText("Answer selected has no value. Please fill in answer.");
+        return false;
     }
 }

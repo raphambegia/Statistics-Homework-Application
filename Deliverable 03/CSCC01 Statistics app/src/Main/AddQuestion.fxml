@@ -34,35 +34,35 @@
                               <ToggleGroup fx:id="answerToggle" />
                            </toggleGroup></RadioButton>
                          <Label prefHeight="17.0" prefWidth="100" text=" Option: " />
-                         <TextField fx:id="mc1field" />
+                         <TextField fx:id="mcfield1"/>
                      </children>
                   </TextFlow>
                   <TextFlow>
                       <children>
                           <RadioButton fx:id="buttonMC2" toggleGroup="$answerToggle" />
                           <Label prefHeight="17.0" prefWidth="100" text=" Option: " />
-                          <TextField fx:id="mc2field" />
+                          <TextField fx:id="mcfield2"/>
                       </children>
                   </TextFlow>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC3" toggleGroup="$answerToggle" />
                            <Label prefHeight="17.0" prefWidth="100" text=" Option: " />
-                           <TextField fx:id="mc3field" />
+                           <TextField fx:id="mcfield3"/>
                        </children>
                    </TextFlow>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC4" toggleGroup="$answerToggle" />
                            <Label prefHeight="17.0" prefWidth="100" text=" Option: " />
-                           <TextField fx:id="mc4field" />
+                           <TextField fx:id="mcfield4"/>
                        </children>
                    </TextFlow>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC5" toggleGroup="$answerToggle" />
                            <Label prefHeight="17.0" prefWidth="100" text=" Option: " />
-                           <TextField fx:id="mc5field" />
+                           <TextField fx:id="mcfield5"/>
                        </children>
                    </TextFlow>
                </children>

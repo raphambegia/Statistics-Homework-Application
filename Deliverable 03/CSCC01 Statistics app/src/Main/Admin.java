@@ -30,6 +30,9 @@ public class Admin extends User {
                 Data.studentList.remove(theStudent);
             }
         }
+    }
 
+    public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, int assignmentNum){
+        //Question newQuestion = new Question(theQuestion, mcAnswers, solnInd);
     }
 }
