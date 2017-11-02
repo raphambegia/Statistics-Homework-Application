@@ -3,7 +3,9 @@ package Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
+import java.util.List;
 
 public class questionController {
 
@@ -38,7 +40,8 @@ public class questionController {
 
     private String NOANSWERS = "NOANSWERS";
     private ArrayList<String> answerList = new ArrayList<String>();
-    ArrayList<String> idList = new ArrayList<String>();
+    private ArrayList<String> idList = new ArrayList<String>();
+    private List<TextField> mcList = new ArrayList<TextField>();
 
     public void addQuestionHandler() {
         // Check if question field is empty
@@ -48,6 +51,12 @@ public class questionController {
         }
 
         // Check if at least one answer option has been added
+        mcList.add(mcfield1);
+        mcList.add(mcfield2);
+        mcList.add(mcfield3);
+        mcList.add(mcfield4);
+        mcList.add(mcfield5);
+
         if (createAnsList().get(0).equals(NOANSWERS)) {
             answerList = createAnsList();
         } else {
@@ -67,7 +76,14 @@ public class questionController {
             return;
         }
 
+        // Add question to assignment & clear all fields
         Admin.addQuestion(questionField.getText(), answerList, solnInd, solnInd);
+        warningLabel.setText("Question added!");
+        answerToggle.getSelectedToggle().setSelected(false);
+        questionField.setText("");
+        for(TextField tf : mcList) {
+            tf.setText("");
+        }
     }
 
     /*
@@ -84,27 +100,35 @@ public class questionController {
     private ArrayList<String> createAnsList() {
         int count = 0;
 
-        if (mcfield1.getText().replaceAll("\\s","").length() != 0) {
-            answerList.add(mcfield1.getText());
-            idList.add(mcfield1.getId());
-            count++;
-        } else if (mcfield2.getText().replaceAll("\\s","").length() != 0) {
-            answerList.add(mcfield2.getText());
-            idList.add(mcfield2.getId());
-            count++;
-        } else if (mcfield3.getText().replaceAll("\\s","").length() != 0) {
-            answerList.add(mcfield3.getText());
-            idList.add(mcfield3.getId());
-            count++;
-        } else if (mcfield4.getText().replaceAll("\\s","").length() != 0) {
-            answerList.add(mcfield4.getText());
-            idList.add(mcfield4.getId());
-            count++;
-        } else if (mcfield5.getText().replaceAll("\\s","").length() != 0) {
-            answerList.add(mcfield5.getText());
-            idList.add(mcfield5.getId());
-            count++;
+        for (TextField tf : mcList) {
+            if (tf.getText().replaceAll("\\s","").length() != 0) {
+                answerList.add(tf.getText());
+                idList.add(tf.getId());
+                count++;
+            }
         }
+
+//        if (mcfield1.getText().replaceAll("\\s","").length() != 0) {
+//            answerList.add(mcfield1.getText());
+//            idList.add(mcfield1.getId());
+//            count++;
+//        } else if (mcfield2.getText().replaceAll("\\s","").length() != 0) {
+//            answerList.add(mcfield2.getText());
+//            idList.add(mcfield2.getId());
+//            count++;
+//        } else if (mcfield3.getText().replaceAll("\\s","").length() != 0) {
+//            answerList.add(mcfield3.getText());
+//            idList.add(mcfield3.getId());
+//            count++;
+//        } else if (mcfield4.getText().replaceAll("\\s","").length() != 0) {
+//            answerList.add(mcfield4.getText());
+//            idList.add(mcfield4.getId());
+//            count++;
+//        } else if (mcfield5.getText().replaceAll("\\s","").length() != 0) {
+//            answerList.add(mcfield5.getText());
+//            idList.add(mcfield5.getId());
+//            count++;
+//        }
 
         if (count == 0) {
             answerList.add(NOANSWERS);
