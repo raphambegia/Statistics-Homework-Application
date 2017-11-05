@@ -9,7 +9,7 @@ public class Admin extends User {
         setLoginPW(pw);
         setType('a');
         System.out.println();
-        Data.AddUser(id,pw);
+        Data.AddUser(this);
     }
 
     public static void createStudent(String fname, String lname, int stid){
