@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Data {
-    static Map Users = new HashMap();
+    static ArrayList <User> userList = new ArrayList();
     static ArrayList <Student> studentList = new ArrayList();
 
     //Author: Juan
@@ -15,18 +15,42 @@ public class Data {
     public Data (){
     }
 
-    public static void AddUser (String id, String pw){
-        Users.put(id,pw);
-        System.out.println(id+" added to User List");
+    public static void AddUser (User user){
+        userList.add(user);
+        System.out.println(user.getLoginID() +" added to User List");
     }
 
     public static void RemoveUser (String id){
-        Users.remove(id);
+        int location = 0;
+        Boolean found = false;
+        for( User theuser : userList){
+           if (id.equals(theuser.getLoginID())) {
+               found = true;
+               break;
+           }
+           location++;
+       }
+
+       if (found == true) userList.remove(location);
     }
 
-    public static boolean CheckUser (String id, String pw){
-        if ( pw.equals(Users.get(id))) return true;
-        return false;
+    /*
+        if UserType = Admin, return '0'
+        if UserType = Student, return '1'
+        if User not exist, return '-1'
+     */
+
+    public static int CheckUser (String id, String pw){
+        Boolean found = false;
+        for (User theuser : userList){
+            System.out.println("Looping User: " + theuser.getLoginID());
+            if (theuser.getLoginID().equals(id) && theuser.getLoginPW().equals(pw)) {
+                if(theuser.getType() == 'a') return 0;
+                if(theuser.getType() == 's') return 1;
+                break;
+            }
+        }
+        return -1;
     }
 
     /*

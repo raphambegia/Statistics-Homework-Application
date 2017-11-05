@@ -63,12 +63,24 @@ public class loginController {
     }
 
     public void loginHandler(ActionEvent event) throws IOException {
-        if(Data.CheckUser(userName.getText(),password.getText())) {
+        /*
+        Function Data.CheckUser :
+        if UserType = Admin, return '0'
+        if UserType = Student, return '1'
+        if User not exist, return '-1'
+        */
+        if(Data.CheckUser(userName.getText(),password.getText()) == 0) {
             Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
             stage.show();
-        }else{
+        }else if(Data.CheckUser(userName.getText(),password.getText()) == 1){
+            Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
+            Stage stage  = (Stage) loginButton.getScene().getWindow();
+            stage.setScene(new Scene(root, 650, 400));
+            stage.show();
+
+        }else if(Data.CheckUser(userName.getText(),password.getText()) == -1){
             loginError.setText("Login Failed");
         }
     }
