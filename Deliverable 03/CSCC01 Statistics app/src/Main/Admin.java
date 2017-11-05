@@ -28,4 +28,12 @@ public class Admin extends User {
         }
 
     }
+
+    public void createAssignment(int idNum, String assgnName, String dueDate) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
+
+    public void createAssignment(int idNum, String assgnName) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
 }
