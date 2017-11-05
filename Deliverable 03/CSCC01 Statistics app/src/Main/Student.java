@@ -6,34 +6,34 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Student extends User{
-    public SimpleStringProperty firstName;
+    public SimpleStringProperty fName;
     SimpleStringProperty lName;
     SimpleIntegerProperty studentId;
 
-    public Student(String firstName, String lname, int stid){
-        this.firstName = new SimpleStringProperty(firstName);
+    public Student(String fname, String lname, int stid){
+        this.fName = new SimpleStringProperty(fname);
         this.lName = new SimpleStringProperty(lname);
         this.studentId = new SimpleIntegerProperty(stid);
-//        this.setLoginID(fname);
-//        this.setLoginPW(lname);
-//        this.setType('s');
-        Data.AddUser(firstName,lname);
+        this.setLoginID(fname);
+        this.setLoginPW(lname);
+        this.setType('s');
+        Data.AddUser(fname,lname);
     }
 
     String getName(){
-        return this.firstName+" "+this.lName;
+        return this.fName+" "+this.lName;
     }
 
-    public String getFirstName(){
-        return firstName.get();
+    public String getFName(){
+        return fName.get();
     }
 
-    public void setFirstName(String firstname){
-        firstName.set(firstname);
+    public void setFName(String firstname){
+        fName.set(firstname);
     }
 
-    public StringProperty firstNameProperty() {
-        return firstName;
+    public StringProperty fNameProperty() {
+        return fName;
     }
 
     public StringProperty lNameProperty() {

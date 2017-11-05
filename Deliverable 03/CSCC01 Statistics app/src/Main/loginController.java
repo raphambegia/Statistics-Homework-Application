@@ -104,7 +104,6 @@ public class loginController {
         Stage stage  = (Stage) backStudent.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
-        loadStudentTable();
     }
 
     public void close(ActionEvent event) throws IOException{
@@ -114,22 +113,15 @@ public class loginController {
     public void formAddStudent(ActionEvent event) throws IOException{
         Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
         addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
-
-        Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
-        Stage stage  = (Stage) backStudent.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
     }
 
     public void loadStudentTable(){
-
         ObservableList<Student> students = FXCollections.observableArrayList(Data.studentList);
 
-        fnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
+        fnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("fName"));
         lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
-        //studentTable.getColumns().addAll(fnameCol,lnameCol,sidCol);
     }
 
 }

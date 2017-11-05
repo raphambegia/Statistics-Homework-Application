@@ -23,13 +23,13 @@ public class Admin extends User {
         }
     }
 
-//    public void removeStudent(int stid){
-//        for (Student theStudent : Data.studentList){
-//            if(stid == theStudent.studentId) {
-//                Data.RemoveUser(theStudent.getLoginID());
-//                Data.studentList.remove(theStudent);
-//            }
-//        }
-//
-//    }
+    public void removeStudent(int stid){
+        for (Student theStudent : Data.studentList){
+            if(stid == theStudent.getStudentId()) {
+                Data.RemoveUser(theStudent.getLoginID());
+                Data.studentList.remove(theStudent);
+            }
+        }
+
+    }
 }
