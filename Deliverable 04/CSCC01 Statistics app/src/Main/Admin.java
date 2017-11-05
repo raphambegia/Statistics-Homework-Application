@@ -23,13 +23,24 @@ public class Admin extends User {
         }
     }
 
-//    public void removeStudent(int stid){
-//        for (Student theStudent : Data.studentList){
-//            if(stid == theStudent.studentId) {
-//                Data.RemoveUser(theStudent.getLoginID());
-//                Data.studentList.remove(theStudent);
-//            }
-//        }
-//
-//    }
+    public void removeStudent(int stid){
+        for (Student theStudent : Data.studentList){
+            if(stid == theStudent.getStudentId()) {
+                Data.RemoveUser(theStudent.getLoginID());
+                Data.studentList.remove(theStudent);
+            }
+        }
+    }
+
+    public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, int assignmentNum){
+        //Question newQuestion = new Question(theQuestion, mcAnswers, solnInd);
+    }
+
+    public void createAssignment(int idNum, String assgnName, String dueDate) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
+
+    public void createAssignment(int idNum, String assgnName) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
 }
