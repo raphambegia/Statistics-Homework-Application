@@ -2,16 +2,17 @@ package Main;
 
 import java.util.*;
 
+
 public class Data {
     static Map Users = new HashMap();
-    static ArrayList <Student> studentList;
+    static ArrayList <Student> studentList = new ArrayList();
 
     public Data (){
     }
 
     public static void AddUser (String id, String pw){
         Users.put(id,pw);
-        System.out.println(id+" added");
+        System.out.println(id+" added to User List");
     }
 
     public static void RemoveUser (String id){

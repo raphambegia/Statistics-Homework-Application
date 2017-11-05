@@ -28,6 +28,8 @@ public class Main extends Application {
     public static void main(String[] args) {
         Data AllData;
         Admin admin1 = new Admin("admin","pass");
+        Student stu = new Student("john", "doe", 01);
+        Data.studentList.add(stu);
         launch(args);
     }
 }

@@ -4,28 +4,32 @@ import java.util.ArrayList;
 
 public class Admin extends User {
 
-    Admin(String id, String pw){
-        SetLoginID(id);
-        SetLoginPW(pw);
-        SetType('a');
+    public Admin(String id, String pw){
+        setLoginID(id);
+        setLoginPW(pw);
+        setType('a');
         System.out.println();
         Data.AddUser(id,pw);
     }
 
-    static ArrayList<Student> studentList;
-
-    public void createStudent(String fname, String lname, int stid){
+    public static void createStudent(String fname, String lname, int stid){
         Student newStudent = new Student(fname, lname, stid);
-        studentList.add(newStudent);
-    }
-
-    public void removeStudent(int stid){
-        for (Student theStudent : studentList){
-            if(stid == theStudent.studentId) {
-                Data.RemoveUser(theStudent.getLoginID());
-                studentList.remove(theStudent);
-            }
+        Data.studentList.add(newStudent);
+        System.out.println(fname + " added to Student List");
+        int i = 0;
+        for (Student s : Data.studentList) {
+            i++;
+            System.out.println(i + ": " + s.studentId);
         }
-
     }
+
+//    public void removeStudent(int stid){
+//        for (Student theStudent : Data.studentList){
+//            if(stid == theStudent.studentId) {
+//                Data.RemoveUser(theStudent.getLoginID());
+//                Data.studentList.remove(theStudent);
+//            }
+//        }
+//
+//    }
 }

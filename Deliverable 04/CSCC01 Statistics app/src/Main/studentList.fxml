@@ -14,13 +14,13 @@
             <Font name="System Bold" size="17.0" />
          </font></Label>
       <Button fx:id="addStudent" layoutX="384.0" layoutY="68.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="54.0" prefWidth="167.0" text="Add Student" />
-      <Button layoutX="384.0" layoutY="181.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Remove Student" />
+      <Button onAction="#loadStudentTable" layoutX="384.0" layoutY="181.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Remove Student" />
       <Button fx:id="backButton" layoutX="384.0" layoutY="296.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="167.0" text="Back" />
       <TableView fx:id="studentTable" layoutX="28.0" layoutY="56.0" prefHeight="316.0" prefWidth="299.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="First Name" />
-          <TableColumn prefWidth="104.0" text="Last Name" />
-            <TableColumn prefWidth="117.0" text="Student ID" />
+            <TableColumn fx:id="fnameCol" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="lnameCol" prefWidth="104.0" text="Last Name" />
+            <TableColumn fx:id="sidCol" prefWidth="117.0" text="Student ID" />
         </columns>
       </TableView>
    </children>

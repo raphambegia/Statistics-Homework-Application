@@ -14,16 +14,17 @@
             <Label layoutX="183.0" layoutY="158.0" text="First Name: " />
             <Label layoutX="184.0" layoutY="201.0" text="Last Name: " />
             <Label layoutX="183.0" layoutY="243.0" text="ID: " />
-            <TextField fx:id="firstnamefield" layoutX="291.0" layoutY="153.0" />
-            <TextField fx:id="lastnamefield" layoutX="291.0" layoutY="196.0" />
-            <TextField fx:id="idfield" layoutX="291.0" layoutY="238.0" />
+            <TextField fx:id="fnameAdd" layoutX="291.0" layoutY="153.0" />
+            <TextField fx:id="lnameAdd" layoutX="291.0" layoutY="196.0" />
+            <TextField fx:id="sIDAdd" layoutX="291.0" layoutY="238.0" />
             <Label layoutX="180.0" layoutY="68.0" text="Student Registration">
                <font>
                   <Font size="29.0" />
                </font>
             </Label>
-            <Button fx:id="studentreg" layoutX="220.0" layoutY="312.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="regStudent" layoutX="220.0" layoutY="312.0" mnemonicParsing="false" onAction="#formAddStudent" text="Add" />
             <Button fx:id="backStudent" layoutX="366.0" layoutY="312.0" mnemonicParsing="false" onAction="#backStudent" text="Back" />
+            <Label fx:id="addedlabel" layoutX="304.0" layoutY="282.0" />
          </children>
     </AnchorPane>
   </children>
