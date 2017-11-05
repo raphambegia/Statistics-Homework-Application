@@ -25,9 +25,10 @@ public class assignmentController {
 
     public void createAssgnHandler() {
         if (aNoDueDate.isSelected()) {
-            //Admin.createAssignment(aID.getText(), aName.getText());
+            Admin.createAssignment(aName.getText());
+        } else {
+            Admin.createAssignment(aName.getText(), aDueDate.getText());
         }
-        //Admin.createAssignment(aID.getText(), aName.getText(), aDueDate.getText());
     }
 
     public void noDeadlineHandler() {

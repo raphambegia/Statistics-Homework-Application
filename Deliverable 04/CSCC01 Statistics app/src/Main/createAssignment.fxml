@@ -21,7 +21,7 @@
             <children>
                 <VBox>
                     <children>
-                        <TextFlow>
+                        <TextFlow visible="false">
                             <children>
                                 <Label prefHeight="17.0" prefWidth="150" text=" Assignment ID: " />
                                 <TextField fx:id="aID" />
@@ -42,7 +42,7 @@
                         <TextFlow>
                             <children>
                                 <Label fx:id="dueDateLabel" prefHeight="17.0" prefWidth="150" text=" Due Date: " />
-                        <DatePicker />
+                                <DatePicker />
                             </children>
                         </TextFlow>
 
