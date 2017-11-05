@@ -17,6 +17,7 @@ import javafx.collections.*;
 import java.io.IOException;
 
 public class loginController {
+    int buttonCounter = 0;
     @FXML
     private Label loginError;
     @FXML
@@ -49,6 +50,10 @@ public class loginController {
     Label addedlabel;
     @FXML
     GridPane gridPane;
+    @FXML
+    Button viewAssignments;
+    @FXML
+    Button addAssignment;
 
     //Tableview for students
     @FXML
@@ -126,8 +131,17 @@ public class loginController {
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
     }
+    public void viewAssignment(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Stage stage  = (Stage) viewAssignments.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+    }
     public void assignmentAdd(ActionEvent event) throws IOException{
-
+        Button assignmentButton = new Button("Assignment");
+        assignmentButton.setMinWidth(30);
+        assignmentButton.setMinHeight(10);
+        gridPane.add(assignmentButton, 0, 0);
     }
 
 }
