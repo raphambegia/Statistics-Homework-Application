@@ -30,8 +30,13 @@ public class Assignment {
     // RemoveAssignment called. Same applies for Question ID.
     private int AssignmentID;
     private String AssignmentName;
+    private String dueDate;
     private ArrayList<Question> questionList =  new ArrayList<Question>();
 
+    public Assignment(String name, String dueDate) {
+        this.AssignmentName = name;
+        this.dueDate = dueDate;
+    }
 
     public Assignment(String Name){
         this.AssignmentName = Name;

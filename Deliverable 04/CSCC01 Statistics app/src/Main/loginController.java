@@ -31,6 +31,8 @@ public class loginController {
     @FXML
     Button viewStudents;
     @FXML
+    Button viewAssignments;
+    @FXML
     Button backButton;
     @FXML
     Button backStudent;
@@ -122,6 +124,13 @@ public class loginController {
         lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
+    }
+
+    public void viewAssignment(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("createAssignment.fxml"));
+        Stage stage  = (Stage) viewAssignments.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
     }
 
 }

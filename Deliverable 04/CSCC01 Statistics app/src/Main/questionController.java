@@ -76,7 +76,7 @@ public class questionController {
         }
 
         // Add question to assignment & clear all fields
-        Admin.addQuestion(questionField.getText(), answerList, solnInd, solnInd);
+        Admin.addQuestion(questionField.getText(), answerList, solnInd);
         warningLabel.setText("Question added!");
         answerToggle.getSelectedToggle().setSelected(false);
         questionField.setText("");
