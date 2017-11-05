@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class loginController {
     @FXML
-    private Label loginError;
+    private Label label1;
     @FXML
     private TextField userName;
     @FXML
@@ -38,15 +38,6 @@ public class loginController {
     TableView studentTable;
     @FXML
     Button cancel;
-    @FXML
-    TextField fnameAdd;
-    @FXML
-    TextField lnameAdd;
-    @FXML
-    TextField sIDAdd;
-    @FXML
-
-
 
     public void loginButton(ActionEvent event){
         System.out.println("Hello World");
@@ -60,7 +51,7 @@ public class loginController {
             stage.setScene(new Scene(root, 650, 400));
             stage.show();
         }else{
-            loginError.setText("Login Failed");
+            label1.setText("Login Failed");
         }
     }
     public void logOutHandler(ActionEvent event) throws IOException{

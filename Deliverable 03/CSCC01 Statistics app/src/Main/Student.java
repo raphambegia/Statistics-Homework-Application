@@ -9,10 +9,10 @@ public class Student extends User{
         this.fName = fname;
         this.lName = lname;
         this.studentId = stid;
-        this.setLoginID(fname);
-        this.setLoginPW(lname);
-        this.setType('s');
-        Data.AddUser(fname,lname);
+        this.setLoginID(id);
+ +      this.setLoginPW(pw);
+ +      this.setType('s');
+ +      Data.AddUser(id,pw);
     }
 
     String getName(){
