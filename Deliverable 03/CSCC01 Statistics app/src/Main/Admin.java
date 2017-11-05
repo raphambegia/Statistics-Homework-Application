@@ -35,4 +35,12 @@ public class Admin extends User {
     public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, int assignmentNum){
         //Question newQuestion = new Question(theQuestion, mcAnswers, solnInd);
     }
+
+    public void createAssignment(int idNum, String assgnName, String dueDate) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
+
+    public void createAssignment(int idNum, String assgnName) {
+        //Assignment newAssignment = new Assignment(idNum, assgnName, dueDate);
+    }
 }
