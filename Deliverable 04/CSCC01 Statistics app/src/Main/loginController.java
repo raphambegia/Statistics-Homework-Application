@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.collections.*;
 
@@ -46,6 +47,8 @@ public class loginController {
     Button regStudent;
     @FXML
     Label addedlabel;
+    @FXML
+    GridPane gridPane;
 
     //Tableview for students
     @FXML
@@ -122,6 +125,9 @@ public class loginController {
         lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
+    }
+    public void assignmentAdd(ActionEvent event) throws IOException{
+
     }
 
 }
