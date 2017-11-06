@@ -38,16 +38,12 @@ public class viewAssignmentController {
         for(Assignment curr : Data.assignmentList) {
             System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + assgnTitle.getText());
             if(curr.getAssignmentName().equals(assgnTitle.getText())) {
-                System.out.println("match");
                 questionList = curr.getQuestionList();
-                questionList.addAll(curr.getQuestionList());
-                System.out.println("SIZE : " + curr.getQuestionList().size());
-                //System.out.println(questionList.get(0).getTheQuestion());
             }
         }
         for(int i = 0; i < questionList.size(); i++) {
             Label questionLabel = new Label();
-            questionLabel.setText(questionList.get(i).getTheQuestion());
+            questionLabel.setText(i+1 + ". " + questionList.get(i).getTheQuestion());
             assgnVbox.getChildren().add(questionLabel);
         }
     }
