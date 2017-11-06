@@ -33,5 +33,4 @@ public class Question {
     public void changeQuestionID(int newID){
         questionId = newID;
     }
-
 }

@@ -13,7 +13,7 @@
          </font>
       </Label>
       <Button fx:id="viewStudents" layoutX="65.0" layoutY="82.0" mnemonicParsing="false" onAction="#viewStudent" prefHeight="65.0" prefWidth="145.0" text="View Students" />
-      <Button fx:id="viewAssignments" layoutX="65.0" layoutY="178.0" mnemonicParsing="false" onAction="#viewAssignment" prefHeight="65.0" prefWidth="145.0" text="View Assignments" />
+      <Button fx:id="viewAssignments" onAction="#viewAssignment" layoutX="65.0" layoutY="178.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="145.0" text="View Assignments" />
       <Button fx:id="logOutButton" layoutX="65.0" layoutY="270.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="65.0" prefWidth="145.0" text="Log Out" />
    </children>
 </AnchorPane>
