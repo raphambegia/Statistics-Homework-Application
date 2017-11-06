@@ -17,7 +17,7 @@ public class Student extends User{
         this.setLoginID(fname);
         this.setLoginPW(lname);
         this.setType('s');
-        Data.AddUser(fname,lname);
+        Data.AddUser(this);
     }
 
     String getName(){
