@@ -132,12 +132,5 @@ public class loginController {
 
     }
 
-    public void viewAssignment(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("createAssignment.fxml"));
-        Stage stage  = (Stage) viewAssignments.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
-
 }
 

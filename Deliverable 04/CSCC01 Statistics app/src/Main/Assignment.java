@@ -33,6 +33,11 @@ public class Assignment {
     private String dueDate;
     private ArrayList<Question> questionList =  new ArrayList<Question>();
 
+    /**
+     *
+     * @param name
+     * @param dueDate YYMMDD
+     */
     public Assignment(String name, String dueDate) {
         this.AssignmentName = name;
         this.dueDate = dueDate;
@@ -56,7 +61,7 @@ public class Assignment {
     /*
     Question Functions
      */
-    public void AddQuestion (Question newQuestion){ questionList.add(newQuestion); updateQuestionID(questionList); }
+    public void addQuestion (Question newQuestion){ questionList.add(newQuestion); updateQuestionID(questionList); }
 
 //    public void removeQuestion (Question deleteQuestion){
 //        Boolean found = false;

@@ -42,7 +42,7 @@
                         <TextFlow>
                             <children>
                                 <Label fx:id="dueDateLabel" prefHeight="17.0" prefWidth="150" text=" Due Date: " />
-                                <DatePicker />
+                                <DatePicker fx:id="aDatePicker" />
                             </children>
                         </TextFlow>
 
