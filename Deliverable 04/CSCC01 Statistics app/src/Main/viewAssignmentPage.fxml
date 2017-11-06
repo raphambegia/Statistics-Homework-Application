@@ -21,8 +21,6 @@
         <TextFlow layoutX="50.0" layoutY="120.0">
             <VBox fx:id="assgnVbox">
                 <children>
-                    <Label text="hi" />
-                    <Label text="hey" />
                 </children>
             </VBox>
         </TextFlow>
