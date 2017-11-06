@@ -62,6 +62,8 @@ public class loginController {
     Button assignmentBack;
     @FXML
     Button secretButton;
+    @FXML
+    GridPane gridPane;
 
 
     //Tableview for students
@@ -200,6 +202,32 @@ public class loginController {
             assgnButton.setMinHeight(10);
             studentGrid.setHalignment(assgnButton, HPos.CENTER);
             studentGrid.add(assgnButton, 0,i);
+        }
+
+    }
+    public void adminDisplayAssignment(){
+        System.out.println(Data.assignmentList.get(0).getAssignmentName());
+        for(int i=0;i<Data.assignmentList.size();i++){
+            Button assgnButton = new Button(Data.assignmentList.get(i).getAssignmentName());
+            assgnButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("addQuestion.fxml"));
+                    try {
+                        Parent root = loader.load();
+                        Stage stage = (Stage) backButton.getScene().getWindow();
+                        stage.setScene(new Scene(root, 650, 400));
+                        questionController controller = loader.<questionController>getController();
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            assgnButton.setMinWidth(30);
+            assgnButton.setMinHeight(10);
+            gridPane.setHalignment(assgnButton, HPos.CENTER);
+            gridPane.add(assgnButton, 0,i);
         }
 
     }

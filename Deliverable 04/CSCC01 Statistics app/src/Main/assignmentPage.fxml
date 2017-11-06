@@ -13,7 +13,7 @@
          <children>
             <Button fx:id="backButton" layoutX="436.0" layoutY="294.0" mnemonicParsing="false" onAction="#backMain" prefHeight="50.0" prefWidth="104.0" text="Back" />
             <Button fx:id="addAssignment" layoutX="436.0" layoutY="75.0" mnemonicParsing="false" onAction="#assignmentAdd" prefHeight="50.0" prefWidth="104.0" text="Add Assignment" />
-            <GridPane fx:id="gridPane" layoutX="14.0" layoutY="7.0" onMouseClicked="#studentAssignmentView" prefHeight="387.0" prefWidth="364.0">
+            <GridPane fx:id="gridPane" layoutX="14.0" layoutY="7.0" onMouseClicked="#adminDisplayAssignment" prefHeight="387.0" prefWidth="364.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
