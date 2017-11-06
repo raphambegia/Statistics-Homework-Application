@@ -18,7 +18,7 @@ Sprint Backlog 2(in Deliverable 04 Folder):
 ![Sprint Backlog 2 Deliverable 4](Deliverable%2004/Sprint-Backlog2.pdf)
 
 Sprint Backlog 3(in Deliverable 04 Folder):
-![Sprint Backlog 2 Deliverable 4](Deliverable%2004/Sprint-Backlog-3.pdf)
+![Sprint Backlog 2 Deliverable 4](Deliverable%2004/Sprint-Backlog3.pdf)
 
 Product Backlog v1(in Deliverable 04 Folder):
 ![Product Backlog v2 Deliverable 4](Deliverable%2004/Del04-Report.pdf)
