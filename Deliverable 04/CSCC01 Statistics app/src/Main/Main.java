@@ -30,6 +30,17 @@ public class Main extends Application {
         Admin admin1 = new Admin("admin","pass");
         Student stu = new Student("john", "doe", 01);
         Admin.createAssignment("A1");
+
+        ArrayList<String> al = new ArrayList<String>();
+        al.add("k");
+        Assignment a = new Assignment("A1");
+        Question q = new Question("who is the best", al, 0);
+        Question qq = new Question("who is the bestest", al, 0);
+        a.addQuestion(q);
+        a.addQuestion(qq);
+
+        System.out.println(a.getQuestionList().get(0).getTheQuestion());
+
         Data.studentList.add(stu);
         launch(args);
     }
