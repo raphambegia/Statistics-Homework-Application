@@ -22,3 +22,19 @@ Sprint Backlog 3(in Deliverable 04 Folder):
 
 Product Backlog v1(in Deliverable 04 Folder):
 ![Product Backlog v2 Deliverable 4](Deliverable%2004/Del04-Report.pdf)
+
+##Developer Manual
+
+### User Accounts
+The default admin account would be:
+```
+LoginID: admin
+Password: pass
+```
+
+The default user account would be:
+```
+LoginID: john
+Password: doe
+```
+Please not that the default LoginID and Password of users would be their first and last name respectively.
