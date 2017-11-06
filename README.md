@@ -26,15 +26,15 @@ Product Backlog v1(in Deliverable 04 Folder):
 ## Developer Manual
 
 ### User Accounts
-The default admin account would be:
+The default admin account is:
 ```
 LoginID: admin
 Password: pass
 ```
 
-The default user account would be:
+The default user account is:
 ```
 LoginID: john
 Password: doe
 ```
-Please not that the default LoginID and Password of users would be their first and last name respectively.
+Please note that the default LoginID and Password of users would be their first and last name respectively.
