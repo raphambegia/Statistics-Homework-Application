@@ -61,7 +61,7 @@ public class Assignment {
     /*
     Question Functions
      */
-    public void addQuestion (Question newQuestion){ questionList.add(newQuestion); updateQuestionID(questionList); }
+    public void addQuestion (Question newQuestion){ this.questionList.add(newQuestion); updateQuestionID(questionList); }
 
 //    public void removeQuestion (Question deleteQuestion){
 //        Boolean found = false;

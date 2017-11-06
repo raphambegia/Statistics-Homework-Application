@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class viewAssignmentController {
@@ -18,15 +20,32 @@ public class viewAssignmentController {
     private Label assgnTitle;
     @FXML
     private Button assgnBackToList;
+    @FXML
+    private Button loadAssignment;
+    @FXML
+    private VBox assgnVbox;
 
     private String assignmentName = "";
-
-    public void initialize() {
-    }
 
     public void assgnName(String name) {
         assignmentName = name;
         assgnTitle.setText(name);
+    }
+
+    public void loadAssignment() {
+        ArrayList<Question> questionList = new ArrayList<Question>();
+
+        for(Assignment curr : Data.assignmentList) {
+            System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + assgnTitle.getText());
+            if(curr.getAssignmentName().equals(assgnTitle.getText())) {
+                questionList = curr.getQuestionList();
+            }
+        }
+        for(int i = 0; i < questionList.size(); i++) {
+            Label questionLabel = new Label();
+            questionLabel.setText(i+1 + ". " + questionList.get(i).getTheQuestion());
+            assgnVbox.getChildren().add(questionLabel);
+        }
     }
 
     public void aBackToList() throws IOException{
