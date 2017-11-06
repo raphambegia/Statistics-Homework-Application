@@ -1,8 +1,13 @@
 package Main;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +41,8 @@ public class questionController {
     private ToggleGroup answerToggle;
     @FXML
     private Button addQuestionButton;
+    @FXML
+    private Button backQuestionButton;
 
     private String NOANSWERS = "NOANSWERS";
     private ArrayList<String> answerList = new ArrayList<String>();
@@ -150,5 +157,12 @@ public class questionController {
         }
         warningLabel.setText("Answer selected has no value. Please fill in answer.");
         return false;
+    }
+
+    public void backQuestionHandler() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Stage stage  = (Stage) backQuestionButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
     }
 }

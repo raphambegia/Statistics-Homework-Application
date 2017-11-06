@@ -73,6 +73,7 @@
          <children>
              <Label fx:id="warningLabel" text="" textFill="RED" />
              <Button fx:id="addQuestionButton" onAction="#addQuestionHandler" text="Add Question" />
+             <Button fx:id="backQuestionButton" onAction="#backQuestionHandler" text="Back" />
          </children>
       </VBox>
     </children>
