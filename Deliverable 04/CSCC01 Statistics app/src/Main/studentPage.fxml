@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="407.0" prefWidth="600.0">
          <children>
-            <Button layoutX="211.0" layoutY="102.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="179.0" text="View Assignments" />
+            <Button fx:id="studentAssgnView" layoutX="211.0" layoutY="102.0" mnemonicParsing="false" onAction="#studentAssignmentView" prefHeight="61.0" prefWidth="179.0" text="View Assignments" />
             <Button fx:id="logOutButton" layoutX="211.0" layoutY="261.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="61.0" prefWidth="179.0" text="Log Out" />
             <Button layoutX="211.0" layoutY="182.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="179.0" text="View Achievements" />
             <Label layoutX="236.0" layoutY="39.0" text="Welcome">

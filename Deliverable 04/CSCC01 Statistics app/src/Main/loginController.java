@@ -1,10 +1,10 @@
 package Main;
 
 import javafx.event.ActionEvent;
-//import java.awt.event.MouseEvent;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.collections.*;
 
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class loginController {
@@ -49,11 +50,16 @@ public class loginController {
     @FXML
     Label addedlabel;
     @FXML
-    GridPane gridPane;
-    @FXML
     Button viewAssignments;
     @FXML
     Button addAssignment;
+    @FXML
+    GridPane studentGrid;
+    @FXML
+    Button studentAssgnView;
+    @FXML
+    Button assignmentBack;
+
 
     //Tableview for students
     @FXML
@@ -150,10 +156,33 @@ public class loginController {
         stage.show();
     }
     public void assignmentAdd(ActionEvent event) throws IOException{
-        Button assignmentButton = new Button("Assignment");
-        assignmentButton.setMinWidth(30);
-        assignmentButton.setMinHeight(10);
-        gridPane.add(assignmentButton, 0, 0);
+        Parent root = FXMLLoader.load(getClass().getResource("createAssignment.fxml"));
+        Stage stage  = (Stage) addAssignment.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+    }
+    public void studentAssignmentView(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("studentAssignment.fxml"));
+        Stage stage  = (Stage) studentAssgnView.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+    }
+    public void studentBacktoMain(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
+        Stage stage  = (Stage) assignmentBack.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+
+    }
+    public void studentDisplayAssignment()throws IOException{
+        System.out.println(Data.assignmentList.get(0).getAssignmentName());
+        for(int i=0;i<Data.assignmentList.size();i++){
+            Button assgnButton = new Button(Data.assignmentList.get(i).getAssignmentName());
+            assgnButton.setMinWidth(30);
+            assgnButton.setMinHeight(10);
+            studentGrid.setHalignment(assgnButton, HPos.CENTER);
+            studentGrid.add(assgnButton, 0,i);
+        }
     }
 
 }

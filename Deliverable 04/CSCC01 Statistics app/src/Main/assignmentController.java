@@ -1,8 +1,16 @@
 package Main;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import javafx.event.ActionEvent;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -26,6 +34,10 @@ public class assignmentController {
     private DatePicker aDatePicker;
     @FXML
     private Button createAssgnButton;
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    Button backToAssignments;
 
     public static final String INVALID_DATE = "INVALIDDATE";
 
@@ -67,6 +79,12 @@ public class assignmentController {
             dueDateLabel.setVisible(true);
             aDatePicker.setVisible(true);
         }
+    }
+    public void backToViewAssgn(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Stage stage  = (Stage) backToAssignments.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
     }
 
     /*

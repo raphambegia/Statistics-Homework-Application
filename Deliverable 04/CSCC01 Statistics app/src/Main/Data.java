@@ -9,7 +9,7 @@ public class Data {
 
     //Author: Juan
     //Storage of Assignment data in an Array List.
-    public static ArrayList<Assignment> assignmentList =  new ArrayList<Assignment>();//public static ArrayList <Assignment> assignmentList;
+    public static ArrayList<Assignment> assignmentList =  new ArrayList();//public static ArrayList <Assignment> assignmentList;
 
 
     public Data (){

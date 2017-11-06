@@ -56,5 +56,6 @@
                 <Button fx:id="createAssgnButton" onAction="#createAssgnHandler" text="Create Assignment" />
             </children>
         </VBox>
+      <Button fx:id="backToAssignments" layoutX="295.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToViewAssgn" text="Back" />
     </children>
 </AnchorPane>
