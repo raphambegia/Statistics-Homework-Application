@@ -50,15 +50,16 @@ public class assignmentController {
             return;
         }
 
-        if (aDatePicker.getValue() == null) {
-            assignmentLabel.setText("Please pick a valid due date");
-            return;
-        }
-
         if (aNoDueDate.isSelected()) {
             Admin.createAssignment(aName.getText());
             System.out.println("Assignment: " + aName.getText() + " created");
         } else {
+
+            if (aDatePicker.getValue() == null) {
+                assignmentLabel.setText("Please pick a valid due date");
+                return;
+            }
+            
             String dueDateStr = validDueDate();
             if (dueDateStr.equals(INVALID_DATE)) {
                 return;
