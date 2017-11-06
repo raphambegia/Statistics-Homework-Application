@@ -54,8 +54,9 @@
             <children>
                 <Label fx:id="assignmentLabel" text="" textFill="RED" />
                 <Button fx:id="createAssgnButton" onAction="#createAssgnHandler" text="Create Assignment" />
+                <Button fx:id="backToAssignments" layoutX="295.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToViewAssgn" text="Back" />
             </children>
         </VBox>
-      <Button fx:id="backToAssignments" layoutX="295.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToViewAssgn" text="Back" />
+
     </children>
 </AnchorPane>

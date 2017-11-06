@@ -42,6 +42,7 @@ public class assignmentController {
     public static final String INVALID_DATE = "INVALIDDATE";
 
     public void createAssgnHandler() {
+        // Make sure the assignment name is 1-25 char and not used
         if (aName.getText().trim().length() == 0 || aName.getText().trim().length() > 25) {
             assignmentLabel.setText("Please enter an assignment name between 1-25 characters.");
             return;
@@ -50,22 +51,24 @@ public class assignmentController {
             return;
         }
 
+        // Create an assignment based on whether it has a duedate or not
         if (aNoDueDate.isSelected()) {
             Admin.createAssignment(aName.getText());
+            assignmentLabel.setText(aName.getText() + " created");
             System.out.println("Assignment: " + aName.getText() + " created");
         } else {
-
+            // If they want a duedate they need to select one!
             if (aDatePicker.getValue() == null) {
                 assignmentLabel.setText("Please pick a valid due date");
                 return;
             }
-            
+            //The duedate must be after today
             String dueDateStr = validDueDate();
             if (dueDateStr.equals(INVALID_DATE)) {
                 return;
             } else {
                 Admin.createAssignment(aName.getText(), dueDateStr);
-                assignmentLabel.setText("");
+                assignmentLabel.setText(aName.getText() + " with due date " + dueDateStr + " created");
                 System.out.println("Assignment: " + aName.getText() + " created");
             }
         }
@@ -114,6 +117,7 @@ public class assignmentController {
     }
 
     /**
+     * Assignment names must be unique.
      * @return TRUE if the assignment name is already in use
      */
     private Boolean isNameUsed() {

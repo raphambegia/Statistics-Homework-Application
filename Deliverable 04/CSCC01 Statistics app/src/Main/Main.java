@@ -29,6 +29,7 @@ public class Main extends Application {
         Data AllData;
         Admin admin1 = new Admin("admin","pass");
         Student stu = new Student("john", "doe", 01);
+        Admin.createAssignment("A1");
         Data.studentList.add(stu);
         launch(args);
     }
