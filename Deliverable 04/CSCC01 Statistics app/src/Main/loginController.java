@@ -33,8 +33,6 @@ public class loginController {
     @FXML
     Button viewStudents;
     @FXML
-    Button viewAssignments;
-    @FXML
     Button backButton;
     @FXML
     Button backStudent;
