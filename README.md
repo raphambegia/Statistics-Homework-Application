@@ -13,3 +13,12 @@ Product Backlog v1(in Deliverable 03 Folder):
 
 Sprint Backlog 1(in Deliverable 03 Folder):
 ![Sprint Backlog Deliverable 3](Deliverable%2003/Sprint%20Backlog%20v1.pdf)
+
+Sprint Backlog 2(in Deliverable 04 Folder):
+![Sprint Backlog 2 Deliverable 4](Deliverable%2004/Sprint-Backlog2.pdf)
+
+Sprint Backlog 3(in Deliverable 04 Folder):
+![Sprint Backlog 2 Deliverable 4](Deliverable%2004/Sprint-Backlog-3.pdf)
+
+Product Backlog v1(in Deliverable 04 Folder):
+![Product Backlog v2 Deliverable 4](Deliverable%2004/Del04-Report.pdf)
