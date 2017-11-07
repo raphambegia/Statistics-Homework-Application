@@ -44,7 +44,7 @@ public class adminAssgnPageController {
                     }
                 }
             });
-            assgnButton.setMinWidth(90);
+            assgnButton.setMinWidth(180);
             assgnButton.setMinHeight(10);
             gridPane.setHalignment(assgnButton, HPos.CENTER);
             gridPane.add(assgnButton, 0,i);

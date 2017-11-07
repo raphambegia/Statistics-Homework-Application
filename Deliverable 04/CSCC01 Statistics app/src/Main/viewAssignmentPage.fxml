@@ -9,20 +9,20 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.text.TextFlow?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.viewAssignmentController">
     <children>
-        <Button fx:id="assgnBackToList" onAction="#aBackToList" prefHeight="30.0" prefWidth="70.0" text="Back" />
-        <VBox alignment="CENTER" layoutY="31">
-            <Label fx:id="assgnTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" prefHeight="17.0" prefWidth="630.0" textAlignment="CENTER">
+        <VBox alignment="CENTER" layoutY="20">
+            <Label fx:id="assgnTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="12.0" prefHeight="15.0" prefWidth="630.0" textAlignment="CENTER">
                     <font>
                         <Font size="27.0" />
                     </font>
                 </Label>
         </VBox>
         <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
-            <VBox layoutX="50" layoutY="80">
+            <VBox layoutX="50" layoutY="62">
                 <children>
-                    <ScrollPane fx:id="sp" prefHeight="250.0" prefWidth="520.0">
+                    <ScrollPane fx:id="sp" prefHeight="250.0" prefWidth="550.0">
                         <Group>
                             <VBox fx:id="assgnVbox" pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
 
@@ -30,9 +30,14 @@
                         </Group>
 
                     </ScrollPane>
-                    <Separator/>
                     <VBox alignment="CENTER" >
-                        <Button fx:id="submitAssignButton" onAction="#submitAssignment" text="Submit Assignment"/>
+                        <Separator visible="false" />
+                        <Separator visible="false" />
+                        <TextFlow fx:id="viewButtonTextFlow" textAlignment="CENTER">
+                            <Button fx:id="submitAssignButton" onAction="#submitAssignment" text="Submit Assignment"/>
+                        </TextFlow>
+                        <Separator visible="false"/>
+                        <Button fx:id="assgnBackToList" onAction="#aBackToList" prefHeight="30.0" prefWidth="70.0" text="Back" />
                     </VBox>
                 </children>
             </VBox>

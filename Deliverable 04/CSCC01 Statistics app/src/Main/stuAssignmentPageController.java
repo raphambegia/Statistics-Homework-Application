@@ -46,7 +46,7 @@ public class stuAssignmentPageController {
                     }
                 }
             });
-            assgnButton.setMinWidth(90);
+            assgnButton.setMinWidth(180);
             assgnButton.setMinHeight(10);
             studentGrid.setHalignment(assgnButton, HPos.CENTER);
             studentGrid.add(assgnButton, 0,i);
