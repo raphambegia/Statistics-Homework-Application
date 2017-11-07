@@ -35,7 +35,7 @@ public class Main extends Application {
         al.add("k");
         al.add("knn");
         Question q = new Question("who is the best", al, 0);
-        Question qq = new Question("who is the bestest", al, 0);
+        Question qq = new Question("who is the bestest", al, 1);
         Data.assignmentList.get(0).addQuestion(q);
         Data.assignmentList.get(0).addQuestion(qq);
 

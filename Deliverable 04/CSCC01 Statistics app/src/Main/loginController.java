@@ -31,11 +31,7 @@ public class loginController {
     @FXML
     Button logOutButton;
     @FXML
-    Button addStudent;
-    @FXML
     Button viewStudents;
-    @FXML
-    Button backButton;
     @FXML
     Button backStudent;
     @FXML
@@ -53,30 +49,10 @@ public class loginController {
     @FXML
     Button viewAssignments;
     @FXML
-    Button addAssignment;
-    @FXML
-    GridPane studentGrid;
-    @FXML
     Button studentAssgnView;
-    @FXML
-    Button assignmentBack;
-    @FXML
-    Button secretButton;
-    @FXML
-    GridPane gridPane;
     @FXML
     Button refreshbuttonid;
 
-
-    //Tableview for students
-    @FXML
-    TableView<Student> studentTable;
-    @FXML
-    TableColumn<Student,String> fnameCol;
-    @FXML
-    TableColumn<Student,String> lnameCol;
-    @FXML
-    TableColumn<Student,Integer> sidCol;
 
     public void loginButton(ActionEvent event){
         System.out.println("Hello World");
@@ -118,20 +94,6 @@ public class loginController {
         stage.show();
     }
 
-    public void addStudent(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("AddStudent.fxml"));
-        Stage stage  = (Stage) addStudent.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
-
-    public void backMain(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
-        Stage stage  = (Stage) backButton.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
-
     public void backStudent(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
         Stage stage  = (Stage) backStudent.getScene().getWindow();
@@ -148,98 +110,17 @@ public class loginController {
         addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
     }
 
-    public void loadStudentTable(){
-        ObservableList<Student> students = FXCollections.observableArrayList(Data.studentList);
-
-        fnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("fName"));
-        lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
-        sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
-        studentTable.setItems(students);
-    }
     public void viewAssignment(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
         Stage stage  = (Stage) viewAssignments.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
-    public void assignmentAdd(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("createAssignment.fxml"));
-        Stage stage  = (Stage) addAssignment.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
+
     public void studentAssignmentView(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("studentAssignment.fxml"));
         Stage stage  = (Stage) studentAssgnView.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
-    }
-    public void studentBacktoMain(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
-        Stage stage = (Stage) assignmentBack.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
-    public void studentDisplayAssignment(){
-        System.out.println(Data.assignmentList.get(0).getAssignmentName());
-        for(int i=0;i<Data.assignmentList.size();i++){
-            Button assgnButton = new Button(Data.assignmentList.get(i).getAssignmentName());
-                assgnButton.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewAssignmentPage.fxml"));
-                        try {
-                            Parent root = loader.load();
-                            Stage stage = (Stage) secretButton.getScene().getWindow();
-                            stage.setScene(new Scene(root, 650, 400));
-                            viewAssignmentController controller = loader.<viewAssignmentController>getController();
-                            controller.assgnName(assgnButton.getText());
-                            stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            assgnButton.setMinWidth(30);
-            assgnButton.setMinHeight(10);
-            studentGrid.setHalignment(assgnButton, HPos.CENTER);
-            studentGrid.add(assgnButton, 0,i);
-        }
-
-    }
-    public void adminDisplayAssignment(){
-        System.out.println(Data.assignmentList.get(0).getAssignmentName());
-        for(int i=0;i<Data.assignmentList.size();i++){
-            Button assgnButton = new Button(Data.assignmentList.get(i).getAssignmentName());
-            assgnButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("addQuestion.fxml"));
-                    try {
-                        Parent root = loader.load();
-                        Stage stage = (Stage) backButton.getScene().getWindow();
-                        stage.setScene(new Scene(root, 650, 400));
-                        questionController controller = loader.<questionController>getController();
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            assgnButton.setMinWidth(30);
-            assgnButton.setMinHeight(10);
-            gridPane.setHalignment(assgnButton, HPos.CENTER);
-            gridPane.add(assgnButton, 0,i);
-        }
-
-    }
-
-    /**
-     * keep this
-     * @param event
-     * @throws IOException
-     */
-    public void assgnSelected(ActionEvent event) throws IOException {
-
     }
 }

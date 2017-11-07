@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
+<?import javafx.scene.control.Separator?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.assignmentController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" prefHeight="17.0" prefWidth="630.0" text="Create an Assignment" textAlignment="CENTER">
@@ -21,39 +22,43 @@
             <children>
                 <VBox>
                     <children>
-                        <TextFlow visible="false">
-                            <children>
-                                <Label prefHeight="17.0" prefWidth="150" text=" Assignment ID: " />
-                                <TextField fx:id="aID" />
-                            </children>
-                        </TextFlow>
+                        <!--<TextFlow visible="false">-->
+                            <!--<children>-->
+                                <!--<Label prefHeight="17.0" prefWidth="150" text=" Assignment ID: " />-->
+                                <!--<TextField fx:id="aID" />-->
+                            <!--</children>-->
+                        <!--</TextFlow>-->
+                        <Separator visible="false"/>
                         <TextFlow>
                             <children>
                                 <Label prefHeight="17.0" prefWidth="150" text=" Assignment Name: " />
                                 <TextField fx:id="aName" />
                             </children>
                         </TextFlow>
+                        <Separator visible="false"/>
                         <TextFlow>
                             <children>
                                 <Label prefHeight="17.0" text=" No Due Date:  " />
                                 <CheckBox fx:id="aNoDueDate" allowIndeterminate="false" onAction="#noDeadlineHandler" />
                             </children>
                         </TextFlow>
+                        <Separator visible="false"/>
                         <TextFlow>
                             <children>
                                 <Label fx:id="dueDateLabel" prefHeight="17.0" prefWidth="150" text=" Due Date: " />
                                 <DatePicker fx:id="aDatePicker" />
                             </children>
                         </TextFlow>
-
                     </children>
                 </VBox>
             </children>
         </TextFlow>
-        <VBox alignment="CENTER" layoutY="230.0" prefWidth="630">
+        <VBox alignment="CENTER" layoutY="200.0" prefWidth="630">
             <children>
                 <Label fx:id="assignmentLabel" text="" textFill="RED" />
+                <Separator visible="false"/>
                 <Button fx:id="createAssgnButton" onAction="#createAssgnHandler" text="Create Assignment" />
+                <Separator visible="false"/>
                 <Button fx:id="backToAssignments" layoutX="295.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToViewAssgn" text="Back" />
             </children>
         </VBox>

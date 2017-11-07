@@ -19,7 +19,6 @@ public class Admin extends User {
         int i = 0;
         for (Student s : Data.studentList) {
             i++;
-            System.out.println(i + ": " + s.studentId);
         }
     }
 

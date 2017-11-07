@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
+<?import javafx.scene.control.Separator?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.questionController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" prefHeight="17.0" prefWidth="630.0" text="Add a Question" textAlignment="CENTER">
@@ -37,6 +38,7 @@
                          <TextField fx:id="mcfield1" />
                      </children>
                   </TextFlow>
+                   <Separator visible="false"/>
                   <TextFlow>
                       <children>
                           <RadioButton fx:id="buttonMC2" toggleGroup="$answerToggle" />
@@ -44,6 +46,7 @@
                           <TextField fx:id="mcfield2" />
                       </children>
                   </TextFlow>
+                   <Separator visible="false"/>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC3" toggleGroup="$answerToggle" />
@@ -51,6 +54,7 @@
                            <TextField fx:id="mcfield3" />
                        </children>
                    </TextFlow>
+                   <Separator visible="false"/>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC4" toggleGroup="$answerToggle" />
@@ -58,6 +62,7 @@
                            <TextField fx:id="mcfield4" />
                        </children>
                    </TextFlow>
+                   <Separator visible="false"/>
                    <TextFlow>
                        <children>
                            <RadioButton fx:id="buttonMC5" toggleGroup="$answerToggle" />
@@ -72,7 +77,9 @@
       <VBox alignment="CENTER" layoutY="280.0" prefWidth="630">
          <children>
              <Label fx:id="warningLabel" text="" textFill="RED" />
+             <Separator visible="false"/>
              <Button fx:id="addQuestionButton" onAction="#addQuestionHandler" text="Add Question" />
+             <Separator visible="false"/>
              <Button fx:id="backQuestionButton" onAction="#backQuestionHandler" text="Back" />
          </children>
       </VBox>

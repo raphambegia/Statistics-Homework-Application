@@ -2,6 +2,7 @@ package Main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,10 +22,10 @@ public class viewAssignmentController {
     private Button assgnBackToList;
     @FXML
     private VBox assgnVbox;
-    @FXML
-    private ScrollPane sp;
 
     private String assignmentName = "";
+    private ArrayList<Question> questionList = new ArrayList<Question>();
+    private ArrayList<ToggleGroup> toggleList = new ArrayList<ToggleGroup>();
 
 
     /**
@@ -38,15 +39,15 @@ public class viewAssignmentController {
     }
 
     public void loadAssignment() {
-        ArrayList<Question> questionList = new ArrayList<Question>();
-        ArrayList<ToggleGroup> toggleList = new ArrayList<ToggleGroup>();
-
+        // Gets all the questions
         for(Assignment curr : Data.assignmentList) {
             System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + assgnTitle.getText());
             if(curr.getAssignmentName().equals(assgnTitle.getText())) {
                 questionList = curr.getQuestionList();
             }
         }
+
+        // Displays all the questions
         for(int i = 0; i < questionList.size(); i++) {
             Label questionLabel = new Label();
             questionLabel.setText(i+1 + ". " + questionList.get(i).getTheQuestion());
@@ -58,6 +59,9 @@ public class viewAssignmentController {
                 mcAnsOption.setToggleGroup(mcAnsToggle);
                 assgnVbox.getChildren().add(mcAnsOption);
             }
+            Separator sep = new Separator();
+            sep.setVisible(false);
+            assgnVbox.getChildren().add(sep);
         }
     }
 
@@ -66,5 +70,9 @@ public class viewAssignmentController {
         Stage stage = (Stage) assgnBackToList.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
+    }
+
+    public void submitAssignment() {
+
     }
 }
