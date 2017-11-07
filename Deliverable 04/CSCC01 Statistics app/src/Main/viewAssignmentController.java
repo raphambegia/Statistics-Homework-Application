@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,19 +20,26 @@ public class viewAssignmentController {
     @FXML
     private Button assgnBackToList;
     @FXML
-    private Button loadAssignment;
-    @FXML
     private VBox assgnVbox;
+    @FXML
+    private ScrollPane sp;
 
     private String assignmentName = "";
 
+
+    /**
+     * Gets assignment name from prev scene, loads the questions
+     * @param name
+     */
     public void assgnName(String name) {
         assignmentName = name;
         assgnTitle.setText(name);
+        loadAssignment();
     }
 
     public void loadAssignment() {
         ArrayList<Question> questionList = new ArrayList<Question>();
+        ArrayList<ToggleGroup> toggleList = new ArrayList<ToggleGroup>();
 
         for(Assignment curr : Data.assignmentList) {
             System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + assgnTitle.getText());
@@ -44,7 +50,14 @@ public class viewAssignmentController {
         for(int i = 0; i < questionList.size(); i++) {
             Label questionLabel = new Label();
             questionLabel.setText(i+1 + ". " + questionList.get(i).getTheQuestion());
+            ToggleGroup mcAnsToggle = new ToggleGroup();
+            toggleList.add(mcAnsToggle);
             assgnVbox.getChildren().add(questionLabel);
+            for(int j = 0; j < questionList.get(i).getMcAnswers().size(); j++) {
+                RadioButton mcAnsOption = new RadioButton(questionList.get(i).getMcAnswers().get(j));
+                mcAnsOption.setToggleGroup(mcAnsToggle);
+                assgnVbox.getChildren().add(mcAnsOption);
+            }
         }
     }
 
