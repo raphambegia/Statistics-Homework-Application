@@ -64,6 +64,8 @@ public class loginController {
     Button secretButton;
     @FXML
     GridPane gridPane;
+    @FXML
+    Button refreshbuttonid;
 
 
     //Tableview for students

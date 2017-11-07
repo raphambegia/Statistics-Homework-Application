@@ -52,6 +52,7 @@ public class questionController {
     public void addQuestionHandler() {
         // Check if question field is empty
         if (questionField.getText().replaceAll("\\s","").length() == 0) {
+            warningLabel.setStyle("-fx-text-fill: red;");
             warningLabel.setText("Please include a question.");
             return;
         }
@@ -64,14 +65,15 @@ public class questionController {
         mcList.add(mcfield5);
 
         if (createAnsList().get(0).equals(NOANSWERS)) {
-            answerList = createAnsList();
-        } else {
             return;
+        } else {
+            answerList = createAnsList();
         }
 
         // Check if a solution has been chosen, and it's position if so
         RadioButton solnSelected = (RadioButton) answerToggle.getSelectedToggle();
         if (solnSelected == null) {
+            warningLabel.setStyle("-fx-text-fill: red;");
             warningLabel.setText("Please select the correct answer");
             return;
         }
@@ -84,6 +86,8 @@ public class questionController {
 
         // Add question to assignment & clear all fields
         Admin.addQuestion(questionField.getText(), answerList, solnInd);
+        System.out.println("question addded");
+        warningLabel.setStyle("-fx-text-fill: green;");
         warningLabel.setText("Question added!");
         answerToggle.getSelectedToggle().setSelected(false);
         questionField.setText("");
@@ -105,7 +109,6 @@ public class questionController {
      */
     private ArrayList<String> createAnsList() {
         int count = 0;
-
         for (TextField tf : mcList) {
             if (tf.getText().replaceAll("\\s","").length() != 0) {
                 answerList.add(tf.getText());
@@ -114,30 +117,9 @@ public class questionController {
             }
         }
 
-//        if (mcfield1.getText().replaceAll("\\s","").length() != 0) {
-//            answerList.add(mcfield1.getText());
-//            idList.add(mcfield1.getId());
-//            count++;
-//        } else if (mcfield2.getText().replaceAll("\\s","").length() != 0) {
-//            answerList.add(mcfield2.getText());
-//            idList.add(mcfield2.getId());
-//            count++;
-//        } else if (mcfield3.getText().replaceAll("\\s","").length() != 0) {
-//            answerList.add(mcfield3.getText());
-//            idList.add(mcfield3.getId());
-//            count++;
-//        } else if (mcfield4.getText().replaceAll("\\s","").length() != 0) {
-//            answerList.add(mcfield4.getText());
-//            idList.add(mcfield4.getId());
-//            count++;
-//        } else if (mcfield5.getText().replaceAll("\\s","").length() != 0) {
-//            answerList.add(mcfield5.getText());
-//            idList.add(mcfield5.getId());
-//            count++;
-//        }
-
         if (count == 0) {
             answerList.add(NOANSWERS);
+            warningLabel.setStyle("-fx-text-fill: red;");
             warningLabel.setText("Please include at least one answer.");
         }
 
@@ -155,6 +137,7 @@ public class questionController {
                return true;
             }
         }
+        warningLabel.setStyle("-fx-text-fill: red;");
         warningLabel.setText("Answer selected has no value. Please fill in answer.");
         return false;
     }

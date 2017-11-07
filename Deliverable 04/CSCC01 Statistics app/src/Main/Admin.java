@@ -42,7 +42,6 @@ public class Admin extends User {
     }
 
     public static void createAssignment(String assgnName) {
-
         Assignment newAssignment = new Assignment(assgnName);
         Data.assignmentList.add(newAssignment);
     }

@@ -44,6 +44,7 @@ public class assignmentController {
     public void createAssgnHandler() {
         // Make sure the assignment name is 1-25 char and not used
         if (aName.getText().trim().length() == 0 || aName.getText().trim().length() > 25) {
+            assignmentLabel.setStyle("-fx-text-fill: red;");
             assignmentLabel.setText("Please enter an assignment name between 1-25 characters.");
             return;
         }
@@ -54,11 +55,12 @@ public class assignmentController {
         // Create an assignment based on whether it has a duedate or not
         if (aNoDueDate.isSelected()) {
             Admin.createAssignment(aName.getText());
+            assignmentLabel.setStyle("-fx-text-fill: green;");
             assignmentLabel.setText(aName.getText() + " created");
-            System.out.println("Assignment: " + aName.getText() + " created");
         } else {
             // If they want a duedate they need to select one!
             if (aDatePicker.getValue() == null) {
+                assignmentLabel.setStyle("-fx-text-fill: red;");
                 assignmentLabel.setText("Please pick a valid due date");
                 return;
             }
@@ -68,8 +70,8 @@ public class assignmentController {
                 return;
             } else {
                 Admin.createAssignment(aName.getText(), dueDateStr);
+                assignmentLabel.setStyle("-fx-text-fill: green;");
                 assignmentLabel.setText(aName.getText() + " with due date " + dueDateStr + " created");
-                System.out.println("Assignment: " + aName.getText() + " created");
             }
         }
     }
@@ -106,6 +108,7 @@ public class assignmentController {
         Date dueDate = Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         if (dueDate.before(todaysDate)) {
+            assignmentLabel.setStyle("-fx-text-fill: red;");
             assignmentLabel.setText("Please enter a date after today.");
             return INVALID_DATE;
         } else {
@@ -123,6 +126,7 @@ public class assignmentController {
     private Boolean isNameUsed() {
         for (Assignment curr : Data.assignmentList) {
             if (aName.getText().equals(curr.getAssignmentName())) {
+                assignmentLabel.setStyle("-fx-text-fill: red;");
                 assignmentLabel.setText("Assignment name already in use.");
                 return true;
             }
