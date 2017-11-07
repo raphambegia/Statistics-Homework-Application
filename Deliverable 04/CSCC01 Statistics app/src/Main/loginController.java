@@ -1,25 +1,17 @@
 package Main;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.collections.*;
-import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
 
 public class loginController {
-    int buttonCounter = 0;
     @FXML
     private Label loginError;
     @FXML
@@ -50,8 +42,6 @@ public class loginController {
     Button viewAssignments;
     @FXML
     Button studentAssgnView;
-    @FXML
-    Button refreshbuttonid;
 
 
     public void loginButton(ActionEvent event){
@@ -106,8 +96,14 @@ public class loginController {
     }
 
     public void formAddStudent(ActionEvent event) throws IOException{
-        Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
-        addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
+        if (sIDAdd.getText().chars().allMatch(Character::isDigit)) {
+            Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
+            addedlabel.setStyle("-fx-text-fill: green;");
+            addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
+        } else {
+            addedlabel.setStyle("-fx-text-fill: red;");
+            addedlabel.setText("ID must be a number. Please try again.");
+        }
     }
 
     public void viewAssignment(ActionEvent event) throws IOException{
