@@ -1,5 +1,7 @@
 package Main;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Assignment {
@@ -56,6 +58,31 @@ public class Assignment {
 
     public void changeAssignmentID(int newID){
         AssignmentID = newID;
+    }
+
+    public String getDueDate() {
+        return this.dueDate;
+    }
+
+    /**
+     * @return FALSE if the due date of the assignment has passed
+     */
+    public Boolean isAvailable() {
+        if(this.getDueDate() == null) {
+            return true;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date todaysDate = new Date();
+        try {
+            Date dueDate = dateFormat.parse(this.getDueDate());
+            if(dueDate.after(todaysDate)) {
+                return true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /*

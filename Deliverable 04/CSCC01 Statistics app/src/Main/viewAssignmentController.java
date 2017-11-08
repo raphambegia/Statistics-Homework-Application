@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,19 +21,26 @@ public class viewAssignmentController {
     private Button assgnBackToList;
     @FXML
     private VBox assgnVbox;
+    @FXML
+    private Button submitAssignButton;
 
-    private String assignmentName = "";
+    private Assignment assignment;
     private ArrayList<Question> questionList = new ArrayList<Question>();
     private ArrayList<ToggleGroup> toggleList = new ArrayList<ToggleGroup>();
 
 
     /**
-     * Gets assignment name from prev scene, loads the questions
-     * @param name
+     * Gets assignment from prev scene, loads the questions
+     * @param assign
      */
-    public void assgnName(String name) {
-        assignmentName = name;
-        assgnTitle.setText(name);
+    public void initAssignment(Assignment assign) {
+        assgnTitle.setText(assign.getAssignmentName());
+        assignment = assign;
+
+        if(!assignment.isAvailable()) {
+            submitAssignButton.setDisable(true);
+        }
+
         loadAssignment();
     }
 

@@ -12,6 +12,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class stuAssignmentPageController {
 
@@ -27,9 +30,14 @@ public class stuAssignmentPageController {
     }
 
     public void studentDisplayAssignment(){
-        System.out.println(Data.assignmentList.get(0).getAssignmentName());
         for(int i=0;i<Data.assignmentList.size();i++){
-            Button assgnButton = new Button(Data.assignmentList.get(i).getAssignmentName());
+            Assignment assign = Data.assignmentList.get(i);
+            Button assgnButton = new Button(assign.getAssignmentName());
+            if (assign.isAvailable()) {
+                assgnButton.setStyle("-fx-text-fill: green;");
+            } else {
+                assgnButton.setStyle("-fx-text-fill: black;");
+            }
             assgnButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -39,7 +47,7 @@ public class stuAssignmentPageController {
                         Stage stage = (Stage) secretButton.getScene().getWindow();
                         stage.setScene(new Scene(root, 650, 400));
                         viewAssignmentController controller = loader.<viewAssignmentController>getController();
-                        controller.assgnName(assgnButton.getText());
+                        controller.initAssignment(assign);
                         stage.show();
                     } catch (IOException e) {
                         e.printStackTrace();
