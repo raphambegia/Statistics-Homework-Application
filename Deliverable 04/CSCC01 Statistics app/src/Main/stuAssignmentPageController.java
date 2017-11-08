@@ -16,6 +16,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * STUDENT VIEWS THEIR LIST OF ASSIGNMENTS
+ */
 public class stuAssignmentPageController {
 
     @FXML

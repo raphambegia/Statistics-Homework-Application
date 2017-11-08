@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * ADMIN VIEWS LIST OF STUDENTS TO ADD/REMOVE
+ */
 public class studentListController {
 
     @FXML

@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * ADMIN VIEWS THE COMPLETE LIST OF ASSIGNMENTS, MAY ADD MORE ASSIGNMENTS
+ */
 public class adminAssgnPageController {
 
     @FXML

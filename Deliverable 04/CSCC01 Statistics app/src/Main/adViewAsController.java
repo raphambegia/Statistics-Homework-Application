@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * ADMIN VIEWS A SPECIFIC ASSIGNMENT WITH ALL THE POSSIBLE QUESTIONS,
+ * MAY ADD MORE QUESTIONS OR EDIT CURRENT QUESTIONS
+ */
 public class adViewAsController {
 
     @FXML
