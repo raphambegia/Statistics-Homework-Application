@@ -58,4 +58,13 @@ public class studentListController {
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
+
+    public void rmStudent() {
+        Student student = studentTable.getSelectionModel().getSelectedItem();
+        if (student != null) {
+            Admin.removeStudent(student.getStudentId());
+            loadStudentTable();
+        }
+        // Does nothing when no student is selected
+    }
 }

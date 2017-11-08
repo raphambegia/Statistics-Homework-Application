@@ -33,4 +33,13 @@ public class Question {
     public void changeQuestionID(int newID){
         questionId = newID;
     }
+
+    public String toString() {
+        String fullQuestion = theQuestion + "\n";
+        int i = 1;
+        for(String option : mcAnswers) {
+            fullQuestion += i + ". " + option + "\n";
+        }
+        return fullQuestion;
+    }
 }

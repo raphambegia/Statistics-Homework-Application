@@ -23,6 +23,6 @@
             <TableColumn fx:id="sidCol" prefWidth="117.0" text="Student ID" />
         </columns>
       </TableView>
-      <Button layoutX="384.0" layoutY="146.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Remove Student" />
+      <Button fx:id="rmStudentButton" onAction="#rmStudent" layoutX="384.0" layoutY="146.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Remove Student" />
    </children>
 </AnchorPane>

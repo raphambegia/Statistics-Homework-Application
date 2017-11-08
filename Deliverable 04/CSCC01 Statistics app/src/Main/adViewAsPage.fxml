@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.ListView?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.adViewAsController">
+    <children>
+        <VBox alignment="CENTER" layoutY="20">
+            <Label fx:id="aAssgnTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="12.0" prefHeight="15.0" prefWidth="630.0" textAlignment="CENTER">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Label>
+        </VBox>
+        <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
+        <VBox layoutX="45" layoutY="62">
+            <children>
+
+                <ScrollPane fx:id="sp" prefHeight="250.0" prefWidth="540.0">
+                    <Group>
+                        <ListView fx:id="assgnQList" prefHeight="248.0" prefWidth="538.0">
+
+                        </ListView>
+                    </Group>
+
+                </ScrollPane>
+                <VBox alignment="CENTER" >
+                    <Separator visible="false" />
+                    <Separator visible="false" />
+                    <TextFlow textAlignment="CENTER">
+                        <Button fx:id="editQuestionButton" onAction="#editQuestion" minWidth="170" text="Edit Selected Question"/>
+                        <Button fx:id="addQuestionButton" onAction="#addQuestion" minWidth="170" text="Add New Question" />
+                    </TextFlow>
+                    <Separator visible="false"/>
+                    <Button fx:id="backToAsPageButton" onAction="#aBackToAsPage" prefHeight="30.0" prefWidth="70.0" text="Back" />
+                </VBox>
+            </children>
+        </VBox>
+        <!--</TextFlow>-->
+    </children>
+</AnchorPane>

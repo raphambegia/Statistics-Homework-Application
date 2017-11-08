@@ -32,12 +32,13 @@ public class adminAssgnPageController {
             assgnButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("addQuestion.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("adViewAsPage.fxml"));
                     try {
                         Parent root = loader.load();
-                        Stage stage = (Stage) backButton.getScene().getWindow();
+                        Stage stage = (Stage) assgnButton.getScene().getWindow();
                         stage.setScene(new Scene(root, 650, 400));
-                        questionController controller = loader.<questionController>getController();
+                        adViewAsController controller = loader.<adViewAsController>getController();
+                        controller.assgnName(assgnButton.getText());
                         stage.show();
                     } catch (IOException e) {
                         e.printStackTrace();

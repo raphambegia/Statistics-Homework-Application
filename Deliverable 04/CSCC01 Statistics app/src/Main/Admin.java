@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class Admin extends User {
 
@@ -22,13 +23,19 @@ public class Admin extends User {
         }
     }
 
-    public void removeStudent(int stid){
+    public static void removeStudent(int stid){
+        Student student = null;
         for (Student theStudent : Data.studentList){
             if(stid == theStudent.getStudentId()) {
-                Data.RemoveUser(theStudent.getLoginID());
-                Data.studentList.remove(theStudent);
+                student = theStudent;
+                break;
+                //Data.RemoveUser(theStudent.getLoginID());
+                //Data.studentList.remove(theStudent);
             }
         }
+        Predicate<Student> stuPred = theStudent -> theStudent.getStudentId() == stid;
+        Data.studentList.removeIf(stuPred);
+        Data.RemoveUser(student.getLoginID());
     }
 
     public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd){
