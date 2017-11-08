@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 /**
  *  STUDENT VIEWS SPECIFIC ASSIGNMENT FOR REVIEWING OR ATTEMPTING
  */

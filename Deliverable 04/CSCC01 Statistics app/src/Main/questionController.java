@@ -94,7 +94,7 @@ public class questionController {
 
         // Add question to assignment & clear all fields
         Admin.addQuestion(questionField.getText(), answerList, solnInd, assignment);
-        System.out.println("question addded");
+        System.out.println("question added");
         warningLabel.setStyle("-fx-text-fill: green;");
         warningLabel.setText("Question added!");
         answerToggle.getSelectedToggle().setSelected(false);
@@ -102,6 +102,7 @@ public class questionController {
         for(TextField tf : mcList) {
             tf.setText("");
         }
+        mcList.clear();
     }
 
     /*
