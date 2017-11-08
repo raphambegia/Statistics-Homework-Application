@@ -38,8 +38,9 @@ public class Admin extends User {
         Data.RemoveUser(student.getLoginID());
     }
 
-    public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd){
+    public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, Assignment assgn){
         Question newQuestion = new Question(theQuestion, mcAnswers, solnInd);
+        assgn.addQuestion(newQuestion);
     }
 
     public static void createAssignment(String assgnName, String dueDate) {

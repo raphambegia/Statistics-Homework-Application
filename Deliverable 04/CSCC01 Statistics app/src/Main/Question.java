@@ -39,6 +39,7 @@ public class Question {
         int i = 1;
         for(String option : mcAnswers) {
             fullQuestion += i + ". " + option + "\n";
+            i++;
         }
         return fullQuestion;
     }

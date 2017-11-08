@@ -44,10 +44,15 @@ public class questionController {
     @FXML
     private Button backQuestionButton;
 
+    private Assignment assignment;
     private String NOANSWERS = "NOANSWERS";
     private ArrayList<String> answerList = new ArrayList<String>();
     private ArrayList<String> idList = new ArrayList<String>();
     private List<TextField> mcList = new ArrayList<TextField>();
+
+    public void selectedAssgn(Assignment assgn) {
+        assignment = assgn;
+    }
 
     public void addQuestionHandler() {
         // Check if question field is empty
@@ -85,7 +90,7 @@ public class questionController {
         }
 
         // Add question to assignment & clear all fields
-        Admin.addQuestion(questionField.getText(), answerList, solnInd);
+        Admin.addQuestion(questionField.getText(), answerList, solnInd, assignment);
         System.out.println("question addded");
         warningLabel.setStyle("-fx-text-fill: green;");
         warningLabel.setText("Question added!");
@@ -108,22 +113,23 @@ public class questionController {
     Returns a list where the first element is "NOANSWERS" if no valid answers were entered.
      */
     private ArrayList<String> createAnsList() {
+        ArrayList<String> ansList = new ArrayList<String>();
         int count = 0;
         for (TextField tf : mcList) {
             if (tf.getText().replaceAll("\\s","").length() != 0) {
-                answerList.add(tf.getText());
+                ansList.add(tf.getText());
                 idList.add(tf.getId());
                 count++;
             }
         }
 
         if (count == 0) {
-            answerList.add(NOANSWERS);
+            ansList.add(NOANSWERS);
             warningLabel.setStyle("-fx-text-fill: red;");
             warningLabel.setText("Please include at least one answer.");
         }
 
-        return answerList;
+        return ansList;
     }
 
     /*
@@ -143,9 +149,12 @@ public class questionController {
     }
 
     public void backQuestionHandler() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
-        Stage stage  = (Stage) backQuestionButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("adViewAsPage.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) backQuestionButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
+        adViewAsController controller = loader.<adViewAsController>getController();
+        controller.assgnName(assignment.getAssignmentName());
         stage.show();
     }
 }

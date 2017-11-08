@@ -24,9 +24,9 @@
         <VBox layoutX="45" layoutY="62">
             <children>
 
-                <ScrollPane fx:id="sp" prefHeight="250.0" prefWidth="540.0">
+                <ScrollPane fx:id="sp" prefHeight="250.0" prefWidth="540.0" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
                     <Group>
-                        <ListView fx:id="assgnQList" prefHeight="248.0" prefWidth="538.0">
+                        <ListView fx:id="assgnQList" minWidth="520.0" maxWidth="530">
 
                         </ListView>
                     </Group>

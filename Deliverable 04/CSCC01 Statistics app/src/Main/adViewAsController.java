@@ -24,6 +24,7 @@ public class adViewAsController {
     private ListView<Question> assgnQList;
 
     String assignmentName = "";
+    Assignment assignment;
     ArrayList<Question> questionList = new ArrayList<Question>();
 
     /**
@@ -32,6 +33,11 @@ public class adViewAsController {
      */
     public void assgnName(String name) {
         assignmentName = name;
+        for(Assignment a : Data.assignmentList) {
+            if(a.getAssignmentName().equals(name)) {
+                assignment = a;
+            }
+        }
         aAssgnTitle.setText(name);
         loadAssignmentQs();
     }
@@ -53,7 +59,13 @@ public class adViewAsController {
     }
 
     public void addQuestion() throws IOException {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("addQuestion.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) addQuestionButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        questionController controller = loader.<questionController>getController();
+        controller.selectedAssgn(assignment);
+        stage.show();
     }
 
     public void aBackToAsPage() throws IOException {
