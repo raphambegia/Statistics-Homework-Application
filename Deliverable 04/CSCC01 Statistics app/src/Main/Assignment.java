@@ -52,6 +52,7 @@ public class Assignment {
     public int getAssignmentID(){
         return AssignmentID;
     }
+
     public String getAssignmentName(){
         return AssignmentName;
     }
