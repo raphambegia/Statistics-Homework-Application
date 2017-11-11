@@ -31,16 +31,6 @@ public class questionController {
     @FXML
     private Label warningLabel;
     @FXML
-    private RadioButton buttonMC1;
-    @FXML
-    private RadioButton buttonMC2;
-    @FXML
-    private RadioButton buttonMC3;
-    @FXML
-    private RadioButton buttonMC4;
-    @FXML
-    private RadioButton buttonMC5;
-    @FXML
     private ToggleGroup answerToggle;
     @FXML
     private Button addQuestionButton;

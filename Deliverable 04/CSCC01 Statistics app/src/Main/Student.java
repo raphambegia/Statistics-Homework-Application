@@ -64,15 +64,16 @@ public class Student extends User{
     }
 
     public void addAssgnAttempt(String assgnName, ArrayList<String> questionOrder, ArrayList<String> ansIndex) {
-        ArrayList<ArrayList<String>> qAndA = completedAssignments.get(assgnName);
-        if(qAndA == null) {
-            qAndA.add(questionOrder);
-            qAndA.add(ansIndex);
-            completedAssignments.put(assgnName, qAndA);
-        } else {
+        ArrayList<ArrayList<String>> qAndA = new ArrayList<>();
+        if(completedAssignments.containsKey(assgnName)) {
+            qAndA = completedAssignments.get(assgnName);
             qAndA.add(questionOrder);
             qAndA.add(ansIndex);
             completedAssignments.replace(assgnName, qAndA);
+        } else {
+            qAndA.add(questionOrder);
+            qAndA.add(ansIndex);
+            completedAssignments.put(assgnName, qAndA);
         }
     }
 }

@@ -21,8 +21,6 @@ public class loginController {
     @FXML
     Button loginButton;
     @FXML
-    Button logOutButton;
-    @FXML
     Button viewStudents;
     @FXML
     Button backStudent;
@@ -40,8 +38,9 @@ public class loginController {
     Label addedlabel;
     @FXML
     Button viewAssignments;
-    @FXML
-    Button studentAssgnView;
+
+
+    public Student currStudent;
 
 
     public void loginButton(ActionEvent event){
@@ -62,21 +61,24 @@ public class loginController {
             stage.setScene(new Scene(root, 650, 400));
             stage.show();
         }else if(Data.CheckUser(userName.getText(),password.getText()) == 1){
-            Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
+            for(Student s : Data.getStudentList()) {
+                if(s.getFName().equals(userName.getText()) && s.getLName().equals(password.getText())) {
+                    currStudent = s;
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+            Parent root = loader.load();
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
+            studentPageController controller = loader.<studentPageController>getController();
+            controller.passStudent(currStudent);
             stage.show();
 
         }else if(Data.CheckUser(userName.getText(),password.getText()) == -1){
             loginError.setText("Login Failed");
         }
     }
-    public void logOutHandler(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
-        Stage stage  = (Stage) logOutButton.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
+
     public void viewStudent(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
         Stage stage  = (Stage) viewStudents.getScene().getWindow();
@@ -124,10 +126,5 @@ public class loginController {
         stage.show();
     }
 
-    public void studentAssignmentView(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentAssignment.fxml"));
-        Stage stage  = (Stage) studentAssgnView.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
+
 }
