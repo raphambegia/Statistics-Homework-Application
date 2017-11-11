@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Data {
     static ArrayList <User> userList = new ArrayList();
-    static ArrayList <Student> studentList = new ArrayList();
+    static ArrayList <Student> studentList = new ArrayList<Student>();
 
     //Author: Juan
     //Storage of Assignment data in an Array List.
@@ -32,6 +32,10 @@ public class Data {
        }
 
        if (found == true) userList.remove(location);
+    }
+
+    public static ArrayList<Student> getStudentList() {
+        return studentList;
     }
 
     /*

@@ -4,17 +4,18 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Student extends User{
     public SimpleStringProperty fName;
     SimpleStringProperty lName;
     SimpleIntegerProperty studentId;
-    public ArrayList<Assignment> completedAssgns = new ArrayList<Assignment>();
-    public ArrayList<Integer> selectedAns = new ArrayList<>();
+    private HashMap<String, ArrayList<ToggleGroup>> completedAssignments = new HashMap<>();
 
     public Student(String fname, String lname, int stid){
         this.fName = new SimpleStringProperty(fname);
@@ -58,16 +59,19 @@ public class Student extends User{
         return studentId.getValue();
     }
 
-    public ArrayList<Assignment> getCompletedAssgns() {
-        return completedAssgns;
+    public HashMap<String, ArrayList<ToggleGroup>> getCompletedAssignments() {
+        return completedAssignments;
     }
 
-    public ArrayList<Integer> getSelectedAns() {
-        return selectedAns;
-    }
-
-    public void addCompletedAssgn(Assignment assgn, Integer ansIndex) {
-        completedAssgns.add(assgn);
-        selectedAns.add(ansIndex);
+    public void addAssgnAttempt(String assgnName, ToggleGroup soln) {
+        ArrayList<ToggleGroup> toggleArray = new ArrayList<ToggleGroup>();
+        toggleArray = completedAssignments.get(assgnName);
+        if(toggleArray == null) {
+            toggleArray.add(soln);
+            completedAssignments.put(assgnName, toggleArray);
+        } else {
+            toggleArray.add(soln);
+            completedAssignments.replace(assgnName, toggleArray);
+        }
     }
 }

@@ -96,13 +96,24 @@ public class loginController {
     }
 
     public void formAddStudent(ActionEvent event) throws IOException{
+        boolean idExists = false;
         if (sIDAdd.getText().chars().allMatch(Character::isDigit)) {
-            Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
-            addedlabel.setStyle("-fx-text-fill: green;");
-            addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
+            for(Student curr : Data.getStudentList()) {
+                if(curr.getStudentId() == Integer.valueOf(sIDAdd.getText())) {
+                    addedlabel.setStyle("-fx-text-fill: red;");
+                    addedlabel.setText("ID taken, please select a unique ID number.");
+                    idExists = true;
+                }
+            }
         } else {
             addedlabel.setStyle("-fx-text-fill: red;");
             addedlabel.setText("ID must be a number. Please try again.");
+        }
+        if (!idExists) {
+            idExists = true;
+            Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
+            addedlabel.setStyle("-fx-text-fill: green;");
+            addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
         }
     }
 
