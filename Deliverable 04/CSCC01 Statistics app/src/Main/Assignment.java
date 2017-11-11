@@ -34,6 +34,7 @@ public class Assignment {
     private String AssignmentName;
     private String dueDate;
     private ArrayList<Question> questionList =  new ArrayList<Question>();
+    int assignmentSize = 5;
 
     /**
      *
@@ -117,6 +118,49 @@ public class Assignment {
 
     public ArrayList <Question> getQuestionList(){
         return questionList;
+    }
+
+    public ArrayList <Question> getRandomQuestionList(){
+        int count = 0;
+        ArrayList <Question> randomList = new ArrayList<>();
+        Random randA = new Random();
+        if(questionList.size() <= assignmentSize) {
+            while(randomList.size() < questionList.size()){
+                int randQuestion = randA.nextInt(questionList.size());
+
+                //check if a question is drawn twice
+                while (count < randomList.size()){
+                    count = 0;
+                    for (Question theQuestion : randomList) {
+                        if (questionList.get(randQuestion).getTheQuestion().equals(theQuestion.getTheQuestion())){
+                            randQuestion = randA.nextInt(questionList.size());
+                        }
+                        else count++;
+                    }
+                }
+                randomList.add(questionList.get(randQuestion));
+            }
+        }
+
+        else{
+            while(randomList.size() < assignmentSize){
+                int randQuestion = randA.nextInt(questionList.size());
+
+                s//check if a question is drawn twice
+                while (count < randomList.size()){
+                    count = 0;
+                    for (Question theQuestion : randomList) {
+                        if (questionList.get(randQuestion).getTheQuestion().equals(theQuestion.getTheQuestion())){
+                            randQuestion = randA.nextInt(questionList.size());
+                        }
+                        else count++;
+                    }
+                }
+                randomList.add(questionList.get(randQuestion));
+            }
+        }
+        return randomList;
+
     }
     /*
     End of Question functions
