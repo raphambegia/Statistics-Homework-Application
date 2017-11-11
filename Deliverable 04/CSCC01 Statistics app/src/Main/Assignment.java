@@ -145,7 +145,7 @@ public class Assignment {
             while(randomList.size() < assignmentSize){
                 int randQuestion = randA.nextInt(questionList.size());
 
-                s//check if a question is drawn twice
+                //check if a question is drawn twice
                 while (count < randomList.size()){
                     count = 0;
                     for (Question theQuestion : randomList) {
