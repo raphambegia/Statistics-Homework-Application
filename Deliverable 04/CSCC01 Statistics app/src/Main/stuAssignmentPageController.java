@@ -28,7 +28,10 @@ public class stuAssignmentPageController {
     @FXML
     Button assignmentBack;
 
-    public void initialize() {
+    public Student currStudent;
+
+    public void passStudent(Student student) {
+        currStudent = student;
         studentDisplayAssignment();
     }
 
@@ -50,7 +53,7 @@ public class stuAssignmentPageController {
                         Stage stage = (Stage) secretButton.getScene().getWindow();
                         stage.setScene(new Scene(root, 650, 400));
                         viewAssignmentController controller = loader.<viewAssignmentController>getController();
-                        controller.initAssignment(assign);
+                        controller.initAssignment(assign, currStudent);
                         stage.show();
                     } catch (IOException e) {
                         e.printStackTrace();

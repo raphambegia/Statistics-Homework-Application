@@ -26,6 +26,10 @@ public class Question {
         return solnInd;
     }
 
+    public String getSolnIndStr() {
+        return String.valueOf(solnInd);
+    }
+
     public int getQuestionId() {
         return questionId;
     }

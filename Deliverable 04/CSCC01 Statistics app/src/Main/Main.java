@@ -30,7 +30,8 @@ public class Main extends Application {
         Admin admin1 = new Admin("admin","pass");
         //Student stu = new Student("john", "doe", 01);
         Admin.createStudent("john", "doe", 01);
-        Admin.createAssignment("A1", "2016/09/09");
+        //Admin.createAssignment("A1", "2016/09/09");
+        Admin.createAssignment("A1");
 
         ArrayList<String> al = new ArrayList<String>();
         al.add("k");

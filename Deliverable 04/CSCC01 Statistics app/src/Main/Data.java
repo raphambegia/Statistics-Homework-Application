@@ -47,7 +47,6 @@ public class Data {
     public static int CheckUser (String id, String pw){
         Boolean found = false;
         for (User theuser : userList){
-            System.out.println("Looping User: " + theuser.getLoginID());
             if (theuser.getLoginID().equals(id) && theuser.getLoginPW().equals(pw)) {
                 if(theuser.getType() == 'a') return 0;
                 if(theuser.getType() == 's') return 1;
