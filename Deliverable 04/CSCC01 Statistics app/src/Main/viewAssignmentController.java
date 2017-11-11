@@ -50,7 +50,8 @@ public class viewAssignmentController {
         for(Assignment curr : Data.assignmentList) {
             System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + assgnTitle.getText());
             if(curr.getAssignmentName().equals(assgnTitle.getText())) {
-                questionList = curr.getQuestionList();
+                questionList = curr.getRandomQuestionList();
+                //questionList = curr.getQuestionList();
             }
         }
 
