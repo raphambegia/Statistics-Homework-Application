@@ -15,7 +15,7 @@ public class Student extends User{
     public SimpleStringProperty fName;
     SimpleStringProperty lName;
     SimpleIntegerProperty studentId;
-    private HashMap<String, ArrayList<ToggleGroup>> completedAssignments = new HashMap<>();
+    private HashMap<String, ArrayList<ArrayList<String>>> completedAssignments = new HashMap<>();
 
     public Student(String fname, String lname, int stid){
         this.fName = new SimpleStringProperty(fname);
@@ -59,19 +59,20 @@ public class Student extends User{
         return studentId.getValue();
     }
 
-    public HashMap<String, ArrayList<ToggleGroup>> getCompletedAssignments() {
+    public HashMap<String, ArrayList<ArrayList<String>>> getCompletedAssignments() {
         return completedAssignments;
     }
 
-    public void addAssgnAttempt(String assgnName, ToggleGroup soln) {
-        ArrayList<ToggleGroup> toggleArray = new ArrayList<ToggleGroup>();
-        toggleArray = completedAssignments.get(assgnName);
-        if(toggleArray == null) {
-            toggleArray.add(soln);
-            completedAssignments.put(assgnName, toggleArray);
+    public void addAssgnAttempt(String assgnName, ArrayList<String> questionOrder, ArrayList<String> ansIndex) {
+        ArrayList<ArrayList<String>> qAndA = completedAssignments.get(assgnName);
+        if(qAndA == null) {
+            qAndA.add(questionOrder);
+            qAndA.add(ansIndex);
+            completedAssignments.put(assgnName, qAndA);
         } else {
-            toggleArray.add(soln);
-            completedAssignments.replace(assgnName, toggleArray);
+            qAndA.add(questionOrder);
+            qAndA.add(ansIndex);
+            completedAssignments.replace(assgnName, qAndA);
         }
     }
 }
