@@ -28,6 +28,8 @@ public class viewAssignmentController {
     private Label viewAssgnLabel;
     @FXML
     private Button assgnToPractice;
+    @FXML
+    private Label markLabel;
 
     public Student student;
     private Assignment assignment;
@@ -37,9 +39,8 @@ public class viewAssignmentController {
     private ArrayList<String> ansIndex = new ArrayList<>();
 
 
-    /**
-     * Gets assignment from prev scene, loads the questions
-     * @param assign
+    /*
+     Gets assignment from prev scene, loads the questions
      */
     public void initAssignment(Assignment assign, Student stu) {
         student = stu;
@@ -48,15 +49,13 @@ public class viewAssignmentController {
 
         if(!assignment.isAvailable()) {
             submitAssignButton.setDisable(true);
+            assgnVbox.setDisable(true);
+            assgnToPractice.setManaged(true);
             viewAssgnLabel.setText("Submission deadline passed. You may go into practice mode instead.");
-            submitAssignButton.setManaged(true);
         }
 
+        attemptsRemaining();
         loadAssignment();
-    }
-
-    public void initialize() {
-        checkAttempts();
     }
 
     public void loadAssignment() {
@@ -87,27 +86,29 @@ public class viewAssignmentController {
         }
     }
 
-    public void checkAttempts() {
-        int maxAttempts = 2;
-
-        int numAttempts = student.getCompletedAssignments().get(assignment.getAssignmentName()).size() / 2;
-        if(maxAttempts <= numAttempts) {
-            viewAssgnLabel.setText("All attempts used. You may go into practice mode instead.");
-            submitAssignButton.setManaged(true);
+    /*
+    Returns TRUE if student still has attempts for this assignment
+     */
+    public boolean attemptsRemaining() {
+        int maxAttempts = 2; // Allow admin to change? Or vary depending on assignment?
+        if(student.getCompletedAssignments().get(assignment.getAssignmentName()) != null) {
+            int numAttempts = student.getCompletedAssignments().get(assignment.getAssignmentName()).size() / 2;
+            if(maxAttempts <= numAttempts) {
+                viewAssgnLabel.setText("All attempts used. You may go into practice mode instead.");
+                assgnToPractice.setManaged(true);
+                submitAssignButton.setDisable(true);
+                assgnVbox.setDisable(true);
+                return false;
+            }
         }
-    }
-
-    public void aBackToList() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentAssignment.fxml"));
-        Parent root = loader.load();
-        Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stuAssignmentPageController controller = loader.<stuAssignmentPageController>getController();
-        controller.passStudent(student);
-        stage.show();
+        return true;
     }
 
     public void submitAssignment() {
+        questionOrder.clear();
+        ansIndex.clear();
+        int numCorrect = 0;
+
         Question q = null;
         for(int i = 0; i < questionList.size(); i++) {
             q = questionList.get(i);
@@ -117,21 +118,35 @@ public class viewAssignmentController {
         for(int j = 0; j < q.getMcAnswers().size(); j++) {
             // Get the student's selected answer
             ToggleGroup tg = toggleList.get(j);
-            Object selectedAns = tg.getSelectedToggle().getUserData();
-            ansIndex.add(selectedAns.toString());
+            if(tg.getSelectedToggle() != null) {
+                Object selectedAns = tg.getSelectedToggle().getUserData();
+                ansIndex.add(selectedAns.toString());
 
-            // CAN COMPARE TO ACTUAL ANSWER HERE ---------------------------
+                // Checking the answer
+                if(selectedAns.toString().equals(q.getSolnIndStr())) {
+                    numCorrect++;
+                }
+            }
         }
 
+        // Only submit if all questions are answered
         if(questionOrder.size() != ansIndex.size()) {
-            System.out.println("q size: " + questionOrder.size() + " vs a size: " + ansIndex.size());
+            System.out.println("Questions: " + questionOrder.size() + " vs. Answers: " + ansIndex.size());
             viewAssgnLabel.setStyle("-fx-text-fill: red;");
             viewAssgnLabel.setText("All questions must be answered in order to submit");
+            questionOrder.clear();
+            ansIndex.clear();
+        } else {
+            student.addAssgnAttempt(assignment.getAssignmentName(), questionOrder, ansIndex);
+            viewAssgnLabel.setStyle("-fx-text-fill: green;");
+            viewAssgnLabel.setText("Assignment submitted!");
+            markLabel.setManaged(true);
+            markLabel.setText("You got: " + numCorrect + " out of " + questionOrder.size() + "!");
         }
 
-        student.addAssgnAttempt(assignment.getAssignmentName(), questionOrder, ansIndex);
-        viewAssgnLabel.setStyle("-fx-text-fill: green;");
-        viewAssgnLabel.setText("Assignment submitted!");
+        if(!attemptsRemaining()) {
+            viewAssgnLabel.setText("Assignment submitted. All attempts used. You may go into practice mode instead.");
+        }
     }
 
     public void toPracticeAssgn() throws IOException {
@@ -141,6 +156,16 @@ public class viewAssignmentController {
         stage.setScene(new Scene(root, 650, 400));
         practiceAssignmentController controller = loader.<practiceAssignmentController>getController();
         controller.initAssignment(assignment);
+        stage.show();
+    }
+
+    public void aBackToList() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentAssignment.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stuAssignmentPageController controller = loader.<stuAssignmentPageController>getController();
+        controller.passStudent(student);
         stage.show();
     }
 }

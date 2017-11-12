@@ -68,9 +68,12 @@ public class stuAssignmentPageController {
     }
 
     public void studentBacktoMain(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
-        Stage stage = (Stage) assignmentBack.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) assignmentBack.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
+        studentPageController controller = loader.<studentPageController>getController();
+        controller.passStudent(currStudent);
         stage.show();
     }
 
@@ -80,6 +83,5 @@ public class stuAssignmentPageController {
      * @throws IOException
      */
     public void assgnSelected(ActionEvent event) throws IOException {
-
     }
 }
