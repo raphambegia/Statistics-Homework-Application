@@ -20,18 +20,13 @@
                 </font>
             </Label>
         </VBox>
-        <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
         <VBox layoutX="45" layoutY="62">
             <children>
+                <Group>
+                    <ListView fx:id="assgnQList" maxWidth="530" minWidth="520.0" prefHeight="250" maxHeight="250">
 
-                <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="250.0" prefWidth="540.0" vbarPolicy="ALWAYS">
-                    <Group>
-                        <ListView fx:id="assgnQList" maxWidth="530" minWidth="520.0">
-
-                        </ListView>
-                    </Group>
-
-                </ScrollPane>
+                    </ListView>
+                </Group>
                 <VBox alignment="CENTER">
                     <Separator visible="false" />
                     <Separator visible="false" />
@@ -44,6 +39,5 @@
                 </VBox>
             </children>
         </VBox>
-        <!--</TextFlow>-->
     </children>
 </AnchorPane>
