@@ -52,11 +52,16 @@ public class viewAssignmentController {
             assgnVbox.setDisable(true);
             assgnToPractice.setManaged(true);
             assgnVbox.getChildren().clear();
+            markLabel.setManaged(true);
+            markLabel.setText("Mark submitted: " + student.getBestMarkFor(assignment.getAssignmentName()));
             viewAssgnLabel.setText("Submission deadline passed. You may go into practice mode instead.");
         }
 
         loadAssignment();
-        attemptsRemaining();
+        if(!attemptsRemaining()) {
+            markLabel.setManaged(true);
+            markLabel.setText("Mark submitted: " + student.getBestMarkFor(assignment.getAssignmentName()) + "%");
+        }
     }
 
     public void loadAssignment() {
@@ -117,11 +122,11 @@ public class viewAssignmentController {
 
             ToggleGroup tg = toggleList.get(i);
             if(tg.getSelectedToggle() != null) {
-                Object selectedAns = tg.getSelectedToggle().getUserData();
-                ansIndex.add(selectedAns.toString());
+                String selectedAns = tg.getSelectedToggle().getUserData().toString();
+                ansIndex.add(selectedAns);
 
                 // Checking the answer
-                if(selectedAns.toString().equals(q.getSolnIndStr())) {
+                if(selectedAns.equals(q.getSolnIndStr())) {
                     numCorrect++;
                 }
             }
@@ -148,6 +153,7 @@ public class viewAssignmentController {
 
             // Offer new assignment
             assgnVbox.getChildren().clear();
+            toggleList.clear();
             loadAssignment();
         }
 

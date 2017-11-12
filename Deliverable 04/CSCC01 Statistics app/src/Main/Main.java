@@ -34,12 +34,10 @@ public class Main extends Application {
         Admin.createAssignment("A1");
 
         ArrayList<String> al = new ArrayList<String>();
-        al.add("k");
-        al.add("knn");
+        al.add("karen");
+        al.add("kareb");
         Question q = new Question("who is the best", al, 0);
-        System.out.println("best : " + q.getSolnInd());
         Question qq = new Question("who is the bestest", al, 1);
-        System.out.println("bestest: " + qq.getSolnInd());
         Data.assignmentList.get(0).addQuestion(q);
         Data.assignmentList.get(0).addQuestion(qq);
 
