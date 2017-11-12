@@ -24,6 +24,10 @@ public class viewAssignmentController {
     private VBox assgnVbox;
     @FXML
     private Button submitAssignButton;
+    @FXML
+    private Label viewAssgnLabel;
+    @FXML
+    private Button assgnToPractice;
 
     public Student student;
     private Assignment assignment;
@@ -44,9 +48,15 @@ public class viewAssignmentController {
 
         if(!assignment.isAvailable()) {
             submitAssignButton.setDisable(true);
+            viewAssgnLabel.setText("Submission deadline passed. You may go into practice mode instead.");
+            submitAssignButton.setManaged(true);
         }
 
         loadAssignment();
+    }
+
+    public void initialize() {
+        checkAttempts();
     }
 
     public void loadAssignment() {
@@ -77,6 +87,16 @@ public class viewAssignmentController {
         }
     }
 
+    public void checkAttempts() {
+        int maxAttempts = 2;
+
+        int numAttempts = student.getCompletedAssignments().get(assignment.getAssignmentName()).size() / 2;
+        if(maxAttempts <= numAttempts) {
+            viewAssgnLabel.setText("All attempts used. You may go into practice mode instead.");
+            submitAssignButton.setManaged(true);
+        }
+    }
+
     public void aBackToList() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("studentAssignment.fxml"));
         Parent root = loader.load();
@@ -100,20 +120,27 @@ public class viewAssignmentController {
             Object selectedAns = tg.getSelectedToggle().getUserData();
             ansIndex.add(selectedAns.toString());
 
-            // CAN COMPARE TO ACTUAL ANSWER HERE
+            // CAN COMPARE TO ACTUAL ANSWER HERE ---------------------------
         }
 
         if(questionOrder.size() != ansIndex.size()) {
-            System.out.println("q size: " + questionOrder.size() + " vs a order: " + ansIndex.size());
-            System.out.println("why didn't you just answer all the questions??? why!!!!!");
+            System.out.println("q size: " + questionOrder.size() + " vs a size: " + ansIndex.size());
+            viewAssgnLabel.setStyle("-fx-text-fill: red;");
+            viewAssgnLabel.setText("All questions must be answered in order to submit");
         }
 
         student.addAssgnAttempt(assignment.getAssignmentName(), questionOrder, ansIndex);
+        viewAssgnLabel.setStyle("-fx-text-fill: green;");
+        viewAssgnLabel.setText("Assignment submitted!");
+    }
 
-        ////////
-        // Check if line above really works
-        // think about how to calc marks
-        // think about how to display this assign with selected answers again
-        // use index to select toggle??
+    public void toPracticeAssgn() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("practiceAssignment.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        practiceAssignmentController controller = loader.<practiceAssignmentController>getController();
+        controller.initAssignment(assignment);
+        stage.show();
     }
 }

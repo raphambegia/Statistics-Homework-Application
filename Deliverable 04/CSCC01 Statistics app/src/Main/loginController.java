@@ -38,10 +38,10 @@ public class loginController {
     Label addedlabel;
     @FXML
     Button viewAssignments;
-
+    @FXML
+    Button logOutButton;
 
     public Student currStudent;
-
 
     public void loginButton(ActionEvent event){
         System.out.println("Hello World");
@@ -126,5 +126,11 @@ public class loginController {
         stage.show();
     }
 
+    public void logOutHandler(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        Stage stage  = (Stage) logOutButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+    }
 
 }
