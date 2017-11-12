@@ -67,16 +67,13 @@ public class Student extends User{
 
     public Double getBestMarkFor(String assgnName) {
         Double bestMark = 0.0;
-        System.out.println(" hellooo");
         if(assignmentMarks.containsKey(assgnName)) {
             for(Double mark : assignmentMarks.get(assgnName)) {
-                System.out.println(" -- mark " + mark);
                 if(mark > bestMark) {
                     bestMark = mark;
                 }
             }
         }
-        System.out.println(" -- best " + bestMark);
         return bestMark;
     }
 
