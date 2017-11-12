@@ -24,13 +24,16 @@
                 <children>
                     <ScrollPane prefHeight="250.0" prefWidth="550.0">
                         <Group>
-                            <VBox fx:id="assgnVbox" pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
+                            <VBox pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
                                 <VBox alignment="CENTER">
                                     <Label fx:id="markLabel" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" managed="false" textFill="darkblue">
                                         <font>
                                             <Font size="20.0" />
                                         </font>
                                     </Label>
+                                </VBox>
+                                <VBox fx:id="assgnVbox" pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
+
                                 </VBox>
                             </VBox>
                         </Group>

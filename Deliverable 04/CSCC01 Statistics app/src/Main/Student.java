@@ -16,6 +16,7 @@ public class Student extends User{
     SimpleStringProperty lName;
     SimpleIntegerProperty studentId;
     private HashMap<String, ArrayList<ArrayList<String>>> completedAssignments = new HashMap<>();
+    private HashMap<String, ArrayList<Double>> assignmentMarks = new HashMap<>();
 
     public Student(String fname, String lname, int stid){
         this.fName = new SimpleStringProperty(fname);
@@ -57,6 +58,34 @@ public class Student extends User{
 
     int getStudentId(){
         return studentId.getValue();
+    }
+
+    public HashMap<String, ArrayList<Double>> getAssignmentMarks() {
+        return assignmentMarks;
+    }
+
+    public Double getBestMarkFor(String assgnName) {
+        Double bestMark = 0.0;
+        if(assignmentMarks.containsKey(assgnName)) {
+            for(Double mark : assignmentMarks.get(assgnName)) {
+                if(mark > bestMark) {
+                    bestMark = mark;
+                }
+            }
+        }
+        return bestMark;
+    }
+
+    public void setAssignmentMarks(String assgnName, Double mark) {
+        ArrayList<Double> markList = new ArrayList<>();
+        if(assignmentMarks.containsKey(assgnName)) {
+            markList = assignmentMarks.get(assgnName);
+            markList.add(mark);
+            assignmentMarks.replace(assgnName, markList);
+        } else {
+            markList.add(mark);
+            assignmentMarks.put(assgnName, markList);
+        }
     }
 
     public HashMap<String, ArrayList<ArrayList<String>>> getCompletedAssignments() {
