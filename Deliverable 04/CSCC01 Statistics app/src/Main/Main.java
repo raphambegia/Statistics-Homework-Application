@@ -37,7 +37,9 @@ public class Main extends Application {
         al.add("k");
         al.add("knn");
         Question q = new Question("who is the best", al, 0);
+        System.out.println("best : " + q.getSolnInd());
         Question qq = new Question("who is the bestest", al, 1);
+        System.out.println("bestest: " + qq.getSolnInd());
         Data.assignmentList.get(0).addQuestion(q);
         Data.assignmentList.get(0).addQuestion(qq);
 

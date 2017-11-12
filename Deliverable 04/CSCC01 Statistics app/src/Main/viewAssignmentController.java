@@ -51,11 +51,12 @@ public class viewAssignmentController {
             submitAssignButton.setDisable(true);
             assgnVbox.setDisable(true);
             assgnToPractice.setManaged(true);
+            assgnVbox.getChildren().clear();
             viewAssgnLabel.setText("Submission deadline passed. You may go into practice mode instead.");
         }
 
-        attemptsRemaining();
         loadAssignment();
+        attemptsRemaining();
     }
 
     public void loadAssignment() {
@@ -98,6 +99,7 @@ public class viewAssignmentController {
                 assgnToPractice.setManaged(true);
                 submitAssignButton.setDisable(true);
                 assgnVbox.setDisable(true);
+                assgnVbox.getChildren().clear();
                 return false;
             }
         }
@@ -109,15 +111,11 @@ public class viewAssignmentController {
         ansIndex.clear();
         int numCorrect = 0;
 
-        Question q = null;
         for(int i = 0; i < questionList.size(); i++) {
-            q = questionList.get(i);
+            Question q = questionList.get(i);
             questionOrder.add(q.getTheQuestion());
-        }
 
-        for(int j = 0; j < q.getMcAnswers().size(); j++) {
-            // Get the student's selected answer
-            ToggleGroup tg = toggleList.get(j);
+            ToggleGroup tg = toggleList.get(i);
             if(tg.getSelectedToggle() != null) {
                 Object selectedAns = tg.getSelectedToggle().getUserData();
                 ansIndex.add(selectedAns.toString());
@@ -137,11 +135,20 @@ public class viewAssignmentController {
             questionOrder.clear();
             ansIndex.clear();
         } else {
+            // Save the assignment
             student.addAssgnAttempt(assignment.getAssignmentName(), questionOrder, ansIndex);
             viewAssgnLabel.setStyle("-fx-text-fill: green;");
             viewAssgnLabel.setText("Assignment submitted!");
+
+            // Calc and show mark
             markLabel.setManaged(true);
-            markLabel.setText("You got: " + numCorrect + " out of " + questionOrder.size() + "!");
+            Double mark = (double) numCorrect / questionOrder.size() * 100;
+            student.setAssignmentMarks(assignment.getAssignmentName(), mark);
+            markLabel.setText("You got: " + numCorrect + " out of " + questionOrder.size() + ", " + mark + "%!");
+
+            // Offer new assignment
+            assgnVbox.getChildren().clear();
+            loadAssignment();
         }
 
         if(!attemptsRemaining()) {
