@@ -33,11 +33,15 @@
                     <VBox alignment="CENTER" >
                         <Separator visible="false" />
                         <Separator visible="false" />
-                        <TextFlow fx:id="viewButtonTextFlow" textAlignment="CENTER">
-                            <Button fx:id="submitAssignButton" onAction="#submitAssignment" text="Submit Assignment"/>
+                        <TextFlow textAlignment="CENTER">
+                            <Label fx:id="viewAssgnLabel" text="" textFill="green" />
                         </TextFlow>
                         <Separator visible="false"/>
-                        <Button fx:id="assgnBackToList" onAction="#aBackToList" prefHeight="30.0" prefWidth="70.0" text="Back" />
+                        <TextFlow textAlignment="CENTER">
+                            <Button fx:id="submitAssignButton" onAction="#submitAssignment" prefHeight="30.0" text="Submit Assignment"/>
+                            <Button fx:id="assgnToPractice" onAction="#toPracticeAssgn" managed="false" prefHeight="30" text="Practice" />
+                            <Button fx:id="assgnBackToList" onAction="#aBackToList" prefHeight="30.0" prefWidth="70.0" text="Back" />
+                        </TextFlow>
                     </VBox>
                 </children>
             </VBox>
