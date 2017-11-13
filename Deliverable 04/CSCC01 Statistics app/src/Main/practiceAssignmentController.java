@@ -1,10 +1,15 @@
 package Main;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class practiceAssignmentController {
@@ -23,16 +28,19 @@ public class practiceAssignmentController {
     private Button pAssgnToPList;
     @FXML
     private Button newPracticeButton;
+    @FXML
+    private Button pAssgnToAssgn;
 
     private Assignment assignment;
+    private Student student;
     private ArrayList<Question> questionList = new ArrayList<Question>();
     private ArrayList<ToggleGroup> toggleList = new ArrayList<>();
     private ArrayList<String> questionOrder = new ArrayList<>();
     private ArrayList<String> ansIndex = new ArrayList<>();
-
     private ArrayList<Label> solnList = new ArrayList<>();
 
-    public void initAssignment(Assignment assgn) {
+    public void initAssignment(Assignment assgn, Student stu) {
+        student = stu;
         assignment = assgn;
         pAssgnTitle.setText(assignment.getAssignmentName() + " Practice");
 
@@ -40,6 +48,10 @@ public class practiceAssignmentController {
     }
 
     public void loadQuestions() {
+        pAssgnVbox.getChildren().clear();
+        toggleList.clear();
+        solnList.clear();
+
         // Gets the questions
         questionList = assignment.getRandomQuestionList();
 
@@ -110,13 +122,28 @@ public class practiceAssignmentController {
 
         toggleList.clear();
         checkAnsButton.setManaged(false);
+        checkAnsButton.setVisible(false);
         newPracticeButton.setManaged(true);
+        newPracticeButton.setVisible(true);
     }
 
     public void newPracticeSet() {
         checkAnsButton.setManaged(true);
+        checkAnsButton.setVisible(true);
         newPracticeButton.setManaged(false);
-        ///// here
+        newPracticeButton.setVisible(false);
+
+        loadQuestions();
+    }
+
+    public void backToAssign() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewAssignmentPage.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) pAssgnToAssgn.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        viewAssignmentController controller = loader.<viewAssignmentController>getController();
+        controller.initAssignment(assignment, student);
+        stage.show();
     }
 
     public void backToPList() {

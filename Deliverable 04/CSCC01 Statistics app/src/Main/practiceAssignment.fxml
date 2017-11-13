@@ -48,7 +48,8 @@
                     <TextFlow textAlignment="CENTER">
                         <Button fx:id="checkAnsButton" onAction="#checkAnswers" prefHeight="30.0" text="Check Answers" />
                         <Button fx:id="newPracticeButton" onAction="#newPracticeSet" prefHeight="30" managed="false" text="New Practice Set" />
-                        <Button fx:id="pAssgnToPList" onAction="#backToPList" prefHeight="30.0" prefWidth="70.0" text="Back" />
+                        <!--<Button fx:id="pAssgnToPList" onAction="#backToPList" prefHeight="30.0" prefWidth="70.0" text="Back" />-->
+                        <Button fx:id="pAssgnToAssgn" onAction="#backToAssign" prefHeight="30" text=" Back " />
                     </TextFlow>
                 </VBox>
             </children>
