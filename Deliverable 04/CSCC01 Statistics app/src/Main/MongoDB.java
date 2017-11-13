@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.IndexOptions;
 
 import com.mongodb.client.model.Indexes;
+import org.bson.BSON;
 import org.bson.Document;
 
 import java.util.*;
@@ -31,6 +32,11 @@ public class MongoDB {
         MongoCollection userCollection = newDatabase.getCollection("Users");
         IndexOptions indexOptions = new IndexOptions().unique(true);
         userCollection.createIndex(Indexes.ascending("stID"), indexOptions);
+        MongoCollection assgnCollection = newDatabase.getCollection("AssignDueDate");
+        assgnCollection.createIndex(Indexes.ascending("assignName"), indexOptions);
+        MongoCollection assgnNoDueCollection = newDatabase.getCollection("AssignNoDueDate");
+        assgnNoDueCollection.createIndex(Indexes.ascending("assignName"), indexOptions);
+
 
     }
     public static void addToStudents(String fName, String lName, int stID){
@@ -49,6 +55,13 @@ public class MongoDB {
         List<Document> users = (List<Document>) userCollection.find().into(new ArrayList<Document>());
         return users;
     }
+
+    public static void removeStudent(int stID){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection("Users");
+        userCollection.findOneAndDelete(eq("stid", stID));
+    }
+
     public static void printStudent(){
         MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
         MongoCollection userCollection = userDatabase.getCollection("Users");
@@ -83,6 +96,17 @@ public class MongoDB {
         try {
             userCollection.insertOne(question);
         }catch (MongoWriteException e){
+        }
+    }
+    public static void update(){
+        List<Document> students = getStudents();
+        for(Document student:students){
+            for(Student ref: Data.studentList){
+                if(((int) student.get("stID"))!= (ref.getStudentId())){
+                    Student newStudent = new Student((String) student.get("fName"),(String) student.get("lName"),(int) student.get("stID"));
+                    Data.studentList.add(newStudent);
+                }
+            }
         }
     }
 

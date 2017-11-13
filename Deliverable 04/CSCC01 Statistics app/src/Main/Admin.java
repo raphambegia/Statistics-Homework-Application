@@ -17,6 +17,7 @@ public class Admin extends User {
         Student newStudent = new Student(fname, lname, stid);
         MongoDB.addToStudents(fname, lname, stid);
         Data.studentList.add(newStudent);
+        MongoDB.update();
         System.out.println(fname + " added to Student List");
         int i = 0;
         for (Student s : Data.studentList) {
@@ -36,6 +37,7 @@ public class Admin extends User {
         }
         Predicate<Student> stuPred = theStudent -> theStudent.getStudentId() == stid;
         Data.studentList.removeIf(stuPred);
+        MongoDB.removeStudent(stid);
         Data.RemoveUser(student.getLoginID());
     }
 
