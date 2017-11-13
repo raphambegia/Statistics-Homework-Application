@@ -49,7 +49,6 @@ public class adViewAsController {
     public void loadAssignmentQs() {
         // Gets all the questions
         for(Assignment curr : Data.assignmentList) {
-            System.out.println("looping a list: " + curr.getAssignmentName() + " vs " + aAssgnTitle.getText());
             if(curr.getAssignmentName().equals(aAssgnTitle.getText())) {
                 questionList = curr.getQuestionList();
             }

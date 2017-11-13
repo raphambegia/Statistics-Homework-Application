@@ -13,7 +13,7 @@
          <children>
             <Label layoutX="183.0" layoutY="158.0" text="First Name: " />
             <Label layoutX="184.0" layoutY="201.0" text="Last Name: " />
-            <Label layoutX="183.0" layoutY="243.0" text="ID: " />
+            <Label layoutX="183.0" layoutY="243.0" text="Student ID: " />
             <TextField fx:id="fnameAdd" layoutX="291.0" layoutY="153.0" />
             <TextField fx:id="lnameAdd" layoutX="291.0" layoutY="196.0" />
             <TextField fx:id="sIDAdd" layoutX="291.0" layoutY="238.0" />

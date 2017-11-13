@@ -21,8 +21,6 @@ public class loginController {
     @FXML
     Button loginButton;
     @FXML
-    Button logOutButton;
-    @FXML
     Button viewStudents;
     @FXML
     Button backStudent;
@@ -41,8 +39,9 @@ public class loginController {
     @FXML
     Button viewAssignments;
     @FXML
-    Button studentAssgnView;
+    Button logOutButton;
 
+    public Student currStudent;
 
     public void loginButton(ActionEvent event){
         System.out.println("Hello World");
@@ -62,21 +61,24 @@ public class loginController {
             stage.setScene(new Scene(root, 650, 400));
             stage.show();
         }else if(Data.CheckUser(userName.getText(),password.getText()) == 1){
-            Parent root = FXMLLoader.load(getClass().getResource("studentPage.fxml"));
+            for(Student s : Data.getStudentList()) {
+                if(s.getFName().equals(userName.getText()) && s.getLName().equals(password.getText())) {
+                    currStudent = s;
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+            Parent root = loader.load();
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
+            studentPageController controller = loader.<studentPageController>getController();
+            controller.passStudent(currStudent);
             stage.show();
 
         }else if(Data.CheckUser(userName.getText(),password.getText()) == -1){
             loginError.setText("Login Failed");
         }
     }
-    public void logOutHandler(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
-        Stage stage  = (Stage) logOutButton.getScene().getWindow();
-        stage.setScene(new Scene(root, 650, 400));
-        stage.show();
-    }
+
     public void viewStudent(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
         Stage stage  = (Stage) viewStudents.getScene().getWindow();
@@ -96,13 +98,24 @@ public class loginController {
     }
 
     public void formAddStudent(ActionEvent event) throws IOException{
+        boolean idExists = false;
         if (sIDAdd.getText().chars().allMatch(Character::isDigit)) {
-            Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
-            addedlabel.setStyle("-fx-text-fill: green;");
-            addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
+            for(Student curr : Data.getStudentList()) {
+                if(curr.getStudentId() == Integer.valueOf(sIDAdd.getText())) {
+                    addedlabel.setStyle("-fx-text-fill: red;");
+                    addedlabel.setText("ID taken, please select a unique ID number.");
+                    idExists = true;
+                }
+            }
         } else {
             addedlabel.setStyle("-fx-text-fill: red;");
             addedlabel.setText("ID must be a number. Please try again.");
+        }
+        if (!idExists) {
+            idExists = true;
+            Admin.createStudent(fnameAdd.getText(),lnameAdd.getText(),Integer.valueOf(sIDAdd.getText()));
+            addedlabel.setStyle("-fx-text-fill: green;");
+            addedlabel.setText(fnameAdd.getText() +" " + lnameAdd.getText() + " added");
         }
     }
 
@@ -113,10 +126,11 @@ public class loginController {
         stage.show();
     }
 
-    public void studentAssignmentView(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentAssignment.fxml"));
-        Stage stage  = (Stage) studentAssgnView.getScene().getWindow();
+    public void logOutHandler(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        Stage stage  = (Stage) logOutButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
+
 }
