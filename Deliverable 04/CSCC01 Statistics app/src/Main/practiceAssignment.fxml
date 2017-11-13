@@ -22,7 +22,7 @@
         <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
         <VBox layoutX="50" layoutY="62">
             <children>
-                <ScrollPane prefHeight="250.0" prefWidth="550.0">
+                <ScrollPane fx:id="pScrollPane" onMouseEntered="#hovering" prefHeight="250.0" prefWidth="550.0">
                     <Group>
                         <VBox pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
                             <VBox alignment="CENTER">
@@ -47,7 +47,7 @@
                     <Separator visible="false" />
                     <TextFlow textAlignment="CENTER">
                         <Button fx:id="checkAnsButton" onAction="#checkAnswers" prefHeight="30.0" text="Check Answers" />
-                        <Button fx:id="newPracticeButton" onAction="#newPracticeSet" prefHeight="30" managed="false" text="New Practice Set" />
+                        <Button fx:id="newPracticeButton" onAction="#newPracticeSet" prefHeight="30" managed="false" visible="false" text="New Practice Set" />
                         <!--<Button fx:id="pAssgnToPList" onAction="#backToPList" prefHeight="30.0" prefWidth="70.0" text="Back" />-->
                         <Button fx:id="pAssgnToAssgn" onAction="#backToAssign" prefHeight="30" text=" Back " />
                     </TextFlow>
