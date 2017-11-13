@@ -65,13 +65,7 @@ public class viewAssignmentController {
     }
 
     public void loadAssignment() {
-        // Gets all the questions
-        for(Assignment curr : Data.assignmentList) {
-            if(curr.getAssignmentName().equals(assgnTitle.getText())) {
-                questionList = curr.getRandomQuestionList();
-                //questionList = curr.getQuestionList();
-            }
-        }
+        questionList = assignment.getRandomQuestionList();
 
         // Displays all the questions
         for(int i = 0; i < questionList.size(); i++) {
