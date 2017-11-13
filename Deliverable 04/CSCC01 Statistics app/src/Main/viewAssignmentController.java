@@ -162,7 +162,7 @@ public class viewAssignmentController {
         Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         practiceAssignmentController controller = loader.<practiceAssignmentController>getController();
-        controller.initAssignment(assignment);
+        controller.initAssignment(assignment, student);
         stage.show();
     }
 
