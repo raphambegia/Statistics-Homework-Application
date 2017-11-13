@@ -1,7 +1,9 @@
 package Main;
 
 
-public class User {
+import com.mongodb.ReflectionDBObject;
+
+public class User{
     private String loginID;
     private String loginPW;
     private char type;

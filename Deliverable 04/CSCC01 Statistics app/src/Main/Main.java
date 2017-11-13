@@ -1,14 +1,16 @@
 package Main;
 
+import com.mongodb.MongoClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import org.bson.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main extends Application {
     Stage stage;
@@ -26,9 +28,15 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        MongoDB newDB = new MongoDB();
+        newDB.connect();
         Data AllData;
         Admin admin1 = new Admin("admin","pass");
-        Student stu = new Student("john", "doe", 01);
+        List<Document> students = MongoDB.getStudents();
+        for(Document student: students) {
+            Student newStudent = new Student((String) student.get("fName"),(String) student.get("lName"),(int) student.get("stID"));
+            Data.studentList.add(newStudent);
+        }
         Admin.createAssignment("A1", "2016/09/09");
 
         ArrayList<String> al = new ArrayList<String>();
@@ -40,8 +48,7 @@ public class Main extends Application {
         Data.assignmentList.get(0).addQuestion(qq);
 
         //System.out.println(Data.assignmentList.get(0).getQuestionList().get(0).getTheQuestion());
-
-        Data.studentList.add(stu);
+        MongoDB.printStudent();
         launch(args);
     }
 }

@@ -15,6 +15,7 @@ public class Admin extends User {
 
     public static void createStudent(String fname, String lname, int stid){
         Student newStudent = new Student(fname, lname, stid);
+        MongoDB.addToStudents(fname, lname, stid);
         Data.studentList.add(newStudent);
         System.out.println(fname + " added to Student List");
         int i = 0;
@@ -41,15 +42,18 @@ public class Admin extends User {
     public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, Assignment assgn){
         Question newQuestion = new Question(theQuestion, mcAnswers, solnInd);
         assgn.addQuestion(newQuestion);
+        MongoDB.addToQuestions(assgn.getAssignmentName(), theQuestion, mcAnswers.get(0), mcAnswers.get(1), mcAnswers.get(2), mcAnswers.get(3), mcAnswers.get(4), solnInd);
     }
 
     public static void createAssignment(String assgnName, String dueDate) {
         Assignment newAssignment = new Assignment(assgnName, dueDate);
         Data.assignmentList.add(newAssignment);
+        MongoDB.addToAssignmentWDueDate(assgnName, dueDate);
     }
 
     public static void createAssignment(String assgnName) {
         Assignment newAssignment = new Assignment(assgnName);
         Data.assignmentList.add(newAssignment);
+        MongoDB.addToAssignmentNoDueDate(assgnName);
     }
 }
