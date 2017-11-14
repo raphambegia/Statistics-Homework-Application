@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.viewAssignmentController">
+    <children>
+        <VBox alignment="CENTER" layoutY="15">
+            <Label fx:id="assgnTitle" alignment="CENTER" contentDisplay="CENTER" prefWidth="630.0" textAlignment="CENTER" >
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+            <Label fx:id="attemptsTitle" text="" />
+            <Separator visible="false"/>
+        </VBox>
+        <Separator visible="false"/>
+        <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
+            <VBox layoutX="50" layoutY="70">
+                <children>
+                    <ScrollPane prefHeight="250.0" prefWidth="550.0">
+                        <Group>
+                            <VBox pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
+                                <VBox alignment="CENTER">
+                                    <Label fx:id="markLabel" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" managed="false" textFill="darkblue">
+                                        <font>
+                                            <Font size="20.0" />
+                                        </font>
+                                    </Label>
+                                </VBox>
+                                <VBox fx:id="assgnVbox" pickOnBounds="false" prefHeight="108.0" prefWidth="520.0">
+
+                                </VBox>
+                            </VBox>
+                        </Group>
+                    </ScrollPane>
+                    <VBox alignment="CENTER">
+                        <Separator visible="false" />
+                        <Separator visible="false" />
+                        <TextFlow textAlignment="CENTER">
+                            <Label fx:id="viewAssgnLabel" text="" textFill="green" />
+                        </TextFlow>
+                        <Separator visible="false" />
+                        <TextFlow textAlignment="CENTER">
+                            <Button fx:id="submitAssignButton" onAction="#submitAssignment" prefHeight="30.0" text="Submit Assignment" />
+                            <Button fx:id="assgnToPractice" managed="false" onAction="#toPracticeAssgn" prefHeight="30" text="Practice" />
+                            <Button fx:id="assgnBackToList" onAction="#aBackToList" prefHeight="30.0" prefWidth="70.0" text="Back" />
+                        </TextFlow>
+                    </VBox>
+                </children>
+            </VBox>
+        <!--</TextFlow>-->
+    </children>
+</AnchorPane>
