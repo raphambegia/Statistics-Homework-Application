@@ -34,12 +34,15 @@ public class Main extends Application {
         Admin.createAssignment("A1");
 
         ArrayList<String> al = new ArrayList<String>();
-        al.add("karen");
-        al.add("kareb");
-        Question q = new Question("who is the best", al, 0);
-        Question qq = new Question("who is the bestest", al, 1);
+        al.add("Karen");
+        al.add("Kareb");
+        al.add("K");
+        Question q = new Question("Who is the best", al, 0);
+        Question qq = new Question("Who is the bestest", al, 1);
+        Question qqq = new Question("The best ever", al, 2);
         Data.assignmentList.get(0).addQuestion(q);
         Data.assignmentList.get(0).addQuestion(qq);
+        Data.assignmentList.get(0).addQuestion(qqq);
 
         //System.out.println(Data.assignmentList.get(0).getQuestionList().get(0).getTheQuestion());
 

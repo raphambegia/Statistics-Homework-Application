@@ -30,6 +30,8 @@ public class viewAssignmentController {
     private Button assgnToPractice;
     @FXML
     private Label markLabel;
+    @FXML
+    private Label attemptsTitle;
 
     public Student student;
     private Assignment assignment;
@@ -92,7 +94,8 @@ public class viewAssignmentController {
     public boolean attemptsRemaining() {
         int maxAttempts = 2; // Allow admin to change? Or vary depending on assignment?
         if(student.getCompletedAssignments().get(assignment.getAssignmentName()) != null) {
-            int numAttempts = student.getCompletedAssignments().get(assignment.getAssignmentName()).size() / 2;
+            int numAttempts = student.getAssignmentMarks(assignment).size();
+            attemptsTitle.setText("You have used " + numAttempts + " out of " + maxAttempts + " marked attempts");
             if(maxAttempts <= numAttempts) {
                 viewAssgnLabel.setText("All attempts used. You may go into practice mode instead.");
                 assgnToPractice.setManaged(true);
@@ -101,6 +104,8 @@ public class viewAssignmentController {
                 assgnVbox.getChildren().clear();
                 return false;
             }
+        } else {
+            attemptsTitle.setText("You have used 0 out of " + maxAttempts + " marked attempts");
         }
         return true;
     }

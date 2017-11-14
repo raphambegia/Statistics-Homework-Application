@@ -12,15 +12,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.practiceAssignmentController">
     <children>
-        <VBox alignment="CENTER" layoutY="20">
-            <Label fx:id="pAssgnTitle" alignment="CENTER" contentDisplay="CENTER" layoutY="12.0" prefHeight="15.0" prefWidth="630.0" textAlignment="CENTER" >
+        <VBox alignment="CENTER" layoutY="15">
+            <Label fx:id="pAssgnTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="630.0" textAlignment="CENTER" >
                 <font>
                     <Font size="27.0" />
                 </font>
             </Label>
+            <Label text="These assignments are for practice only, marks will not be submitted" />
+            <Separator visible="false"/>
         </VBox>
+        <Separator visible="false" />
         <!--<TextFlow layoutX="50.0" layoutY="80.0">-->
-        <VBox layoutX="50" layoutY="62">
+        <VBox layoutX="50" layoutY="70">
             <children>
                 <ScrollPane fx:id="pScrollPane" onMouseEntered="#hovering" prefHeight="250.0" prefWidth="550.0">
                     <Group>
@@ -39,7 +42,6 @@
                     </Group>
                 </ScrollPane>
                 <VBox alignment="CENTER">
-                    <Separator visible="false" />
                     <Separator visible="false" />
                     <TextFlow textAlignment="CENTER">
                         <Label fx:id="viewPAssgnLabel" text="" textFill="green" />
