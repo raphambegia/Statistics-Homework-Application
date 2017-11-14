@@ -30,6 +30,8 @@ public class practiceAssignmentController {
     private Button newPracticeButton;
     @FXML
     private Button pAssgnToAssgn;
+    @FXML
+    private ScrollPane pScrollPane;
 
     private Assignment assignment;
     private Student student;
@@ -128,6 +130,7 @@ public class practiceAssignmentController {
     }
 
     public void newPracticeSet() {
+        viewPAssgnLabel.setText("");
         checkAnsButton.setManaged(true);
         checkAnsButton.setVisible(true);
         newPracticeButton.setManaged(false);
@@ -150,4 +153,12 @@ public class practiceAssignmentController {
 
     }
 
+    /*
+     If we could disable clicking that would be great
+     */
+    public void hovering() {
+        if(newPracticeButton.isVisible()) {
+            viewPAssgnLabel.setText("Start a new practice set to try again!");
+        }
+    }
 }
