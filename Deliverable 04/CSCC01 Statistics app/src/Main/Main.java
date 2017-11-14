@@ -40,6 +40,7 @@ public class Main extends Application {
         Question q = new Question("Who is the best", al, 0);
         Question qq = new Question("Who is the bestest", al, 1);
         Question qqq = new Question("The best ever", al, 2);
+
         Data.assignmentList.get(0).addQuestion(q);
         Data.assignmentList.get(0).addQuestion(qq);
         Data.assignmentList.get(0).addQuestion(qqq);

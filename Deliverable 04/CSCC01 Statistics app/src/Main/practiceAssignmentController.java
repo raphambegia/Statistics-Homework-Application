@@ -133,6 +133,7 @@ public class practiceAssignmentController {
         viewPAssgnLabel.setText("");
         pMarkLabel.setText("");
         pMarkLabel.setManaged(false);
+
         checkAnsButton.setManaged(true);
         checkAnsButton.setVisible(true);
         newPracticeButton.setManaged(false);
