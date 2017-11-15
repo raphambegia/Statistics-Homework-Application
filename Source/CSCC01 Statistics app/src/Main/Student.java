@@ -61,8 +61,12 @@ public class Student extends User{
         return studentId.getValue();
     }
 
-    public HashMap<String, ArrayList<Double>> getAssignmentMarks() {
-        return assignmentMarks;
+    public ArrayList<Double> getAssignmentMarks(Assignment assign) {
+        if (!assignmentMarks.containsKey(assign.getAssignmentName())) {
+            System.out.println("getAssignmentMarks FAILED");
+            return null;
+        }
+        return assignmentMarks.get(assign.getAssignmentName());
     }
 
     public Double getBestMarkFor(String assgnName) {
