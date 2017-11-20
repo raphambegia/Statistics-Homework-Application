@@ -23,6 +23,8 @@ Sprint Backlog 3(in Deliverable 04 Folder):
 Product Backlog v1(in Deliverable 04 Folder):
 ![Product Backlog v2 Deliverable 4](Deliverable%2004/Del04-Report.pdf)
 
+Code Review Video: https://youtu.be/Sd9CiEXwCKU
+
 ## Developer Manual
 
 ### User Accounts
