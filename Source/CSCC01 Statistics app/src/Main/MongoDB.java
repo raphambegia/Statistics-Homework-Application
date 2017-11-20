@@ -36,6 +36,8 @@ public class MongoDB {
         assgnCollection.createIndex(Indexes.ascending("assignName"), indexOptions);
         MongoCollection assgnNoDueCollection = newDatabase.getCollection("AssignNoDueDate");
         assgnNoDueCollection.createIndex(Indexes.ascending("assignName"), indexOptions);
+        MongoCollection questions = newDatabase.getCollection("Questions");
+        questions.createIndex(Indexes.ascending("question"), indexOptions);
 
 
     }
@@ -59,7 +61,7 @@ public class MongoDB {
     public static void removeStudent(int stID){
         MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
         MongoCollection userCollection = userDatabase.getCollection("Users");
-        userCollection.findOneAndDelete(eq("stid", stID));
+        userCollection.deleteOne(new Document("stID",  stID));
     }
 
     public static void printStudent(){

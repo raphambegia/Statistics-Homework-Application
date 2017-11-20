@@ -44,6 +44,7 @@ public class Admin extends User {
         }
         Predicate<Student> stuPred = theStudent -> theStudent.getStudentId() == stid;
         Data.studentList.removeIf(stuPred);
+        MongoDB.removeStudent(stid);
         Data.RemoveUser(student.getLoginID());
     }
 
