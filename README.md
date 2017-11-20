@@ -23,6 +23,12 @@ Sprint Backlog 3(in Deliverable 04 Folder):
 Product Backlog v1(in Deliverable 04 Folder):
 ![Product Backlog v2 Deliverable 4](Deliverable%2004/Del04-Report.pdf)
 
+Sprint Backlog 4(in Deliverable 04 Folder):
+![Sprint Backlog 4 Deliverable 5](Deliverable%2005/Sprint%20Backlog4.pdf)
+
+Sprint Backlog 5(in Deliverable 05 Folder):
+![Sprint Backlog 5 Deliverable 5](Deliverable%2005/Sprint%20Backlog4.pdf)
+
 Code Review Video: https://youtu.be/Sd9CiEXwCKU
 
 ## Developer Manual
