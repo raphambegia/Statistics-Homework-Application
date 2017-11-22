@@ -62,7 +62,7 @@ public class adViewAsController {
     }
 
     public void addQuestion() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("addQuestion.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../AdminGUI/AddQuestion.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) addQuestionButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
@@ -72,7 +72,7 @@ public class adViewAsController {
     }
 
     public void aBackToAsPage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/assignmentPage.fxml"));
         Stage stage = (Stage) backToAsPageButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();

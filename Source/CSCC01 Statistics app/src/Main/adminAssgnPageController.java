@@ -35,7 +35,7 @@ public class adminAssgnPageController {
             assgnButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("adViewAsPage.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../AdminGUI/adViewAsPage.fxml"));
                     try {
                         Parent root = loader.load();
                         Stage stage = (Stage) assgnButton.getScene().getWindow();
@@ -56,14 +56,14 @@ public class adminAssgnPageController {
     }
 
     public void assignmentAdd(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("createAssignment.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/createAssignment.fxml"));
         Stage stage  = (Stage) addAssignment.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
 
     public void backMain(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/adminPage.fxml"));
         Stage stage  = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();

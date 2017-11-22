@@ -40,7 +40,7 @@ public class studentListController {
     }
 
     public void addStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AddStudent.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/AddStudent.fxml"));
         Stage stage  = (Stage) addStudent.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
@@ -60,7 +60,7 @@ public class studentListController {
     }
 
     public void backMain(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/adminPage.fxml"));
         Stage stage  = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();

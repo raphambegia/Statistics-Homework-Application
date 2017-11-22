@@ -2,7 +2,6 @@ package Main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -162,7 +161,7 @@ public class viewAssignmentController {
     }
 
     public void toPracticeAssgn() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("practiceAssignment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/practiceAssignment.fxml"));
         Parent root = loader.load();
         Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
@@ -172,7 +171,7 @@ public class viewAssignmentController {
     }
 
     public void aBackToList() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentAssignment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentAssignment.fxml"));
         Parent root = loader.load();
         Stage stage  = (Stage) assgnBackToList.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));

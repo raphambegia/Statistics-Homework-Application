@@ -12,9 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * STUDENT VIEWS THEIR LIST OF ASSIGNMENTS
@@ -47,7 +44,7 @@ public class stuAssignmentPageController {
             assgnButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("viewAssignmentPage.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/viewAssignmentPage.fxml"));
                     try {
                         Parent root = loader.load();
                         Stage stage = (Stage) secretButton.getScene().getWindow();
@@ -68,7 +65,7 @@ public class stuAssignmentPageController {
     }
 
     public void studentBacktoMain(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentPage.fxml"));
         Parent root = loader.load();
         Stage stage  = (Stage) assignmentBack.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));

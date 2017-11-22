@@ -143,7 +143,7 @@ public class questionController {
     }
 
     public void backQuestionHandler() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("adViewAsPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../AdminGUI/adViewAsPage.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) backQuestionButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));

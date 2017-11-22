@@ -6,9 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bson.Document;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Main extends Application {
@@ -19,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/mainView.fxml"));
         primaryStage.setTitle("Statistics Application");
         primaryStage.setScene(new Scene(root, 650, 400));
         primaryStage.show();

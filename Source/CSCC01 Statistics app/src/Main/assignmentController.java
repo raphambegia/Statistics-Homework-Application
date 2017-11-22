@@ -2,7 +2,6 @@ package Main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -90,7 +89,7 @@ public class assignmentController {
         }
     }
     public void backToViewAssgn(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/assignmentPage.fxml"));
         Stage stage  = (Stage) backToAssignments.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();

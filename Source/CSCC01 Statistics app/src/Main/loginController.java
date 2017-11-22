@@ -56,7 +56,7 @@ public class loginController {
         if User not exist, return '-1'
         */
         if(Data.CheckUser(userName.getText(),password.getText()) == 0) {
-            Parent root = FXMLLoader.load(getClass().getResource("adminPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/adminPage.fxml"));
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
             stage.show();
@@ -66,7 +66,7 @@ public class loginController {
                     currStudent = s;
                 }
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentPage.fxml"));
             Parent root = loader.load();
             Stage stage  = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root, 650, 400));
@@ -80,14 +80,14 @@ public class loginController {
     }
 
     public void viewStudent(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/studentList.fxml"));
         Stage stage  = (Stage) viewStudents.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
 
     public void backStudent(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("studentList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/studentList.fxml"));
         Stage stage  = (Stage) backStudent.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
@@ -120,14 +120,14 @@ public class loginController {
     }
 
     public void viewAssignment(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("assignmentPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/assignmentPage.fxml"));
         Stage stage  = (Stage) viewAssignments.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
 
     public void logOutHandler(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/mainView.fxml"));
         Stage stage  = (Stage) logOutButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();

@@ -24,7 +24,7 @@ public class studentPageController {
     }
 
     public void studentAssignmentView(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentAssignment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentAssignment.fxml"));
         Parent root = loader.load();
         Stage stage  = (Stage) studentAssgnView.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
@@ -34,7 +34,7 @@ public class studentPageController {
     }
 
     public void logOutHandler(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/mainView.fxml"));
         Stage stage  = (Stage) logOutButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
