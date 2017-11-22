@@ -56,6 +56,7 @@ public class markListController {
             assignCols.add(newCol);
             marksTable.getColumns().add(newCol);
 
+            // Loads the assignment marks into their cells
             newCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Student, String> c) {
@@ -63,6 +64,7 @@ public class markListController {
                 }
             });
 
+            // Allows admin to adjust marks by double clicking
             newCol.setCellFactory(TextFieldTableCell.forTableColumn());
             newCol.setOnEditCommit(
                     new EventHandler<TableColumn.CellEditEvent<Student, String>>() {

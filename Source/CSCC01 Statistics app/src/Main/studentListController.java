@@ -58,6 +58,7 @@ public class studentListController {
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
 
+        // Allow admin to edit first name
         fnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         fnameCol.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
@@ -70,6 +71,7 @@ public class studentListController {
                 }
         );
 
+        // Allow admin to edit last name
         lnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         lnameCol.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
