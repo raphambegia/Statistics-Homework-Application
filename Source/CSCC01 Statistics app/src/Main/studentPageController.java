@@ -15,6 +15,8 @@ public class studentPageController {
     @FXML
     Button studentAssgnView;
     @FXML
+    Button viewMarksButton;
+    @FXML
     Button logOutButton;
 
     public Student currStudent;
@@ -30,6 +32,16 @@ public class studentPageController {
         stage.setScene(new Scene(root, 650, 400));
         stuAssignmentPageController controller = loader.<stuAssignmentPageController>getController();
         controller.passStudent(currStudent);
+        stage.show();
+    }
+
+    public void goViewMarks(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentMarkList.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) viewMarksButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        studentMarkListController controller = loader.<studentMarkListController>getController();
+        controller.initStudent(currStudent);
         stage.show();
     }
 

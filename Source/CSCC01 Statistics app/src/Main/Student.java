@@ -156,6 +156,11 @@ public class Student extends User{
         return completedAssignments;
     }
 
+    public ArrayList<String> getCompletedAssignNames() {
+        ArrayList<String> completedAssignments = new ArrayList<>(this.getCompletedAssignments().keySet());
+        return completedAssignments;
+    }
+
     public void addAssgnAttempt(String assgnName, ArrayList<String> questionOrder, ArrayList<String> ansIndex) {
         ArrayList<ArrayList<String>> qAndA = new ArrayList<>();
         if(completedAssignments.containsKey(assgnName)) {
