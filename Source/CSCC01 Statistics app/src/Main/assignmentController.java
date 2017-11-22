@@ -74,7 +74,7 @@ public class assignmentController {
             } else {
                 Admin.createAssignment(aName.getText(), dueDateStr);
                 assignmentLabel.setStyle("-fx-text-fill: green;");
-                assignmentLabel.setText(aName.getText() + " with due date " + dueDateStr + " created");
+                assignmentLabel.setText("[" + aName.getText() + "] with due date [" + dueDateStr + "] created");
             }
         }
     }

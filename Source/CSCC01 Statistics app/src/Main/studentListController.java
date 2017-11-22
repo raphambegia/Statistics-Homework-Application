@@ -49,6 +49,10 @@ public class studentListController {
     public void loadStudentTable(){
         ObservableList<Student> students = FXCollections.observableArrayList(Data.studentList);
 
+//        for(Student student : students) {
+//            System.out.println(student.getFName());
+//        }
+
         fnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("fName"));
         lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));

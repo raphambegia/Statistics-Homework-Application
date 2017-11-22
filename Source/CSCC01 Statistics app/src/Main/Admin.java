@@ -16,8 +16,8 @@ public class Admin extends User {
     public static void createStudent(String fname, String lname, int stid){
         Student newStudent = new Student(fname, lname, stid);
         MongoDB.addToStudents(fname, lname, stid);
-        MongoDB.update();
-        Data.studentList.add(newStudent);
+        MongoDB.update(); // Adds student to Data studentList
+        //Data.studentList.add(newStudent); theoretically don't need this line because it's in mongo?
         System.out.println(fname + " added to Student List");
         int i = 0;
         for (Student s : Data.studentList) {
