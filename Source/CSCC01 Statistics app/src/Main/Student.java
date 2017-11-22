@@ -81,6 +81,18 @@ public class Student extends User{
         return bestMark;
     }
 
+    public String getStrBestMarkFor(String assgnName) {
+        Double bestMark = 0.0;
+        if(assignmentMarks.containsKey(assgnName)) {
+            for(Double mark : assignmentMarks.get(assgnName)) {
+                if(mark > bestMark) {
+                    bestMark = mark;
+                }
+            }
+        }
+        return bestMark.toString();
+    }
+
     public void setAssignmentMarks(String assgnName, Double mark) {
         ArrayList<Double> markList = new ArrayList<>();
         if(assignmentMarks.containsKey(assgnName)) {

@@ -24,6 +24,8 @@ public class studentListController {
     Button addStudent;
     @FXML
     Button backButton;
+    @FXML
+    Button viewMarksButton;
 
     //Tableview for students
     @FXML
@@ -62,6 +64,13 @@ public class studentListController {
     public void backMain(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/adminPage.fxml"));
         Stage stage  = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        stage.show();
+    }
+
+    public void goToMarks(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/markListPage.fxml"));
+        Stage stage  = (Stage) viewMarksButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.markListController">
+
+    <VBox alignment="CENTER" layoutX="20" layoutY="20" minWidth="570" maxWidth="570" prefHeight="320" maxHeight="320">
+
+        <Label alignment="CENTER" prefHeight="23.0" text="Student Marks List">
+            <font>
+                <Font name="System Bold" size="17.0" />
+            </font>
+        </Label>
+        <Separator visible="false" />
+        <Separator visible="false" />
+            <Separator visible="false" />
+        <TableView fx:id="marksTable" maxHeight="320.0" prefHeight="320" minWidth="570" prefWidth="570">
+            <columns>
+                <TableColumn fx:id="fnameCol" prefWidth="75.0" text="First Name" />
+                <TableColumn fx:id="lnameCol" prefWidth="75.0" text="Last Name" />
+                <TableColumn fx:id="sidCol" prefWidth="100.0" text="Student ID" />
+            </columns>
+        </TableView>
+        <Separator visible="false" />
+        <Separator visible="false" />
+        <Button fx:id="toSListButton" onAction="#toSListPage" text="Back" prefWidth="100"/>
+    </VBox>
+</AnchorPane>

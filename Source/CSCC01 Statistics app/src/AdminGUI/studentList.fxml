@@ -14,7 +14,7 @@
             <Font name="System Bold" size="17.0" />
          </font></Label>
       <Button fx:id="addStudent" layoutX="384.0" layoutY="68.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="54.0" prefWidth="167.0" text="Add Student" />
-      <Button fx:id="refreshbuttonid" layoutX="384.0" layoutY="222.0" mnemonicParsing="false" onAction="#loadStudentTable" prefHeight="54.0" prefWidth="167.0" text="Refresh List" />
+      <Button fx:id="viewMarksButton" layoutX="384.0" layoutY="222.0" mnemonicParsing="false" onAction="#goToMarks" prefHeight="54.0" prefWidth="167.0" text="View Marks" />
       <Button fx:id="backButton" layoutX="384.0" layoutY="296.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="167.0" text="Back" />
       <TableView fx:id="studentTable" layoutX="28.0" layoutY="56.0" prefHeight="316.0" prefWidth="299.0">
         <columns>
