@@ -122,14 +122,21 @@ public class MongoDB {
         }
     }
     public static void update(){
+        boolean req = false;
         List<Document> students = getStudents();
+        Student newStudent = null;
         for(Document student:students){
+            newStudent = new Student((String) student.get("fName"),(String) student.get("lName"),(int) student.get("stID"));
             for(Student ref: Data.studentList){
                 if(((int) student.get("stID"))!= (ref.getStudentId())){
-                    Student newStudent = new Student((String) student.get("fName"),(String) student.get("lName"),(int) student.get("stID"));
-                    Data.studentList.add(newStudent);
+//                    Student newStudent = new Student((String) student.get("fName"),(String) student.get("lName"),(int) student.get("stID"));
+//                    Data.studentList.add(newStudent);
+                    req = true;
                 }
             }
+        }
+        if(req) {
+            Data.studentList.add(newStudent);
         }
     }
 
