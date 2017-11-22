@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Student extends User{
@@ -79,12 +80,17 @@ public class Student extends User{
 
     public String getStrAssignmentMarks(Assignment assign) {
         String marks = "";
-        if (!assignmentMarks.containsKey(assign.getAssignmentName())) {
-            System.out.println("getAssignmentMarks FAILED");
-            return null;
+        if (assignmentMarks.containsKey(assign.getAssignmentName())) {
+            for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
+                if(marks == "") {
+                    marks = String.format("%.1f", mark);
+                } else {
+                    marks = marks + "," + String.format("%.1f", mark);
+                }
+            }
         }
-        for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
-            marks = marks + "," + String.format("%.2f", mark);
+        if(marks == "") {
+            marks = "--";
         }
         return marks;
     }
@@ -111,6 +117,20 @@ public class Student extends User{
             }
         }
         return bestMark.toString();
+    }
+
+    public void overwriteAssgnMarks(String assgnName, String marks) {
+        ArrayList<String> mrks = new ArrayList<>(Arrays.asList(marks.split(",")));
+        ArrayList<Double> markList = new ArrayList<>();
+        for(String mark : mrks) {
+            markList.add(Double.valueOf(mark));
+        }
+        if(assignmentMarks.containsKey(assgnName)) {
+            assignmentMarks.replace(assgnName, markList);
+        } else {
+            assignmentMarks.put(assgnName, markList);
+        }
+
     }
 
     public void setAssignmentMarks(String assgnName, Double mark) {

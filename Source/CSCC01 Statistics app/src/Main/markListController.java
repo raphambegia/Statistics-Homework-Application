@@ -52,28 +52,28 @@ public class markListController {
 
         for(Assignment assgn : Data.getAssignmentList()) {
             TableColumn newCol = new TableColumn(assgn.getAssignmentName());
-            newCol.setPrefWidth(75);
+            newCol.setPrefWidth(85);
             assignCols.add(newCol);
             marksTable.getColumns().add(newCol);
 
             newCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Student, String> c) {
-                    return new SimpleStringProperty(c.getValue().getStrBestMarkFor(assgn.getAssignmentName()));
+                    return new SimpleStringProperty(c.getValue().getStrAssignmentMarks(assgn));
                 }
             });
 
-//            newCol.setCellFactory(TextFieldTableCell.forTableColumn());
-//            newCol.setOnEditCommit(
-//                    new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
-//                        @Override
-//                        public void handle(TableColumn.CellEditEvent<Student, String> t) {
-//                            ((Student) t.getTableView().getItems().get(
-//                                    t.getTablePosition().getRow())
-//                            ).setLName(t.getNewValue()); //////
-//                        }
-//                    }
-//            );
+            newCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            newCol.setOnEditCommit(
+                    new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
+                        @Override
+                        public void handle(TableColumn.CellEditEvent<Student, String> t) {
+                            ((Student) t.getTableView().getItems().get(
+                                    t.getTablePosition().getRow())
+                            ).overwriteAssgnMarks(assgn.getAssignmentName(), t.getNewValue());
+                        }
+                    }
+            );
         }
 
         marksTable.setItems(students);

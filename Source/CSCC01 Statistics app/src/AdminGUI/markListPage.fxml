@@ -24,11 +24,14 @@
         <Separator visible="false" />
         <TableView fx:id="marksTable" editable="true" maxHeight="320.0" prefHeight="320" minWidth="570" prefWidth="570">
             <columns>
-                <TableColumn fx:id="fnameCol" prefWidth="75.0" text="First Name" />
-                <TableColumn fx:id="lnameCol" prefWidth="75.0" text="Last Name" />
-                <TableColumn fx:id="sidCol" prefWidth="100.0" text="Student ID" />
+                <TableColumn fx:id="fnameCol" prefWidth="70.0" text="First Name" />
+                <TableColumn fx:id="lnameCol" prefWidth="70.0" text="Last Name" />
+                <TableColumn fx:id="sidCol" prefWidth="70.0" text="ID" />
             </columns>
         </TableView>
+        <Separator visible="false" />
+        <Separator visible="false" />
+        <Label text="Adjust marks by double clicking on the respective box"/>
         <Separator visible="false" />
         <Separator visible="false" />
         <TextFlow textAlignment="CENTER">
