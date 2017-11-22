@@ -143,7 +143,7 @@ public class Student extends User{
             assignmentMarks.put(assgnName, markList);
         }
     }
-
+    
 //    /*
 //    MAP KEY: assignment name
 //    MAPPED TO: an arraylist containing 2 string arraylists

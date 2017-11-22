@@ -25,8 +25,6 @@ public class markListController {
 
     @FXML
     Button toSListButton;
-    @FXML
-    Button editMarksButton;
 
     @FXML
     TableView<Student> marksTable;
