@@ -3,6 +3,7 @@ package Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,14 +53,35 @@ public class studentListController {
     public void loadStudentTable(){
         ObservableList<Student> students = FXCollections.observableArrayList(Data.studentList);
 
-//        for(Student student : students) {
-//            System.out.println(student.getFName());
-//        }
-
         fnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("fName"));
         lnameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lName"));
         sidCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("studentId"));
         studentTable.setItems(students);
+
+        fnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        fnameCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Student, String> t) {
+                        ((Student) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                        ).setFName(t.getNewValue());
+                    }
+                }
+        );
+
+        lnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        lnameCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Student, String> ln) {
+                        ((Student) ln.getTableView().getItems().get(
+                                ln.getTablePosition().getRow())
+                        ).setLName(ln.getNewValue());
+                    }
+                }
+        );
+
     }
 
     public void backMain(ActionEvent event) throws IOException{

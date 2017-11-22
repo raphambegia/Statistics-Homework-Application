@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 
 public class Data {
@@ -20,11 +21,31 @@ public class Data {
         System.out.println(user.getLoginID() +" added to User List");
     }
 
-    public static void RemoveUser (String id){
+    public static void addStudent(String fname, String lname, int stid) {
+        Student newStudent = new Student(fname, lname, stid);
+        MongoDB.addToStudents(fname, lname, stid);
+        MongoDB.update(); // Adds student to Data studentList
+        //Data.studentList.add(newStudent); theoretically don't need this line because it's in mongo?
+        System.out.println(fname + " added to Student List");
+    }
+
+    public static void RemoveUser (int stid){
+
+        Student student = null;
+        for (Student theStudent : Data.studentList){
+            if(stid == theStudent.getStudentId()) {
+                student = theStudent;
+                break;
+            }
+        }
+        Predicate<Student> stuPred = theStudent -> theStudent.getStudentId() == stid;
+        Data.studentList.removeIf(stuPred);
+        MongoDB.removeStudent(stid);
+
         int location = 0;
         Boolean found = false;
         for( User theuser : userList){
-           if (id.equals(theuser.getLoginID())) {
+           if (student.getLoginID().equals(theuser.getLoginID())) {
                found = true;
                break;
            }

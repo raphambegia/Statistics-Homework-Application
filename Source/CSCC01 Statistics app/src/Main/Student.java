@@ -39,6 +39,14 @@ public class Student extends User{
 
     public void setFName(String firstname){
         fName.set(firstname);
+        Data.RemoveUser(this.studentId.getValue());
+        Data.addStudent(fName.get(), lName.get(), studentId.getValue());
+    }
+
+    public void setLName(String lastname){
+        lName.set(lastname);
+        Data.RemoveUser(this.studentId.getValue());
+        Data.addStudent(fName.get(), lName.get(), studentId.getValue());
     }
 
     public StringProperty fNameProperty() {
@@ -67,6 +75,18 @@ public class Student extends User{
             return null;
         }
         return assignmentMarks.get(assign.getAssignmentName());
+    }
+
+    public String getStrAssignmentMarks(Assignment assign) {
+        String marks = "";
+        if (!assignmentMarks.containsKey(assign.getAssignmentName())) {
+            System.out.println("getAssignmentMarks FAILED");
+            return null;
+        }
+        for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
+            marks = marks + "," + String.format("%.2f", mark);
+        }
+        return marks;
     }
 
     public Double getBestMarkFor(String assgnName) {

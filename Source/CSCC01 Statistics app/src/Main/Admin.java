@@ -14,15 +14,7 @@ public class Admin extends User {
     }
 
     public static void createStudent(String fname, String lname, int stid){
-        Student newStudent = new Student(fname, lname, stid);
-        MongoDB.addToStudents(fname, lname, stid);
-        MongoDB.update(); // Adds student to Data studentList
-        //Data.studentList.add(newStudent); theoretically don't need this line because it's in mongo?
-        System.out.println(fname + " added to Student List");
-        int i = 0;
-        for (Student s : Data.studentList) {
-            i++;
-        }
+        Data.addStudent(fname, lname, stid);
     }
     public static Assignment getAssignment(String assgnName){
         for (Assignment assgn: Data.assignmentList){
@@ -33,19 +25,7 @@ public class Admin extends User {
         return null;
     }
     public static void removeStudent(int stid){
-        Student student = null;
-        for (Student theStudent : Data.studentList){
-            if(stid == theStudent.getStudentId()) {
-                student = theStudent;
-                break;
-                //Data.RemoveUser(theStudent.getLoginID());
-                //Data.studentList.remove(theStudent);
-            }
-        }
-        Predicate<Student> stuPred = theStudent -> theStudent.getStudentId() == stid;
-        Data.studentList.removeIf(stuPred);
-        MongoDB.removeStudent(stid);
-        Data.RemoveUser(student.getLoginID());
+        Data.RemoveUser(stid);
     }
 
     public static void addQuestion(String theQuestion, ArrayList<String> mcAnswers, int solnInd, Assignment assgn){
