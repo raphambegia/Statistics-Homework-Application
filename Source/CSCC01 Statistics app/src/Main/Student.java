@@ -77,6 +77,31 @@ public class Student extends User{
         return assignmentMarks.get(assign.getAssignmentName());
     }
 
+    public String getAssignmentMarksStr(String assignName) {
+        Assignment assign = null;
+        for(Assignment a : Data.assignmentList) {
+            if(assignName.equals(a.getAssignmentName())) {
+                assign = a;
+                break;
+            }
+        }
+
+        String marks = "";
+        if (assignmentMarks.containsKey(assign.getAssignmentName())) {
+            for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
+                if(marks == "") {
+                    marks = String.format("%.1f", mark) + "%";
+                } else {
+                    marks = marks + ",  " + String.format("%.1f", mark) + "%";
+                }
+            }
+        }
+        if(marks == "") {
+            marks = "--";
+        }
+        return marks;
+    }
+
     public String getStrAssignmentMarks(Assignment assign) {
         String marks = "";
         if (assignmentMarks.containsKey(assign.getAssignmentName())) {
@@ -143,7 +168,12 @@ public class Student extends User{
             assignmentMarks.put(assgnName, markList);
         }
     }
-    
+
+    public ArrayList<String> getCompletedAssignNames() {
+        ArrayList<String> completedAssignments = new ArrayList<>(assignmentMarks.keySet());
+        return completedAssignments;
+    }
+
 //    /*
 //    MAP KEY: assignment name
 //    MAPPED TO: an arraylist containing 2 string arraylists
