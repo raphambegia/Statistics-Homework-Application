@@ -106,6 +106,7 @@ public class adminAssgnPageController {
     public void assignmentRm(ActionEvent event) throws IOException {
         Assignment assignment = assignmentTable.getSelectionModel().getSelectedItem();
         if (assignment != null) {
+            System.out.println("Removing: " + assignment.getAssignmentName());
             Data.removeAssignment(assignment);
             loadAssignments();
         }

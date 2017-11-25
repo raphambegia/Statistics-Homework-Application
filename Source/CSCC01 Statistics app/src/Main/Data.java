@@ -95,14 +95,20 @@ public class Data {
         //Location in ArrayList
         int Location = 0;
         for (Assignment AssignmentElement : assignmentList ){
-            if (deleteAssignment.getAssignmentID() == AssignmentElement.getAssignmentID()){
+            if(deleteAssignment.getAssignmentName().equals(AssignmentElement.getAssignmentName())) {
+            //if (deleteAssignment.getAssignmentID() == AssignmentElement.getAssignmentID()){
                 found = true;
 
                 break;
             }
             Location++;
         }
-        if (found == true){assignmentList.remove(Location);  updateAssignmentID(assignmentList);}
+        if (found == true){
+            Predicate<Assignment> assgnPred = AssignmentElement -> AssignmentElement.getAssignmentName() == deleteAssignment.getAssignmentName();
+            Data.assignmentList.removeIf(assgnPred);
+            //assignmentList.remove(Location);
+            //updateAssignmentID(assignmentList);
+        }
     }
 
     public static void updateAssignmentID (ArrayList<Assignment> ListofAssignments){
