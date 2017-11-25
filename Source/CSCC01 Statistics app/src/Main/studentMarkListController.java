@@ -1,21 +1,17 @@
 package Main;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class studentMarkListController {
 
@@ -23,15 +19,9 @@ public class studentMarkListController {
     Button toSPageButton;
 
     @FXML
-    TableView<Student> stuMarksTable;
+    VBox stuMarksBox;
     @FXML
-    TableColumn<Student, String> assignNameCol;
-    @FXML
-    TableColumn<Student, String> attemptOneCol;
-    @FXML
-    TableColumn<Student, Integer> attemptTwoCol;
-    @FXML
-    TableColumn<Student, Integer> bestMarkCol;
+    Label stuMLLabel;
 
     private Student student;
 
@@ -41,15 +31,31 @@ public class studentMarkListController {
     }
 
     public void loadStudentMarks() {
-        for(String str : student.getCompletedAssignNames()) {
-            assignNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<Student, String> c) {
-                    return new SimpleStringProperty(str);
-                }
-            });
+        double totalPoints = 0.0;
+        boolean attempted = false;
+        for(String assgnName : student.getCompletedAssignNames()) {
+            attempted = true;
+            String marks = student.getAssignmentMarksStr(assgnName);
+            String bestMark = student.getStrBestMarkFor(assgnName);
+            totalPoints += student.getBestMarkFor(assgnName);
+            TextFlow tf = new TextFlow();
+            Label markPt1 = new Label(assgnName + ": ");
+            markPt1.setPrefWidth(170);
+            markPt1.setFont(Font.font("System", 15));
+            Label markPt2 = new Label(marks);
+            markPt2.setPrefWidth(150);
+            markPt2.setFont(Font.font("System", 15));
+            Label markPt3 = new Label("Best:  " + bestMark + "%");
+            markPt3.setFont(Font.font("System", 15));
+            tf.getChildren().addAll(markPt1, markPt2, markPt3);
+            stuMarksBox.getChildren().add(tf);
         }
-
+        if(attempted) {
+            double finalMark = totalPoints/student.getCompletedAssignNames().size();
+            stuMLLabel.setText("Current average: " + finalMark + "%");
+        } else {
+            stuMLLabel.setText("There are no marks to show.");
+        }
     }
 
     public void toStudentPage() throws IOException {
