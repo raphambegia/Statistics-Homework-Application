@@ -140,7 +140,7 @@ public class Student extends User{
                 }
             }
         }
-        return bestMark.toString();
+        return String.format("%.1f", bestMark);
     }
 
     public void overwriteAssgnMarks(String assgnName, String marks) {
