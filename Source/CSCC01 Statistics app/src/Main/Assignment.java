@@ -31,7 +31,7 @@ public class Assignment {
     //ID denotes Assignment's place in the list. 1st Assignment: ID = 0. Updated automatically when AddAssignment or
     // RemoveAssignment called. Same applies for Question ID.
     private int AssignmentID;
-    private String AssignmentName;
+    private String assignmentName;
     private String dueDate;
     private ArrayList<Question> questionList =  new ArrayList<Question>();
     int assignmentSize = 5;
@@ -42,12 +42,12 @@ public class Assignment {
      * @param dueDate YYMMDD
      */
     public Assignment(String name, String dueDate) {
-        this.AssignmentName = name;
+        this.assignmentName = name;
         this.dueDate = dueDate;
     }
 
     public Assignment(String Name){
-        this.AssignmentName = Name;
+        this.assignmentName = Name;
     }
 
     public int getAssignmentID(){
@@ -55,7 +55,7 @@ public class Assignment {
     }
 
     public String getAssignmentName(){
-        return AssignmentName;
+        return assignmentName;
     }
 
     public void changeAssignmentID(int newID){
@@ -85,6 +85,14 @@ public class Assignment {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String getIsAvailable() {
+        if(this.isAvailable()) {
+            return "yes";
+        } else {
+            return "no";
+        }
     }
 
     /*
