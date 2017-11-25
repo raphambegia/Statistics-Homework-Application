@@ -45,9 +45,9 @@ public class assignmentController {
 
     public void createAssgnHandler() {
         // Make sure the assignment name is 1-25 char and not used
-        if (aName.getText().trim().length() == 0 || aName.getText().trim().length() > 25) {
+        if (aName.getText().trim().length() == 0 || aName.getText().trim().length() > 23) {
             assignmentLabel.setStyle("-fx-text-fill: red;");
-            assignmentLabel.setText("Please enter an assignment name between 1-25 characters.");
+            assignmentLabel.setText("Please enter an assignment name between 1-23 characters.");
             return;
         }
         if (isNameUsed()) {

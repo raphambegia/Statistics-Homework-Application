@@ -37,6 +37,7 @@ public class MongoDB {
         MongoCollection assgnNoDueCollection = newDatabase.getCollection("AssignNoDueDate");
         assgnNoDueCollection.createIndex(Indexes.ascending("assignName"), indexOptions);
         MongoCollection questions = newDatabase.getCollection("Questions");
+        //questions.deleteMany(new Document());
         questions.createIndex(Indexes.ascending("question"), indexOptions);
 
 

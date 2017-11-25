@@ -40,9 +40,9 @@ public class studentMarkListController {
             totalPoints += student.getBestMarkFor(assgnName);
             TextFlow tf = new TextFlow();
             Label markPt1 = new Label(assgnName + ": ");
-            markPt1.setPrefWidth(170);
+            markPt1.setPrefWidth(175);
             markPt1.setFont(Font.font("System", 15));
-            Label markPt2 = new Label(marks);
+            Label markPt2 = new Label("  " + marks);
             markPt2.setPrefWidth(150);
             markPt2.setFont(Font.font("System", 15));
             Label markPt3 = new Label("Best:  " + bestMark + "%");
