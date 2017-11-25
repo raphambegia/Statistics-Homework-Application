@@ -8,7 +8,11 @@ import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +28,8 @@ public class stuAssignmentPageController {
     GridPane studentGrid;
     @FXML
     Button assignmentBack;
+    @FXML
+    VBox assignmentBox;
 
     public Student currStudent;
 
@@ -35,12 +41,24 @@ public class stuAssignmentPageController {
     public void studentDisplayAssignment(){
         for(int i=0;i<Data.assignmentList.size();i++){
             Assignment assign = Data.assignmentList.get(i);
+            Label space = new Label(" ");
             Button assgnButton = new Button(assign.getAssignmentName());
+            Label availLabel = new Label();
+            TextFlow assignFlow = new TextFlow();
             if (assign.isAvailable()) {
                 assgnButton.setStyle("-fx-text-fill: green;");
+                availLabel.setStyle("-fx-text-fill: green;");
+                if (assign.getDueDate() == null) {
+                    availLabel.setText(" * Always Available! * ");
+                } else {
+                    availLabel.setText(" * Deadline: " + assign.getDueDate());
+                }
             } else {
                 assgnButton.setStyle("-fx-text-fill: black;");
+                availLabel.setText(" Deadline: " + assign.getDueDate());
+                availLabel.setStyle("-fx-text-fill: black;");
             }
+            assignFlow.getChildren().addAll(space, assgnButton, availLabel);
             assgnButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -59,8 +77,12 @@ public class stuAssignmentPageController {
             });
             assgnButton.setMinWidth(180);
             assgnButton.setMinHeight(10);
-            studentGrid.setHalignment(assgnButton, HPos.CENTER);
-            studentGrid.add(assgnButton, 0,i);
+//            studentGrid.setHalignment(assgnButton, HPos.CENTER);
+//            studentGrid.add(assgnButton, 0,i);
+            Separator sep = new Separator();
+            sep.setVisible(false);
+            sep.setMinHeight(4);
+            assignmentBox.getChildren().addAll(assignFlow, sep);
         }
     }
 
