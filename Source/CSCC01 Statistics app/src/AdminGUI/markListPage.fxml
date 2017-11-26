@@ -32,7 +32,6 @@
         <Separator visible="false" />
         <Separator visible="false" />
         <Label text="Adjust marks by double clicking on the respective box"/>
-        <Label text="(Separate attempts with a comma, no space, no percent sign - ie. ###,###)"/>
         <Separator visible="false" />
         <Separator visible="false" />
         <TextFlow textAlignment="CENTER">

@@ -92,8 +92,8 @@ public class viewAssignmentController {
      */
     public boolean attemptsRemaining() {
         int maxAttempts = 2; // Allow admin to change? Or vary depending on assignment?
-        if(student.getAssignmentMarks(assignment) != null) {
-            int numAttempts = student.getAssignmentMarks(assignment).size();
+        if(student.getAssignmentBestMark(assignment) != null) {
+            int numAttempts = student.getNumAttempts(assignment);
             attemptsTitle.setText("You have used " + numAttempts + " out of " + maxAttempts + " marked attempts");
             if(maxAttempts <= numAttempts) {
                 viewAssgnLabel.setText("All attempts used. You may go into practice mode instead.");
@@ -139,6 +139,7 @@ public class viewAssignmentController {
             ansIndex.clear();
         } else {
             // Save the assignment
+
             // student.addAssgnAttempt(assignment.getAssignmentName(), questionOrder, ansIndex);
             viewAssgnLabel.setStyle("-fx-text-fill: green;");
             viewAssgnLabel.setText("Assignment submitted!");
@@ -146,7 +147,7 @@ public class viewAssignmentController {
             // Calc and show mark
             markLabel.setManaged(true);
             Double mark = (double) numCorrect / questionOrder.size() * 100;
-            student.setAssignmentMarks(assignment.getAssignmentName(), mark);
+            student.setAssignmentMark(assignment.getAssignmentName(), mark);
             markLabel.setText("You got: " + numCorrect + " out of " + questionOrder.size() + ", " + mark + "%!");
 
             // Offer new assignment

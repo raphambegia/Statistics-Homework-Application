@@ -18,7 +18,10 @@ public class Student extends User{
     SimpleIntegerProperty studentId;
 //    // Mapping explained below
 //    private HashMap<String, ArrayList<ArrayList<String>>> completedAssignments = new HashMap<>();
-    private HashMap<String, ArrayList<Double>> assignmentMarks = new HashMap<>();
+//    private HashMap<String, ArrayList<Double>> assignmentMarks = new HashMap<>();
+
+    private HashMap<String, Double> assignmentBestMark = new HashMap<>();
+    private HashMap<String, Integer> assignmentNumAttempts = new HashMap<>();
 
     public Student(String fname, String lname, int stid){
         this.fName = new SimpleStringProperty(fname);
@@ -70,107 +73,74 @@ public class Student extends User{
         return studentId.getValue();
     }
 
-    public ArrayList<Double> getAssignmentMarks(Assignment assign) {
-        if (!assignmentMarks.containsKey(assign.getAssignmentName())) {
-            return null;
-        }
-        return assignmentMarks.get(assign.getAssignmentName());
+    public Double getAssignmentBestMark(Assignment assign) {
+        return assignmentBestMark.get(assign.getAssignmentName());
     }
 
-    public String getAssignmentMarksStr(String assignName) {
-        Assignment assign = null;
-        for(Assignment a : Data.assignmentList) {
-            if(assignName.equals(a.getAssignmentName())) {
-                assign = a;
-                break;
-            }
+    public String getAssignmentBestMarkStr(Assignment assign) {
+        String mark = "";
+        if (assignmentBestMark.containsKey(assign.getAssignmentName())) {
+            mark = String.format("%.2f", assignmentBestMark.get(assign.getAssignmentName()));
+        } else {
+            mark = "--";
         }
-
-        String marks = "";
-        if (assignmentMarks.containsKey(assign.getAssignmentName())) {
-            for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
-                if(marks == "") {
-                    marks = String.format("%.1f", mark) + "%";
-                } else {
-                    marks = marks + ",  " + String.format("%.1f", mark) + "%";
-                }
-            }
-        }
-        if(marks == "") {
-            marks = "--";
-        }
-        return marks;
+        return mark;
     }
 
-    public String getStrAssignmentMarks(Assignment assign) {
-        String marks = "";
-        if (assignmentMarks.containsKey(assign.getAssignmentName())) {
-            for(Double mark : assignmentMarks.get(assign.getAssignmentName())) {
-                if(marks == "") {
-                    marks = String.format("%.1f", mark);
-                } else {
-                    marks = marks + "," + String.format("%.1f", mark);
-                }
-            }
+    public void addAttempt(String assignName) {
+        if(!assignmentNumAttempts.containsKey(assignName)) {
+            assignmentNumAttempts.put(assignName, 1);
+        } else {
+            int attempts = assignmentNumAttempts.get(assignName);
+            attempts++;
+            assignmentNumAttempts.replace(assignName, attempts);
         }
-        if(marks == "") {
-            marks = "--";
-        }
-        return marks;
+    }
+
+    public int getNumAttempts(Assignment assign) {
+        return assignmentNumAttempts.get(assign.getAssignmentName());
     }
 
     public Double getBestMarkFor(String assgnName) {
         Double bestMark = 0.0;
-        if(assignmentMarks.containsKey(assgnName)) {
-            for(Double mark : assignmentMarks.get(assgnName)) {
-                if(mark > bestMark) {
-                    bestMark = mark;
-                }
-            }
+        if(assignmentBestMark.containsKey(assgnName)) {
+            bestMark = assignmentBestMark.get(assgnName);
         }
         return bestMark;
     }
 
     public String getStrBestMarkFor(String assgnName) {
         Double bestMark = 0.0;
-        if(assignmentMarks.containsKey(assgnName)) {
-            for(Double mark : assignmentMarks.get(assgnName)) {
-                if(mark > bestMark) {
-                    bestMark = mark;
-                }
-            }
+        if(assignmentBestMark.containsKey(assgnName)) {
+            bestMark = assignmentBestMark.get(assgnName);
         }
         return String.format("%.1f", bestMark);
     }
 
-    public void overwriteAssgnMarks(String assgnName, String marks) {
-        ArrayList<String> mrks = new ArrayList<>(Arrays.asList(marks.split(",")));
-        ArrayList<Double> markList = new ArrayList<>();
-        for(String mark : mrks) {
-            markList.add(Double.valueOf(mark));
-        }
-        if(assignmentMarks.containsKey(assgnName)) {
-            assignmentMarks.replace(assgnName, markList);
+    public void overwriteAssgnMarks(String assgnName, String newMark) {
+        Double mark = Double.valueOf(newMark);
+        if(assignmentBestMark.containsKey(assgnName)) {
+            assignmentBestMark.replace(assgnName, mark);
         } else {
-            assignmentMarks.put(assgnName, markList);
+            assignmentBestMark.put(assgnName, mark);
         }
 
     }
 
-    public void setAssignmentMarks(String assgnName, Double mark) {
-        ArrayList<Double> markList = new ArrayList<>();
-        if(assignmentMarks.containsKey(assgnName)) {
-            markList = assignmentMarks.get(assgnName);
-            markList.add(mark);
-            assignmentMarks.replace(assgnName, markList);
+    public void setAssignmentMark(String assgnName, Double mark) {
+        addAttempt(assgnName);
+        if(assignmentBestMark.containsKey(assgnName)) {
+            if(mark > assignmentBestMark.get(assgnName)) {
+                assignmentBestMark.replace(assgnName, mark);
+            }
+            // otherwise if the new mark is <= to best mark, no change
         } else {
-            markList.add(mark);
-            assignmentMarks.put(assgnName, markList);
+            assignmentBestMark.put(assgnName, mark);
         }
     }
 
     public ArrayList<String> getCompletedAssignNames() {
-        ArrayList<String> completedAssignments = new ArrayList<>(assignmentMarks.keySet());
+        ArrayList<String> completedAssignments = new ArrayList<>(assignmentBestMark.keySet());
         return completedAssignments;
     }
 

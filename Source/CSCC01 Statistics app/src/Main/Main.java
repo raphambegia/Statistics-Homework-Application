@@ -63,7 +63,7 @@ public class Main extends Application {
                 for(Document studentScores: scores){
                     if(student.getStudentId() == (int) studentScores.get("stID")){
                         double setScore = (int) studentScores.get("stID");
-                        student.setAssignmentMarks(assignment.getAssignmentName(),setScore );
+                        student.setAssignmentMark(assignment.getAssignmentName(),setScore );
                     }
                 }
             }

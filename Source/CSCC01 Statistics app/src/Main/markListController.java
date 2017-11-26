@@ -50,6 +50,7 @@ public class markListController {
 
         for(Assignment assgn : Data.getAssignmentList()) {
             TableColumn newCol = new TableColumn(assgn.getAssignmentName());
+            newCol.setMinWidth(30);
             newCol.setPrefWidth(85);
             assignCols.add(newCol);
             marksTable.getColumns().add(newCol);
@@ -58,7 +59,7 @@ public class markListController {
             newCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Student, String> c) {
-                    return new SimpleStringProperty(c.getValue().getStrAssignmentMarks(assgn));
+                    return new SimpleStringProperty(c.getValue().getAssignmentBestMarkStr(assgn));
                 }
             });
 

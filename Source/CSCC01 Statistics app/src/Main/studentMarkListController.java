@@ -35,19 +35,12 @@ public class studentMarkListController {
         boolean attempted = false;
         for(String assgnName : student.getCompletedAssignNames()) {
             attempted = true;
-            String marks = student.getAssignmentMarksStr(assgnName);
             String bestMark = student.getStrBestMarkFor(assgnName);
             totalPoints += student.getBestMarkFor(assgnName);
             TextFlow tf = new TextFlow();
-            Label markPt1 = new Label(assgnName + ": ");
-            markPt1.setPrefWidth(175);
+            Label markPt1 = new Label(assgnName + " Best Mark:  " + bestMark + "%");
             markPt1.setFont(Font.font("System", 15));
-            Label markPt2 = new Label("  " + marks);
-            markPt2.setPrefWidth(150);
-            markPt2.setFont(Font.font("System", 15));
-            Label markPt3 = new Label("Best:  " + bestMark + "%");
-            markPt3.setFont(Font.font("System", 15));
-            tf.getChildren().addAll(markPt1, markPt2, markPt3);
+            tf.getChildren().addAll(markPt1);
             stuMarksBox.getChildren().add(tf);
         }
         if(attempted) {
