@@ -20,10 +20,10 @@
               </font>
           </Label>
          <children>
-            <Button fx:id="backButton" layoutX="420.0" layoutY="285.0" mnemonicParsing="false" onAction="#backMain" prefHeight="50.0" prefWidth="150.0" text="Back" />
-            <Button fx:id="addAssignment" layoutX="420.0" layoutY="90.0" mnemonicParsing="false" onAction="#assignmentAdd" prefHeight="50.0" prefWidth="150.0" text="Add Assignment" />
-             <Button fx:id="rmAssignment" layoutX="420.0" layoutY="155.0" mnemonicParsing="false" onAction="#assignmentRm" prefHeight="50.0" prefWidth="150.0" text="Remove Assignment" />
-             <Button fx:id="viewAssignment" layoutX="420.0" layoutY="220.0" mnemonicParsing="false" onAction="#assignmentView" prefHeight="50.0" prefWidth="150.0" text="View Assignment" />
+            <Button fx:id="backButton" layoutX="420.0" layoutY="285.0" mnemonicParsing="false" onAction="#backMain" prefHeight="50.0" prefWidth="180.0" text="Back" />
+            <Button fx:id="addAssignment" layoutX="420.0" layoutY="90.0" mnemonicParsing="false" onAction="#assignmentAdd" prefHeight="50.0" prefWidth="180.0" text="Add Assignment" />
+             <Button fx:id="rmAssignment" layoutX="420.0" layoutY="155.0" mnemonicParsing="false" onAction="#assignmentRm" prefHeight="50.0" prefWidth="180.0" text="Remove Assignment" />
+             <Button fx:id="viewAssignment" layoutX="420.0" layoutY="220.0" mnemonicParsing="false" onAction="#assignmentView" prefHeight="50.0" prefWidth="180.0" text="View Assignment" />
              <!--<GridPane fx:id="gridPane" layoutX="14.0" layoutY="47.0" prefHeight="350.0" prefWidth="364.0">-->
               <!--<columnConstraints>-->
                 <!--<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->

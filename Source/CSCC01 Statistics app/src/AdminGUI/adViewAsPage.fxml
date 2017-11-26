@@ -20,25 +20,18 @@
                 </font>
             </Label>
         </VBox>
-        <VBox layoutX="45" layoutY="62">
-            <children>
-                <Group>
-                    <ListView fx:id="assgnQList" maxWidth="530" minWidth="520.0" prefHeight="250" maxHeight="250">
 
-                    </ListView>
-                </Group>
-                <VBox alignment="CENTER">
-                    <Separator visible="false" />
-                    <Separator visible="false" />
-                    <TextFlow textAlignment="CENTER">
-                        <Button fx:id="editQuestionButton" minWidth="160" onAction="#editQuestion" text="Edit Selected Question" />
-                        <Button fx:id="addQuestionButton" minWidth="160" onAction="#addQuestion" text="Add New Question" />
-                        <Button fx:id="rmQuestionButton" minWidth="160" onAction="#rmQuestion" text="Remove Selected Question" />
-                    </TextFlow>
-                    <Separator visible="false" />
-                    <Button fx:id="backToAsPageButton" onAction="#aBackToAsPage" prefHeight="30.0" prefWidth="70.0" text="Back" />
-                </VBox>
-            </children>
-        </VBox>
+        <Group>
+            <ListView fx:id="assgnQList" layoutX="35.0" layoutY="70.0" prefHeight="290.0" prefWidth="352.0">
+
+            </ListView>
+        </Group>
+
+        <Button fx:id="addQuestionButton" layoutX="420.0" layoutY="90.0" prefHeight="50.0" prefWidth="184.0" onAction="#addQuestion" text="Add New Question" />
+        <Button fx:id="editQuestionButton" layoutX="420.0" layoutY="155.0" prefHeight="50.0" prefWidth="184.0" onAction="#editQuestion" text="Edit Selected Question" />
+        <Button fx:id="rmQuestionButton" layoutX="420.0" layoutY="220.0" prefHeight="50.0" prefWidth="184.0" onAction="#rmQuestion" text="Remove Selected Question" />
+
+        <Button fx:id="backToAsPageButton" layoutX="420.0" layoutY="285.0" onAction="#aBackToAsPage" prefHeight="50.0" prefWidth="184.0" text="Back" />
+
     </children>
 </AnchorPane>
