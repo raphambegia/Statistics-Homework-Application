@@ -57,6 +57,18 @@ public class Main extends Application {
             Assignment assgn = Admin.getAssignment((String) question.get("assignName"));
             Admin.addQuestion((String) question.get("question"), mc, (int) question.get("soln"), assgn);
         }
+        for(Assignment assignment: Data.assignmentList ){
+            List<Document> scores = MongoDB.getScores(assignment.getAssignmentName());
+            for(Student student : Data.studentList){
+                for(Document studentScores: scores){
+                    if(student.getStudentId() == (int) studentScores.get("stID")){
+                        double setScore = (int) studentScores.get("stID");
+                        student.setAssignmentMarks(assignment.getAssignmentName(),setScore );
+                    }
+                }
+            }
+
+        }
 
         //ArrayList<String> al = new ArrayList<String>();
         //al.add("karen");

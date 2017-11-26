@@ -122,6 +122,38 @@ public class MongoDB {
         }catch (MongoWriteException e){
         }
     }
+    public static void addToScores(String assignmentName, int stID, int score){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        Document studentScore = new Document("stID", stID).append("score", score);
+        try {
+            userCollection.insertOne(studentScore);
+        }catch (MongoWriteException e){
+        }
+    }
+    public static void changeToScores(String assignmentName, int stID, int score){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        userCollection.updateOne(new Document("stID",  stID), new Document("score", score));
+
+    }
+
+    public static List<Document> getScores(String assignmentName){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        List<Document> scores = (List<Document>) userCollection.find().into(new ArrayList<Document>());
+        return scores;
+    }
+
+    public static void removeAssignment(String assignName){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection("AssignNoDueDate");
+
+        userCollection.deleteOne(new Document("assignName",  assignName));
+        MongoCollection userCollection2 = userDatabase.getCollection("AssignDueDate");
+        userCollection2.deleteOne(new Document("assignName",  assignName));
+    }
+
     public static void update(){
         boolean req = false;
         List<Document> students = getStudents();

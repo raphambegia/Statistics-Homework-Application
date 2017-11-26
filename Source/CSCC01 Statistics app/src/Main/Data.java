@@ -109,6 +109,7 @@ public class Data {
             //assignmentList.remove(Location);
             //updateAssignmentID(assignmentList);
         }
+        MongoDB.removeAssignment(deleteAssignment.getAssignmentName());
     }
 
     public static void updateAssignmentID (ArrayList<Assignment> ListofAssignments){
