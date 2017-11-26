@@ -3,6 +3,7 @@ package Main;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Assignment {
     /*
@@ -100,20 +101,23 @@ public class Assignment {
      */
     public void addQuestion (Question newQuestion){ this.questionList.add(newQuestion); updateQuestionID(questionList); }
 
-//    public void removeQuestion (Question deleteQuestion){
-//        Boolean found = false;
-//        //Location: location in ArrayList
-//        int Location = 0;
-//        for (Question QuestionElement : questionList ){
-//            if (deleteQuestion.getQuestionID() == QuestionElement.getQuestionID()){
-//                found = true;
-//
-//                break;
-//            }
-//            Location++;
-//        }
-//        if (found == true){questionList.remove(Location); updateQuestionID(questionList);}
-//    }
+    public void removeQuestion (Question deleteQuestion){
+        Boolean found = false;
+        //Location: location in ArrayList
+        int Location = 0;
+        for (Question QuestionElement : questionList ){
+            if (deleteQuestion.getTheQuestion().equals(QuestionElement.getTheQuestion())){
+                found = true;
+                break;
+            }
+            Location++;
+        }
+        if (found == true){
+            //questionList.remove(Location);
+            Predicate<Question> qPred = QuestionElement -> QuestionElement.getTheQuestion() == deleteQuestion.getTheQuestion();
+            questionList.removeIf(qPred);
+        }
+    }
 
     public void updateQuestionID (ArrayList<Question> ListofQuestions){
         //Location in ArrayList

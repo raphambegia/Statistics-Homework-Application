@@ -57,8 +57,17 @@ public class adViewAsController {
         assgnQList.getItems().addAll(questionList);
     }
 
-    public void editQuestion() {
-
+    public void editQuestion() throws IOException {
+        Question question = assgnQList.getSelectionModel().getSelectedItem();
+        if (question != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../AdminGUI/editQuestion.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) editQuestionButton.getScene().getWindow();
+            stage.setScene(new Scene(root, 650, 400));
+            editQuestionController controller = loader.<editQuestionController>getController();
+            controller.initQuestion(assignment, question);
+            stage.show();
+        }
     }
 
     public void addQuestion() throws IOException {
@@ -69,6 +78,13 @@ public class adViewAsController {
         questionController controller = loader.<questionController>getController();
         controller.selectedAssgn(assignment);
         stage.show();
+    }
+
+    public void rmQuestion() {
+        Question question = assgnQList.getSelectionModel().getSelectedItem();
+        if (question != null) {
+            assignment.removeQuestion(question);
+        }
     }
 
     public void aBackToAsPage() throws IOException {
