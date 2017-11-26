@@ -47,6 +47,8 @@ public class adViewAsController {
     }
 
     public void loadAssignmentQs() {
+        assgnQList.getItems().clear();
+        
         // Gets all the questions
         for(Assignment curr : Data.assignmentList) {
             if(curr.getAssignmentName().equals(aAssgnTitle.getText())) {
@@ -84,6 +86,7 @@ public class adViewAsController {
         Question question = assgnQList.getSelectionModel().getSelectedItem();
         if (question != null) {
             assignment.removeQuestion(question);
+            loadAssignmentQs();
         }
     }
 
