@@ -45,7 +45,7 @@ public class studentMarkListController {
         }
         if(attempted) {
             double finalMark = totalPoints/student.getCompletedAssignNames().size();
-            stuMLLabel.setText("Current average: " + String.format("%.1f", finalMark) + "%");
+            stuMLLabel.setText("Current average: " + String.format("%.2f", finalMark) + "%");
         } else {
             stuMLLabel.setText("There are no marks to show.");
         }
