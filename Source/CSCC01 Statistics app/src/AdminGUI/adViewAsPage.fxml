@@ -31,8 +31,9 @@
                     <Separator visible="false" />
                     <Separator visible="false" />
                     <TextFlow textAlignment="CENTER">
-                        <Button fx:id="editQuestionButton" minWidth="170" onAction="#editQuestion" text="Edit Selected Question" />
-                        <Button fx:id="addQuestionButton" minWidth="170" onAction="#addQuestion" text="Add New Question" />
+                        <Button fx:id="editQuestionButton" minWidth="160" onAction="#editQuestion" text="Edit Selected Question" />
+                        <Button fx:id="addQuestionButton" minWidth="160" onAction="#addQuestion" text="Add New Question" />
+                        <Button fx:id="rmQuestionButton" minWidth="160" onAction="#rmQuestion" text="Remove Selected Question" />
                     </TextFlow>
                     <Separator visible="false" />
                     <Button fx:id="backToAsPageButton" onAction="#aBackToAsPage" prefHeight="30.0" prefWidth="70.0" text="Back" />
