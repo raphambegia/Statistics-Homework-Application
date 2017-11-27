@@ -150,6 +150,9 @@ public class Student extends User{
         return completedAssignments;
     }
 
+    public int getNumAttempts(String assign) {
+        return assignmentNumAttempts.get(assign);
+    }
 //    /*
 //    MAP KEY: assignment name
 //    MAPPED TO: an arraylist containing 2 string arraylists
