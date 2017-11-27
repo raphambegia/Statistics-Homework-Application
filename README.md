@@ -33,7 +33,7 @@ Product Backlog v3(in Deliverable 05 Folder):
 ![Product Backlog v3 Deliverable 4](Deliverable%2005/Del05%20Report.pdf)
 
 Sprint Backlog 6(in Deliverable 06 Folder):
-![Sprint Backlog 6 Deliverable 6](Deliverable%2006/Sprint%20Backlog6.pdf)
+![Sprint Backlog 6 Deliverable 6](Deliverable%2006/Sprint-Backlog6.pdf)
 
 Product Backlog v4(in Deliverable 06 Folder):
 ![Product Backlog v4 Deliverable 6](Deliverable%2006/Del06%20Report.pdf)
