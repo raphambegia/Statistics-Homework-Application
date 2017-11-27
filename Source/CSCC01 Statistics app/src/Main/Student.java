@@ -90,10 +90,12 @@ public class Student extends User{
     public void addAttempt(String assignName) {
         if(!assignmentNumAttempts.containsKey(assignName)) {
             assignmentNumAttempts.put(assignName, 1);
+            MongoDB.addToAttempts(assignName, this.getStudentId(), 1);
         } else {
             int attempts = assignmentNumAttempts.get(assignName);
             attempts++;
             assignmentNumAttempts.replace(assignName, attempts);
+            MongoDB.addToAttempts(assignName, this.getStudentId(), attempts);
         }
     }
 
@@ -121,8 +123,10 @@ public class Student extends User{
         Double mark = Double.valueOf(newMark);
         if(assignmentBestMark.containsKey(assgnName)) {
             assignmentBestMark.replace(assgnName, mark);
+            MongoDB.addToScores(assgnName, this.getStudentId(), mark);
         } else {
             assignmentBestMark.put(assgnName, mark);
+            MongoDB.addToScores(assgnName, this.getStudentId(), mark);
         }
 
     }

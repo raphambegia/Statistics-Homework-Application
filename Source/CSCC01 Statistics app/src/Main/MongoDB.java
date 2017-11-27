@@ -122,19 +122,42 @@ public class MongoDB {
         }catch (MongoWriteException e){
         }
     }
-    public static void addToScores(String assignmentName, int stID, int score){
+    public static void addToScores(String assignmentName, int stID, double score){
         MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
         MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        IndexOptions indexOptions = new IndexOptions().unique(true);
+        userCollection.createIndex(Indexes.ascending("stID"), indexOptions);
         Document studentScore = new Document("stID", stID).append("score", score);
         try {
             userCollection.insertOne(studentScore);
         }catch (MongoWriteException e){
+            userCollection.updateOne(new Document("stID",  stID), new Document("score", score));
         }
     }
-    public static void changeToScores(String assignmentName, int stID, int score){
+    public static void changeToScores(String assignmentName, int stID, double score){
         MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
         MongoCollection userCollection = userDatabase.getCollection(assignmentName);
-        userCollection.updateOne(new Document("stID",  stID), new Document("score", score));
+        userCollection.updateOne(new Document("stID",  stID), set("score", score));
+
+    }
+
+    public static void addToAttempts(String assignmentName, int stID, int attempts){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        IndexOptions indexOptions = new IndexOptions().unique(true);
+        userCollection.createIndex(Indexes.ascending("stID"), indexOptions);
+        Document studentAttempts = new Document("stID", stID).append("attempts", attempts);
+        try {
+            userCollection.insertOne(studentAttempts);
+        }catch (MongoWriteException e){
+            userCollection.updateOne(new Document("stID",  stID), set("attempts", attempts));
+        }
+    }
+
+    public static void changeToAttempts(String assignmentName, int stID, int attempts){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        userCollection.updateOne(new Document("stID",  stID), new Document("attempts", attempts));
 
     }
 

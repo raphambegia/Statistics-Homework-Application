@@ -69,7 +69,7 @@ public class markListController {
                     new EventHandler<TableColumn.CellEditEvent<Student, String>>() {
                         @Override
                         public void handle(TableColumn.CellEditEvent<Student, String> t) {
-                            ((Student) t.getTableView().getItems().get(
+                            (t.getTableView().getItems().get(
                                     t.getTablePosition().getRow())
                             ).overwriteAssgnMarks(assgn.getAssignmentName(), t.getNewValue());
                         }
