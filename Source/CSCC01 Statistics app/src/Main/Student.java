@@ -158,10 +158,12 @@ public class Student extends User{
     }
 
     public int getNumAttempts(String assign) {
-        if(assignmentNumAttempts.get(assign) == null) {
-            return 0;
+        int num = 0;
+        if(assignmentNumAttempts.containsKey(assign)) {
+            num = assignmentNumAttempts.get(assign);
         }
-        return assignmentNumAttempts.get(assign);
+        return  num;
+
     }
 //    /*
 //    MAP KEY: assignment name
