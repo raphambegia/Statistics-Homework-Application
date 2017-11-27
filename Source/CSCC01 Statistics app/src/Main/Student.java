@@ -87,6 +87,13 @@ public class Student extends User{
         return mark;
     }
 
+    public void setAssignmentNumAttempts(String assignName, int attempts){
+        if(assignmentNumAttempts.containsKey(assignName)) {
+            assignmentNumAttempts.replace(assignName, attempts);
+        } else {
+            assignmentNumAttempts.put(assignName, attempts);
+        }
+    }
     public void addAttempt(String assignName) {
         if(!assignmentNumAttempts.containsKey(assignName)) {
             assignmentNumAttempts.put(assignName, 1);

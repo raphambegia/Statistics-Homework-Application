@@ -63,6 +63,7 @@ public class Main extends Application {
                 for(Document studentScores: scores){
                     if(student.getStudentId() == (int) studentScores.get("stID")){
                         student.setAssignmentMark(assignment.getAssignmentName(),(double) studentScores.get("score"));
+                        student.setAssignmentNumAttempts(assignment.getAssignmentName(), (int) studentScores.get("attempts") );
                     }
                 }
             }
