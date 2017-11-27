@@ -18,6 +18,8 @@ public class studentPageController {
     Button viewMarksButton;
     @FXML
     Button logOutButton;
+    @FXML
+    Button viewAchievementsButton;
 
     public Student currStudent;
 
@@ -45,10 +47,25 @@ public class studentPageController {
         stage.show();
     }
 
+    public void goViewAchievements(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../StudentGUI/studentAchievement.fxml"));
+        Parent root = loader.load();
+        Stage stage  = (Stage) viewAchievementsButton.getScene().getWindow();
+        stage.setScene(new Scene(root, 650, 400));
+        achievementController controller = loader.<achievementController>getController();
+        controller.initStudent(currStudent);
+        controller.checkFirststepBadge();
+        controller.checkHardworkBadge();
+        controller.checkStarBadge();
+        stage.show();
+    }
+
     public void logOutHandler(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../AdminGUI/mainView.fxml"));
         Stage stage  = (Stage) logOutButton.getScene().getWindow();
         stage.setScene(new Scene(root, 650, 400));
         stage.show();
     }
+
+
 }

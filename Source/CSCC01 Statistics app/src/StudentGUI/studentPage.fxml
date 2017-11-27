@@ -12,7 +12,7 @@
          <children>
             <Button fx:id="studentAssgnView" layoutX="211.0" layoutY="90.0" mnemonicParsing="false" onAction="#studentAssignmentView" prefHeight="60.0" prefWidth="179.0" text="View Assignments" />
             <Button fx:id="viewMarksButton" layoutX="211.0" layoutY="160.0" mnemonicParsing="false" onAction="#goViewMarks" prefHeight="60.0" prefWidth="179.0" text="View Marks" />
-            <Button fx:id="viewAchievementsButton" layoutX="211.0" layoutY="230.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="179.0" text="View Achievements" />
+            <Button fx:id="viewAchievementsButton" layoutX="211.0" layoutY="230.0" mnemonicParsing="false" onAction="#goViewAchievements" prefHeight="60.0" prefWidth="179.0" text="View Achievements" />
             <Button fx:id="logOutButton" layoutX="211.0" layoutY="300.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="60.0" prefWidth="179.0" text="Log Out" />
 
             <Label layoutX="236.0" layoutY="35.0" text="Welcome">

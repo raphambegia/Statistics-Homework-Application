@@ -155,6 +155,13 @@ public class MongoDB {
         return scores;
     }
 
+    public static List<Document> getAttempts(String assignmentName){
+        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
+        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
+        List<Document> scores = (List<Document>) userCollection.find().into(new ArrayList<Document>());
+        return scores;
+    }
+
     public static void removeAssignment(String assignName){
         MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
         MongoCollection userCollection = userDatabase.getCollection("AssignNoDueDate");
