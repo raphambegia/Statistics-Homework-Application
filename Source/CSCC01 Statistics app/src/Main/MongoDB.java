@@ -131,14 +131,8 @@ public class MongoDB {
         try {
             userCollection.insertOne(studentScore);
         }catch (MongoWriteException e){
-            userCollection.updateOne(new Document("stID",  stID), new Document("score", score));
+            userCollection.updateOne(new Document("stID",  stID), set("score", score));
         }
-    }
-    public static void changeToScores(String assignmentName, int stID, double score){
-        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
-        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
-        userCollection.updateOne(new Document("stID",  stID), set("score", score));
-
     }
 
     public static void addToAttempts(String assignmentName, int stID, int attempts){
@@ -152,13 +146,6 @@ public class MongoDB {
         }catch (MongoWriteException e){
             userCollection.updateOne(new Document("stID",  stID), set("attempts", attempts));
         }
-    }
-
-    public static void changeToAttempts(String assignmentName, int stID, int attempts){
-        MongoDatabase userDatabase = mongoClient.getDatabase("cscc01");
-        MongoCollection userCollection = userDatabase.getCollection(assignmentName);
-        userCollection.updateOne(new Document("stID",  stID), new Document("attempts", attempts));
-
     }
 
     public static List<Document> getScores(String assignmentName){
