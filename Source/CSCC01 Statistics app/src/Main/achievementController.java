@@ -62,9 +62,9 @@ public class achievementController {
     public void checkHardworkBadge(){
         int count=0;
         for(String name : currStudent.getCompletedAssignNames()){
-            count += currStudent.getNumAttempts(name);
+            count++;
         }
-        if(count >=5) hardworkBadge.setVisible(true);
+        if(count >= 5) hardworkBadge.setVisible(true);
     }
 
 
