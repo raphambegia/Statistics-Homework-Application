@@ -62,8 +62,13 @@ public class Main extends Application {
             for(Student student : Data.studentList){
                 for(Document studentScores: scores){
                     if(student.getStudentId() == (int) studentScores.get("stID")){
-                        student.setAssignmentMark(assignment.getAssignmentName(),(double) studentScores.get("score"));
-                        student.setAssignmentNumAttempts(assignment.getAssignmentName(), (int) studentScores.get("attempts") );
+                        student.overwriteAssgnMarks(assignment.getAssignmentName(),Double.toString((double) studentScores.get("score")));
+                        try {
+                            student.setAssignmentNumAttempts(assignment.getAssignmentName(), (int) studentScores.get("attempts"));
+                        }
+                        catch (NullPointerException e){
+
+                        }
                     }
                 }
             }
