@@ -158,6 +158,9 @@ public class Student extends User{
     }
 
     public int getNumAttempts(String assign) {
+        if(assignmentNumAttempts.get(assign) == null) {
+            return 0;
+        }
         return assignmentNumAttempts.get(assign);
     }
 //    /*
