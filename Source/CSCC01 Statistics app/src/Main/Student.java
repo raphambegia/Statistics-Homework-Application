@@ -136,10 +136,12 @@ public class Student extends User{
         if(assignmentBestMark.containsKey(assgnName)) {
             if(mark > assignmentBestMark.get(assgnName)) {
                 assignmentBestMark.replace(assgnName, mark);
+                MongoDB.addToScores(assgnName, this.getStudentId(), mark);
             }
             // otherwise if the new mark is <= to best mark, no change
         } else {
             assignmentBestMark.put(assgnName, mark);
+            MongoDB.addToScores(assgnName, this.getStudentId(), mark);
         }
     }
 
